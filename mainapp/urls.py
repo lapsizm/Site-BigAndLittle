@@ -1,8 +1,13 @@
 from django.urls import path
-from .views import BaseView, ProductDetailView
+from django.conf import settings
+from django.conf.urls.static import static
+
+from .views import BaseView, ProductList, ProductDetail, CategoryDetail
 
 
 urlpatterns = [
     path('', BaseView.as_view(), name='base'),
-    path('products/<str:ct_model>/<str:slug>/', ProductDetailView.as_view(), name='product_detail')
-]
+    path('products/', ProductList, name='product_list'),
+    path('products/<str:category_slug>/', CategoryDetail, name='category_detail'),
+    path('products/<str:category_slug>/<str:product_slug>/', ProductDetail, name='product_detail')
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Category</title>
+</head>
+<body>
+{{category.name}}
+{% for product in products %}
+<a href="{{product.get_absolute_url}}">{{ product.title }} {{product.price}}</a>
+{%endfor%}
+</body>
+</html>

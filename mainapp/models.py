@@ -7,11 +7,6 @@ from django.urls import reverse
 from utils import upload_function
 
 
-def get_product_url(obj, viewname):
-    ct_model = obj.__class__._meta.model_name
-    return reverse(viewname, kwargs={'ct_model': ct_model, 'slug': obj.slug})
-
-
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование категории')
     slug = models.SlugField(unique=True)
@@ -37,7 +32,7 @@ class Product(models.Model):  # каркас продукта
     image = models.ImageField(upload_to=upload_function, null=True, blank=True)
 
     def get_absolute_url(self):
-        return get_product_url(self, 'product_detail')
+        return reverse('product_detail', kwargs={'category_slug': self.category.slug, 'product_slug': self.slug})
 
     def __str__(self):
         return self.title
