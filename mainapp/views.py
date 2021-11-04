@@ -2,7 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 
 from django import views
-from .models import Category, Product
+from .models import Category, Product, ImageGallery
+from .admin import ImageGalleryInline
+
 
 
 class BaseView(views.View):
@@ -13,7 +15,8 @@ class BaseView(views.View):
 def ProductList(request):
     categories = Category.objects.all()
     products = Product.objects.all()
-    return render(request, 'catalog.html', {'categories': categories, 'products': products})
+    images = ImageGallery.objects.all()
+    return render(request, 'catalog.html', {'categories': categories, 'products': products, 'images': images})
 
 
 def CategoryDetail(request, category_slug):
@@ -24,5 +27,7 @@ def CategoryDetail(request, category_slug):
 def ProductDetail(request, category_slug, product_slug):
     category = get_object_or_404(Category, slug=category_slug)
     product = get_object_or_404(Product, slug=product_slug)
-    return render(request, 'product_detail.html', {'category': category, 'product': product})
+    images = ImageGallery.objects.filter(object_id=product.id)
+    main_image = get_object_or_404(ImageGallery, object_id=product.id, is_main=True)
+    return render(request, 'product_detail.html', locals())
 

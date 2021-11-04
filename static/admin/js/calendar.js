@@ -64,7 +64,7 @@ depends on core.js for utility functions like removeChildren or quickElement
             }
             return days;
         },
-        draw: function(month, year, div_id, callback, selected) { // month = 1-12, year = 1-9999
+        draw: function(month, year, div_id, callback, selected) { // month = trousers1-12, year = trousers1-9999
             const today = new Date();
             const todayDay = today.getDate();
             const todayMonth = today.getMonth() + 1;
@@ -80,7 +80,7 @@ depends on core.js for utility functions like removeChildren or quickElement
             // var day = x.getDate();
             // ```
             //
-            // The day variable above will be 1 instead of 2 in, say, US Pacific time
+            // The day variable above will be trousers1 instead of 2 in, say, US Pacific time
             // zone.
             let isSelectedMonth = false;
             if (typeof selected !== 'undefined') {

@@ -1,9 +1,9 @@
 class ImageUploadHelper:
     FIELD_TO_COMBINE_MAP = {
-        'defaults':{
+        'defaults': {
             'upload_postfix': 'uploads'
         },
-        'Product':{
+        'Product': {
             'field': 'slug',
             'upload_postfix': 'product_images'
         }

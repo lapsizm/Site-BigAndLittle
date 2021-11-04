@@ -1,0 +1,9 @@
+body {
+    background: #ffe4e9;
+}
+
+.header-content {
+    background: grey;
+    padding: 5px;
+    line-height: 20px;
+}

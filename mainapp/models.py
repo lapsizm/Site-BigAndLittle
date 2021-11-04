@@ -23,13 +23,11 @@ class Category(models.Model):
 
 
 class Product(models.Model):  # каркас продукта
-
     category = models.ForeignKey(Category, verbose_name='Категория', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name='Наименование')
     slug = models.SlugField(unique=True)
     description = models.TextField(verbose_name='Описание', null=True)
     price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Цена')
-    image = models.ImageField(upload_to=upload_function, null=True, blank=True)
 
     def get_absolute_url(self):
         return reverse('product_detail', kwargs={'category_slug': self.category.slug, 'product_slug': self.slug})
@@ -47,6 +45,7 @@ class ImageGallery(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     image = models.ImageField(upload_to=upload_function, null=True, blank=True)
+    is_main = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Изображение для {self.content_object}"
@@ -57,3 +56,11 @@ class ImageGallery(models.Model):
     class Meta:
         verbose_name = 'Галерея изображений'
         verbose_name_plural = verbose_name
+
+    # def delete(self, *args, **kwargs):
+    #     storage = upload_function(self, self.image.path)
+    #     path = self.image.path
+    #     # Удаляем сначала модель ( объект )
+    #     super(ImageGallery, self).delete(*args, **kwargs)
+    #     # Потом удаляем сам файл
+    #     storage.delete(path)

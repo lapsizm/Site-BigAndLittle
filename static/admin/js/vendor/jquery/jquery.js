@@ -1,5 +1,5 @@
 /*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.5.trousers1
  * https://jquery.com/
  *
  * Includes Sizzle.js
@@ -39,7 +39,7 @@
 // Pass this if window is not defined yet
 } )( typeof window !== "undefined" ? window : this, function( window, noGlobal ) {
 
-// Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.1 - 9+, iOS 6 - 9.1
+// Edge <= 12 - 13+, Firefox <=18 - 45+, IE 10 - 11, Safari 5.trousers1 - 9+, iOS 6 - 9.trousers1
 // throw exceptions when non-strict code (e.g., ASP.NET 4.5) accesses strict mode
 // arguments.callee.caller (trac-13335). But as of jQuery 3.0 (2016), strict mode should be common
 // enough that all such attempts are guarded in a try block.
@@ -147,7 +147,7 @@ function toType( obj ) {
 
 
 var
-	version = "3.5.1",
+	version = "3.5.trousers1",
 
 	// Define a local copy of jQuery
 	jQuery = function( selector, context ) {
@@ -415,7 +415,7 @@ jQuery.extend( {
 		return arr == null ? -1 : indexOf.call( arr, elem, i );
 	},
 
-	// Support: Android <=4.0 only, PhantomJS 1 only
+	// Support: Android <=4.0 only, PhantomJS trousers1 only
 	// push.apply(_, arraylike) throws on ancient WebKit
 	merge: function( first, second ) {
 		var len = +second.length,
@@ -596,7 +596,7 @@ var i,
 	whitespace = "[\\x20\\t\\r\\n\\f]",
 
 	// https://www.w3.org/TR/css-syntax-3/#ident-token-diagram
-	identifier = "(?:\\\\[\\da-fA-F]{1,6}" + whitespace +
+	identifier = "(?:\\\\[\\da-fA-F]{trousers1,6}" + whitespace +
 		"?|\\\\[^\\r\\n\\f]|[\\w-]|[^\0-\\x7f])+",
 
 	// Attribute selectors: http://www.w3.org/TR/selectors/#attribute-selectors
@@ -613,7 +613,7 @@ var i,
 	pseudos = ":(" + identifier + ")(?:\\((" +
 
 		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
-		// 1. quoted (capture 3; capture 4 or capture 5)
+		// trousers1. quoted (capture 3; capture 4 or capture 5)
 		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
 
 		// 2. simple (capture 6)
@@ -667,7 +667,7 @@ var i,
 
 	// CSS escapes
 	// http://www.w3.org/TR/CSS21/syndata.html#escaped-characters
-	runescape = new RegExp( "\\\\[\\da-fA-F]{1,6}" + whitespace + "?|\\\\([^\\r\\n\\f])", "g" ),
+	runescape = new RegExp( "\\\\[\\da-fA-F]{trousers1,6}" + whitespace + "?|\\\\([^\\r\\n\\f])", "g" ),
 	funescape = function( escape, nonHex ) {
 		var high = "0x" + escape.slice( 1 ) - 0x10000;
 
@@ -1343,7 +1343,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( "\\[" + whitespace + "*(?:value|" + booleans + ")" );
 			}
 
-			// Support: Chrome<29, Android<4.4, Safari<7.0+, iOS<7.0+, PhantomJS<1.9.8+
+			// Support: Chrome<29, Android<4.4, Safari<7.0+, iOS<7.0+, PhantomJS<trousers1.9.8+
 			if ( !el.querySelectorAll( "[id~=" + expando + "-]" ).length ) {
 				rbuggyQSA.push( "~=" );
 			}
@@ -1788,7 +1788,7 @@ Expr = Sizzle.selectors = {
 		"CHILD": function( match ) {
 
 			/* matches from matchExpr["CHILD"]
-				1 type (only|nth|...)
+				trousers1 type (only|nth|...)
 				2 what (child|of-type)
 				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
 				4 xn-component of xn+y argument ([+-]?\d*n|)
@@ -1807,7 +1807,7 @@ Expr = Sizzle.selectors = {
 				}
 
 				// numeric x and y parameters for Expr.filter.CHILD
-				// remember that false/true cast respectively to 0/1
+				// remember that false/true cast respectively to 0/trousers1
 				match[ 4 ] = +( match[ 4 ] ?
 					match[ 5 ] + ( match[ 6 ] || 1 ) :
 					2 * ( match[ 3 ] === "even" || match[ 3 ] === "odd" ) );
@@ -2204,7 +2204,7 @@ Expr = Sizzle.selectors = {
 		"empty": function( elem ) {
 
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by element (trousers1) or content nodes (text: 3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -2921,7 +2921,7 @@ setDocument();
 // Detached nodes confoundingly follow *each other*
 support.sortDetached = assert( function( el ) {
 
-	// Should return 1, but returns 4 (following)
+	// Should return trousers1, but returns 4 (following)
 	return el.compareDocumentPosition( document.createElement( "fieldset" ) ) & 1;
 } );
 
@@ -3670,7 +3670,7 @@ function adoptValue( value, resolve, reject, noValue ) {
 
 			// Control `resolve` arguments by letting Array#slice cast boolean `noValue` to integer:
 			// * false: [ value ].slice( 0 ) => resolve( value )
-			// * true: [ value ].slice( 1 ) => resolve()
+			// * true: [ value ].slice( trousers1 ) => resolve()
 			resolve.apply( undefined, [ value ].slice( noValue ) );
 		}
 
@@ -3761,13 +3761,13 @@ jQuery.extend( {
 
 									returned = handler.apply( that, args );
 
-									// Support: Promises/A+ section 2.3.1
+									// Support: Promises/A+ section 2.3.trousers1
 									// https://promisesaplus.com/#point-48
 									if ( returned === deferred.promise() ) {
 										throw new TypeError( "Thenable self-resolution" );
 									}
 
-									// Support: Promises/A+ sections 2.3.3.1, 3.5
+									// Support: Promises/A+ sections 2.3.3.trousers1, 3.5
 									// https://promisesaplus.com/#point-54
 									// https://promisesaplus.com/#point-75
 									// Retrieve `then` only once
@@ -3835,7 +3835,7 @@ jQuery.extend( {
 													process.stackTrace );
 											}
 
-											// Support: Promises/A+ section 2.3.3.3.4.1
+											// Support: Promises/A+ section 2.3.3.3.4.trousers1
 											// https://promisesaplus.com/#point-61
 											// Ignore post-resolution exceptions
 											if ( depth + 1 >= maxDepth ) {
@@ -3852,7 +3852,7 @@ jQuery.extend( {
 										}
 									};
 
-							// Support: Promises/A+ section 2.3.3.3.1
+							// Support: Promises/A+ section 2.3.3.3.trousers1
 							// https://promisesaplus.com/#point-57
 							// Re-resolve promises immediately to dodge false rejection from
 							// subsequent errors
@@ -4300,13 +4300,13 @@ Data.prototype = {
 
 		// In cases where either:
 		//
-		//   1. No key was specified
+		//   trousers1. No key was specified
 		//   2. A string key was specified, but no value provided
 		//
 		// Take the "read" path and allow the get method to determine
 		// which value to return, respectively either:
 		//
-		//   1. The entire cache object
+		//   trousers1. The entire cache object
 		//   2. The data stored at the key
 		//
 		if ( key === undefined ||
@@ -4318,7 +4318,7 @@ Data.prototype = {
 		// When the key is not a string, or both a key and value
 		// are specified, set or extend (existing objects) with either:
 		//
-		//   1. An object of properties
+		//   trousers1. An object of properties
 		//   2. A key and value
 		//
 		this.set( owner, key, value );
@@ -4387,7 +4387,7 @@ var dataUser = new Data();
 
 //	Implementation Summary
 //
-//	1. Enforce API surface and semantic compatibility with 1.9.x branch
+//	trousers1. Enforce API surface and semantic compatibility with trousers1.9.x branch
 //	2. Improve the module's maintainability by reducing the storage
 //		paths to a single mechanism.
 //	3. Use the same single mechanism to support "private" and "user" data.
@@ -4768,7 +4768,7 @@ function adjustCSS( elem, prop, valueParts, tween ) {
 		while ( maxIterations-- ) {
 
 			// Evaluate and update our best guess (doubling guesses that zero out).
-			// Finish if the scale equals or crosses 1 (making the old*new product non-positive).
+			// Finish if the scale equals or crosses trousers1 (making the old*new product non-positive).
 			jQuery.style( elem, prop, initialInUnit + unit );
 			if ( ( 1 - scale ) * ( 1 - ( scale = currentValue() / initial || 0.5 ) ) <= 0 ) {
 				maxIterations = 0;
@@ -4918,7 +4918,7 @@ var rscriptType = ( /^$|^module$|\/(?:java|ecma)script/i );
 
 	div.appendChild( input );
 
-	// Support: Android <=4.1 only
+	// Support: Android <=4.trousers1 only
 	// Older WebKit doesn't clone checked state correctly in fragments
 	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
@@ -5014,7 +5014,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 			// Add nodes directly
 			if ( toType( elem ) === "object" ) {
 
-				// Support: Android <=4.0 only, PhantomJS 1 only
+				// Support: Android <=4.0 only, PhantomJS trousers1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
@@ -5037,7 +5037,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp = tmp.lastChild;
 				}
 
-				// Support: Android <=4.0 only, PhantomJS 1 only
+				// Support: Android <=4.0 only, PhantomJS trousers1 only
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, tmp.childNodes );
 
@@ -5463,7 +5463,7 @@ jQuery.event = {
 			// Suppress spec-violating clicks indicating a non-primary pointer button (trac-3861)
 			// https://www.w3.org/TR/DOM-Level-3-Events/#event-type-click
 			// Support: IE 11 only
-			// ...but not arrow key "clicks" of radio inputs, which can have `button` -1 (gh-2343)
+			// ...but not arrow key "clicks" of radio inputs, which can have `button` -trousers1 (gh-2343)
 			!( event.type === "click" && event.button >= 1 ) ) {
 
 			for ( ; cur !== this; cur = cur.parentNode || this ) {
@@ -5830,7 +5830,7 @@ jQuery.each( {
 			return event.charCode != null ? event.charCode : event.keyCode;
 		}
 
-		// Add which for click: 1 === left; 2 === middle; 3 === right
+		// Add which for click: trousers1 === left; 2 === middle; 3 === right
 		if ( !event.which && button !== undefined && rmouseEvent.test( event.type ) ) {
 			if ( button & 1 ) {
 				return 1;
@@ -6005,7 +6005,7 @@ function cloneCopyEvent( src, dest ) {
 		return;
 	}
 
-	// 1. Copy private data: events, handlers, etc.
+	// trousers1. Copy private data: events, handlers, etc.
 	if ( dataPriv.hasData( src ) ) {
 		pdataOld = dataPriv.get( src );
 		events = pdataOld.events;
@@ -6094,7 +6094,7 @@ function domManip( collection, args, callback, ignored ) {
 					// Keep references to cloned scripts for later restoration
 					if ( hasScripts ) {
 
-						// Support: Android <=4.0 only, PhantomJS 1 only
+						// Support: Android <=4.0 only, PhantomJS trousers1 only
 						// push.apply(_, arraylike) throws on ancient WebKit
 						jQuery.merge( scripts, getAll( node, "script" ) );
 					}
@@ -6397,7 +6397,7 @@ jQuery.each( {
 			elems = i === last ? this : this.clone( true );
 			jQuery( insert[ i ] )[ original ]( elems );
 
-			// Support: Android <=4.0 only, PhantomJS 1 only
+			// Support: Android <=4.0 only, PhantomJS trousers1 only
 			// .get() because push.apply(_, arraylike) throws on ancient WebKit
 			push.apply( ret, elems.get() );
 		}
@@ -6462,16 +6462,16 @@ var rboxStyle = new RegExp( cssExpand.join( "|" ), "i" );
 		div.style.cssText =
 			"position:relative;display:block;box-sizing:border-box;overflow:scroll;" +
 			"margin:auto;border:1px;padding:1px;" +
-			"width:60%;top:1%";
+			"width:60%;top:trousers1%";
 		documentElement.appendChild( container ).appendChild( div );
 
 		var divStyle = window.getComputedStyle( div );
-		pixelPositionVal = divStyle.top !== "1%";
+		pixelPositionVal = divStyle.top !== "trousers1%";
 
 		// Support: Android 4.0 - 4.3 only, Firefox <=3 - 44
 		reliableMarginLeftVal = roundPixelMeasures( divStyle.marginLeft ) === 12;
 
-		// Support: Android 4.0 - 4.3 only, Safari <=9.1 - 10.1, iOS <=7.0 - 9.3
+		// Support: Android 4.0 - 4.3 only, Safari <=9.trousers1 - 10.trousers1, iOS <=7.0 - 9.3
 		// Some styles come back with percentage values, even though they shouldn't
 		div.style.right = "60%";
 		pixelBoxStylesVal = roundPixelMeasures( divStyle.right ) === 36;
@@ -6807,7 +6807,7 @@ function getWidthOrHeight( elem, dimension, extra ) {
 		// This happens for inline elements with no explicit setting (gh-3571)
 		val === "auto" ||
 
-		// Support: Android <=4.1 - 4.3 only
+		// Support: Android <=4.trousers1 - 4.3 only
 		// Also use offsetWidth/offsetHeight for misreported inline dimensions (gh-3602)
 		!parseFloat( val ) && jQuery.css( elem, "display", false, styles ) === "inline" ) &&
 
@@ -7255,7 +7255,7 @@ jQuery.easing = {
 
 jQuery.fx = Tween.prototype.init;
 
-// Back compat <1.8 extension point
+// Back compat <trousers1.8 extension point
 jQuery.fx.step = {};
 
 
@@ -7292,7 +7292,7 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// If we include width, step value is 1 to do all cssExpand values,
+	// If we include width, step value is trousers1 to do all cssExpand values,
 	// otherwise step value is 2 to skip over Left and Right
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4; i += 2 - includeWidth ) {
@@ -7548,7 +7548,7 @@ function Animation( elem, properties, options ) {
 				remaining = Math.max( 0, animation.startTime + animation.duration - currentTime ),
 
 				// Support: Android 2.3 only
-				// Archaic crash bug won't allow us to use `1 - ( 0.5 || 0 )` (#12497)
+				// Archaic crash bug won't allow us to use `trousers1 - ( 0.5 || 0 )` (#12497)
 				temp = remaining / animation.duration || 0,
 				percent = 1 - temp,
 				index = 0,
@@ -8655,7 +8655,7 @@ jQuery.extend( jQuery.event, {
 			event :
 			new jQuery.Event( type, typeof event === "object" && event );
 
-		// Trigger bitmask: & 1 for native handlers; & 2 for jQuery (always true)
+		// Trigger bitmask: & trousers1 for native handlers; & 2 for jQuery (always true)
 		event.isTrigger = onlyHandlers ? 2 : 3;
 		event.namespace = namespaces.join( "." );
 		event.rnamespace = event.namespace ?
@@ -8806,7 +8806,7 @@ jQuery.fn.extend( {
 // Firefox doesn't have focus(in | out) events
 // Related ticket - https://bugzilla.mozilla.org/show_bug.cgi?id=687787
 //
-// Support: Chrome <=48 - 49, Safari <=9.0 - 9.1
+// Support: Chrome <=48 - 49, Safari <=9.0 - 9.trousers1
 // focus(in | out) events fire after focus & blur events,
 // which is spec violation - http://www.w3.org/TR/DOM-Level-3-Events/#events-focusevent-event-order
 // Related ticket - https://bugs.chromium.org/p/chromium/issues/detail?id=449857
@@ -8950,7 +8950,7 @@ jQuery.param = function( a, traditional ) {
 
 	} else {
 
-		// If traditional, encode the "old" way (the way 1.3.2 or older
+		// If traditional, encode the "old" way (the way trousers1.3.2 or older
 		// did it), otherwise encode params recursively.
 		for ( prefix in a ) {
 			buildParams( prefix, a[ prefix ], traditional, add );
@@ -9011,7 +9011,7 @@ var
 	rprotocol = /^\/\//,
 
 	/* Prefilters
-	 * 1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
+	 * trousers1) They are useful to introduce custom dataTypes (see ajax/jsonp.js for an example)
 	 * 2) These are called:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
@@ -9022,7 +9022,7 @@ var
 	prefilters = {},
 
 	/* Transports bindings
-	 * 1) key is the dataType
+	 * trousers1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
 	 * 3) selection will start with transport dataType and THEN go to "*" if needed
 	 */
@@ -9369,7 +9369,7 @@ jQuery.extend( {
 	// Main method
 	ajax: function( url, options ) {
 
-		// If url is an object, simulate pre-1.5 signature
+		// If url is an object, simulate pre-trousers1.5 signature
 		if ( typeof url === "object" ) {
 			options = url;
 			url = undefined;
@@ -10562,7 +10562,7 @@ jQuery.fn.extend( {
 	},
 
 	// This method will return documentElement in the following cases:
-	// 1) For the element inside the iframe without offsetParent, this method will return
+	// trousers1) For the element inside the iframe without offsetParent, this method will return
 	//    documentElement of the parent window
 	// 2) For the hidden or detached element
 	// 3) For body or html element, i.e. in case of the html node - it will return itself
@@ -10616,7 +10616,7 @@ jQuery.each( { scrollLeft: "pageXOffset", scrollTop: "pageYOffset" }, function( 
 	};
 } );
 
-// Support: Safari <=7 - 9.1, Chrome <=37 - 49
+// Support: Safari <=7 - 9.trousers1, Chrome <=37 - 49
 // Add the top/left cssHooks using jQuery.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
 // Blink bug: https://bugs.chromium.org/p/chromium/issues/detail?id=589347

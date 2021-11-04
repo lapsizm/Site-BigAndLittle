@@ -1,3 +1,6 @@
-body{
-    background: red;
+html,body{
+    height: 100%;
+    max-height: 100%;
+    background: #ffe4e9;
 }
+

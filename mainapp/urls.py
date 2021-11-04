@@ -9,5 +9,10 @@ urlpatterns = [
     path('', BaseView.as_view(), name='base'),
     path('products/', ProductList, name='product_list'),
     path('products/<str:category_slug>/', CategoryDetail, name='category_detail'),
-    path('products/<str:category_slug>/<str:product_slug>/', ProductDetail, name='product_detail')
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    path('products/<str:category_slug>/<str:product_slug>/', ProductDetail, name='product_detail'),
+]
+# ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

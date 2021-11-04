@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,21 +6,62 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
     <title>Каталог</title>
 </head>
 <body>
-<h1>My Catalog</h1>
+<header class="header">
+    <div class="header-content">
+        <div class="container">
+            <logo>logo</logo>
+            <nav>navbar</nav>
+            <div class="inst">instagram</div>
+        </div>
+    </div>
+</header>
 
-    {% for category in categories %}
-        <h2>
-            <a href="{{category.get_absolute_url}}">{{ category.name }}</a>
-        </h2>
-    {% endfor %}
+<main class="wrapper">
+    <h1 class="name-wrapper">
+        Каталог товаров
+    </h1>
+    <div class="list">
+        <div class="content">
 
-    {% for product in products %}
-        <h2>
-            <a href="{{product.get_absolute_url}}">{{ product.title }} {{product.price}}</a>
-        </h2>
-    {% endfor %}
+
+            <ul class="categories">
+                <li class="category-list"><a href="{%url 'product_list'%}" class="category-name">Все</a></li>
+                {% for category in categories %}
+                <li class="category-list"><a href="{{category.get_absolute_url}}" class="category-name">{{category.name}}</a></li>
+                {%endfor%}
+            </ul>
+
+            <div class="product-list">
+                <div class="products">
+                    <a href="" class="product">
+                        <img src="" alt="">
+                    </a>
+                    <a href="" class="product">2</a>
+                    <a href="" class="product">3</a>
+                </div>
+                <div class="products p2">
+                    <a href="" class="product">4</a>
+                    <a href="" class="product">5</a>
+                    <a href="" class="product">6</a>
+                </div>
+
+                <div class="load-more">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+
+<footer>
+
+</footer>
+
 </body>
 </html>

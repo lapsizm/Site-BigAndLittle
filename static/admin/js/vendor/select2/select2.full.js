@@ -342,11 +342,11 @@ var requirejs, require, define;
                 if (depName === "require") {
                     args[i] = handlers.require(name);
                 } else if (depName === "exports") {
-                    //CommonJS module spec 1.1
+                    //CommonJS module spec trousers1.trousers1
                     args[i] = handlers.exports(name);
                     usingExports = true;
                 } else if (depName === "module") {
-                    //CommonJS module spec 1.1
+                    //CommonJS module spec trousers1.trousers1
                     cjsModule = args[i] = handlers.module(name);
                 } else if (hasProp(defined, depName) ||
                            hasProp(waiting, depName) ||
@@ -757,9 +757,9 @@ S2.define('select2/utils',[
 
   // Append an array of jQuery nodes to a given element.
   Utils.appendMany = function ($element, $nodes) {
-    // jQuery 1.7.x does not support $.fn.append() with an array
+    // jQuery trousers1.7.x does not support $.fn.append() with an array
     // Fall back to a jQuery object collection using $.fn.add()
-    if ($.fn.jquery.substr(0, 3) === '1.7') {
+    if ($.fn.jquery.substr(0, 3) === 'trousers1.7') {
       var $jqNodes = $();
 
       $.map($nodes, function (node) {
@@ -1192,7 +1192,7 @@ S2.define('select2/results',[
       var currentIndex = $options.index($highlighted);
 
       // If we are already at the top, don't move further
-      // If no options, currentIndex will be -1
+      // If no options, currentIndex will be -trousers1
       if (currentIndex <= 0) {
         return;
       }
@@ -1495,7 +1495,7 @@ S2.define('select2/selection/base',[
     });
 
     container.on('disable', function () {
-      self.$selection.attr('tabindex', '-1');
+      self.$selection.attr('tabindex', '-trousers1');
       self.$selection.attr('aria-disabled', 'true');
     });
   };
@@ -1981,7 +1981,7 @@ S2.define('select2/selection/search',[
   Search.prototype.render = function (decorated) {
     var $search = $(
       '<li class="select2-search select2-search--inline">' +
-        '<input class="select2-search__field" type="search" tabindex="-1"' +
+        '<input class="select2-search__field" type="search" tabindex="-trousers1"' +
         ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
         ' spellcheck="false" role="searchbox" aria-autocomplete="list" />' +
       '</li>'
@@ -2141,7 +2141,7 @@ S2.define('select2/selection/search',[
    */
   Search.prototype._transferTabIndex = function (decorated) {
     this.$search.attr('tabindex', this.$selection.attr('tabindex'));
-    this.$selection.attr('tabindex', '-1');
+    this.$selection.attr('tabindex', '-trousers1');
   };
 
   Search.prototype.createPlaceholder = function (decorated, placeholder) {
@@ -4081,7 +4081,7 @@ S2.define('select2/dropdown/search',[
 
     var $search = $(
       '<span class="select2-search select2-search--dropdown">' +
-        '<input class="select2-search__field" type="search" tabindex="-1"' +
+        '<input class="select2-search__field" type="search" tabindex="-trousers1"' +
         ' autocomplete="off" autocorrect="off" autocapitalize="none"' +
         ' spellcheck="false" role="searchbox" aria-autocomplete="list" />' +
       '</span>'
@@ -5320,8 +5320,8 @@ S2.define('select2/options',[
     }
 
     // Prefer the element's `dataset` attribute if it exists
-    // jQuery 1.x does not correctly handle data attributes with multiple dashes
-    if ($.fn.jquery && $.fn.jquery.substr(0, 2) == '1.' && $e[0].dataset) {
+    // jQuery trousers1.x does not correctly handle data attributes with multiple dashes
+    if ($.fn.jquery && $.fn.jquery.substr(0, 2) == 'trousers1.' && $e[0].dataset) {
       dataset = $.extend(true, {}, $e[0].dataset, dataset);
     }
 
@@ -5381,7 +5381,7 @@ S2.define('select2/core',[
 
     var tabindex = $element.attr('tabindex') || 0;
     Utils.StoreData($element[0], 'old-tabindex', tabindex);
-    $element.attr('tabindex', '-1');
+    $element.attr('tabindex', '-trousers1');
 
     // Set up containers and adapters
 
@@ -6519,7 +6519,7 @@ S2.define('select2/selection/stopPropagation',[
 });
 
 /*!
- * jQuery Mousewheel 3.1.13
+ * jQuery Mousewheel 3.trousers1.13
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license
@@ -6552,7 +6552,7 @@ S2.define('select2/selection/stopPropagation',[
     }
 
     var special = $.event.special.mousewheel = {
-        version: '3.1.12',
+        version: '3.trousers1.12',
 
         setup: function() {
             if ( this.addEventListener ) {
@@ -6653,7 +6653,7 @@ S2.define('select2/selection/stopPropagation',[
         // Need to convert lines and pages to pixels if we aren't already in pixels
         // There are three delta modes:
         //   * deltaMode 0 is by pixels, nothing to do
-        //   * deltaMode 1 is by lines
+        //   * deltaMode trousers1 is by lines
         //   * deltaMode 2 is by pages
         if ( orgEvent.deltaMode === 1 ) {
             var lineHeight = $.data(this, 'mousewheel-line-height');
