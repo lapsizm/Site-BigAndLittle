@@ -1,13 +1,353 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang=ru>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Big & Little</title>
+    <meta name="viewport" content="width=device-width, inital-scale=1,shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&family=Exo:ital,wght@1,900&display=swap"
+          rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="navbar"><a href="{%url 'base'%}">Главная страница</a></div>
+<header id="header" class="header">
+    <div class="container">
+        <nav class="nav">
+            <logo class="logo">
+                <a href="#">B&L</a>
+            </logo>
+            <menu class="menu">
+
+                <div class="menu-burger_overlay"></div>
+
+                <div class="menu-nav">
+                    <a href="#" class="menu-link">Главная</a>
+
+                    <a href="#about" class="menu-link">О нас</a>
+
+                    <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
+
+                    <a href="#information" class="menu-link">Информация</a>
+                </div>
+
+
+            </menu>
+
+            <div class="instText">
+                <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1" class="inst"><i
+                        class="fab fa-instagram"></i>&nbsp;@big_8_little</a>
+                <p>Наш Instagram</p>
+            </div>
+
+            <button class="menu-open">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+
+        <div class="slogan">
+            <box>
+                <h1>Женская одежда & костюмы</h1>
+                <p>Подарите себе стиль, не отказываясь от удобства, и грейтесь вместе с Big&Little</p>
+                <a href="{%url 'product_list'%}" class="btn">Перейти в каталог</a>
+
+            </box>
+            <img class="photo" src="{% static 'shop/img/photo.jpg' %}" loading="eager" alt="">
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="achievements">
+        <div class="container">
+            <div class="first">
+                <p class="left"><span class="marked">Более</span><span class="marked-bold"> 3 </span> лет работы</p>
+
+                <p class="central"><span class="marked">Аккуратная вышивка и высокое качество </span></p>
+
+                <p class="right"><span class="marked">Удобная доставка</span></p>
+            </div>
+
+            <div class="second">
+                <p class="left"><span class="marked">Свыше</span><span class="marked-bold"> 1000 </span><br> довольных
+                    клиентов</p>
+
+                <p class="central">B&L это собственное производство и ручная работа. Мы используем ткань только премиум
+                    качества.</p>
+
+                <p class="right">Бесплатная упаковка и доставка<br>СДЭК от 4000р.</p>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2>О нас</h2>
+            <div class="content">
+                <div class="double-slider">
+                    <style>
+                        .slider .slick-arrow.slick-prev {
+                            left: 0;
+                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100% no-repeat;
+                            border: 0;
+                        }
+
+                        .slider .slick-arrow.slick-next {
+                            right: 0;
+                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100% no-repeat;
+                            border: 0;
+                        }
+                    </style>
+                    <div class="slider">
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/2.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/2.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/3.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/4.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/5.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-item">
+                            <img src="{% static 'shop/img/slides/6.jpg' %}" loading="lazy" alt="">
+                        </div>
+                    </div>
+
+                    <div class="slider-nav">
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/1.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/2.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/3.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/4.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/5.jpg' %}" loading="lazy" alt="">
+                        </div>
+                        <div class="slider-nav-item">
+                            <img src="{% static 'shop/img/slides/6.jpg' %}" loading="lazy" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text">
+                    <p>Привет, меня зовут Алина, и я шью супер удобную, стильную и легкокомбинированную одежду для детей
+                        и самых модных мам!
+                    </p>
+                    <p><span class="marked">Big&little</span> - маленькое собственное производство и я этим горжусь. В
+                        моем магазине вы можете найти худи и теплые костюмы с начесом, рубашки и юбки из экокожи,
+                        вельветовые джоггеры, осенние платья и многое другое.А еще главным нашим достоинством является
+                        детская одежда на вырост.
+                    </p>
+                    <p>Я очень ответственно подхожу к подбору ткани для одежды. Ведь, одежда должна быть не только
+                        удобной, но и качественной!Согласитесь, приятно знать, что после стирки, на одежде не образуется
+                        катышек, не разлезутся швы и она не вытянется! Вот имено за этим я и слежу.
+                    </p>
+                    <p>Я сама ношу одежду от <span class="marked">Вig&little</span> и довольно часто показываю вам в
+                        сторис как ведет себя она после стирки и после носки. Поэтому подписывайтесь на мой инстаграм:
+                        <span class="marked"> <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1">@big_8_little</a></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="contacts-map">
+                <div class="contacts">
+                    <h2>Контакты</h2>
+                    <ul>
+                        <li>
+                            <a href="https://t.me/alina_podlesnaya" class="telegram"><i class="fab fa-telegram"></i>&nbsp;@alina_podlesnaya</a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1" class="inst"><i
+                                    class="fab fa-instagram"></i>&nbsp;@big_8_little</a>
+                        </li>
+
+                        <li>
+                            <a href="tel:+79887519417" class="tel">+7-988-751-94-17</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="location">
+                    <div class="address">
+                        <h2>Наша мастераская - офис:</h2>
+                        <p>Ставропольский край, Минераловодский г.о.,
+                            <br>Минеральные воды, Железноводская ул., 72</p>
+                    </div>
+                    <div class="map">
+                        <script type="text/javascript" charset="utf-8" async
+                                src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa923e66e3b4a5f339a2fa949ae5ef63cf7208d481f2b17051128a6c324868ae1&amp;width=300&amp;height=200&amp;lang=ru_RU&amp;scroll=true"></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="information" id="information">
+        <div class="container">
+
+            <h2>Информация</h2>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Как оформить заказ и возможна ли отправка наложенным платежом?</p>
+                </div>
+                <div class="answer">
+                    <p>Вы можете связаться с продавцом напрямую, для установления неясностей, в директе: <span
+                            class="marked"><a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1">@big_8_little</a></span>,
+                        или купить натрямую на нашем сайте, отправка наложенным платежом не используется, заказ
+                        готовится к отправке только после 100% оплаты</p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Как осуществляется доставка?</p>
+                </div>
+                <div class="answer">
+                    <p>Заказы отправляю Сдэк или почтой России, сумма доставки составляет 300Р, действует бесплатная
+                        доставка от 4000р</p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Одежда есть в наличии или надо ждать?</p>
+                </div>
+                <div class="answer">
+                    <p>Некоторые модели есть в наличи и если желаемой вами модели нет в наличии, то срок выполнения
+                        заказа составит всего 2-3 дня </p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>В каких размерах есть костюмы с начёсом? </p>
+                </div>
+                <div class="answer">
+                    <p>Женские костюмы с начёсом и мужские худи доступны в размерах 42-52. для более точного определения
+                        размера можете прислать обхваты мне в директ <span class="marked"><a
+                                href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1">@big_8_little</a></span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Какие детские размеры костюмов возможно заказать? </p>
+                </div>
+                <div class="answer">
+                    <p>Детские костюмы с начёсом доступны в размерах 92-134</p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Как отследить мой заказ?</p>
+                </div>
+                <div class="answer">
+                    <p>После отправки заказа я высылаю вам трек-номер для отслеживания</p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Что делать, если рубашка из экокожи мятая, можно ее гладить?</p>
+                </div>
+                <div class="answer">
+                    <p>Все ваши заказы проходят влажно-тепловую обработку перед отправкой, изделия из экокожи можно
+                        гладить с изнаночной стороны </p>
+                </div>
+            </div>
+
+            <div class="QA">
+                <div class="question">
+                    <p>Как заказать костюм на ребёнка и не ошибиться с размером?</p>
+                </div>
+                <div class="answer">
+                    <p>Для более точного подбора размера одежды, можете прислать в Директ обхваты и рост.
+                        <span class="marked"><a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1">@big_8_little</a></span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <nav class="nav">
+            <logo class="logo">
+                <a href="#">B&L</a>
+            </logo>
+            <menu class="menu">
+
+                <div class="menu-burger_overlay"></div>
+
+                <div class="menu-nav">
+                    <a href="#" class="menu-link">Главная</a>
+
+                    <a href="#about" class="menu-link">О нас</a>
+
+                    <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
+
+                    <a href="#information" class="menu-link">Информация</a>
+                </div>
+
+            </menu>
+
+            <div class="instText">
+                <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1" class="inst"><i
+                        class="fab fa-instagram"></i>&nbsp;@big_8_little</a>
+                <p>Наш Instagram</p>
+            </div>
+
+            <button class="menu-open">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="{% static 'shop/js/slick.min.js' %}"></script>
+<script src="{% static 'shop/js/base.js' %}"></script>
 </body>
 </html>
