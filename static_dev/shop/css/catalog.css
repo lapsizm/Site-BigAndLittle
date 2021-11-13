@@ -1,5 +1,7 @@
 body {
-    background: #ffe4e9;
+    background: rgba(213, 227, 188, 0.84);
+    margin: 40px;
+
 }
 
 .header-content {
@@ -8,65 +10,238 @@ body {
     height: 80px;
 }
 
-.container{
-    display: flex;
-    justify-content: space-between;
+.wrapper {
+    display: block;
+    margin: 0 auto;
+
 }
 
-.name-wrapper{
+.name-wrapper {
     color: #f17180;
     font-style: italic;
     font-size: 72px;
     text-align: center;
 }
 
-.content{
+.content {
     display: flex;
     margin: 0 auto;
+    position: relative;
 }
 
-.categories{
+.categories {
     position: sticky;
     top: 42px;
     height: 21%;
-    width: 15%;
+    width: 13%;
 }
 
-.category-list{
+.categories h2 {
+    font-size: 25px;
+    font-style: italic;
+    color: #f17180;
+    text-align: center;
+}
+
+
+.category-list {
     display: block;
-    border: 1px solid deeppink;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+    border: 1px solid #cb8989;
+    border-radius: 20px;
+    background: #ffbdbd;
+    text-align: left;
+    margin-bottom: 3px;
+    transition: .4s ease-out;
+
+
+}
+
+
+.category-name {
+    display: block;
+    color: #484343;
+    font-size: 20px;
+    font-style: italic;
+    text-decoration: none;
+    transition-duration: 0.3s;
+    padding-left: 10px;
+}
+
+.category-list:hover {
+    background-color: #cc8585;
+}
+
+.active{
+    color: red;
     background: #fff;
 }
 
-.category-name{
-    font-size: 20px;
-    font-family: Arial;
-    font-style: italic;
-    text-decoration: none;
+
+.product-list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
-.category-name:hover{
-    color: #fff;
-    background-color: pink;
-
-}
-
-
-
-.product-list{
-    width: 70%;
-}
-
-.product{
-    display: inline-block;
-	border: 1px solid #b5e9a7;
-	border-radius: 20px;
-	position: relative;
-	background: #fff;
-	margin: 5% 1%;
-	text-decoration: none;
-	color: #474747;
-	z-index: 0;
-	height: 300px;
+.products {
+    position: relative;
+    display: block;
     width: 30%;
+    border: 1px solid #b5e9a7;
+    border-radius: 20px;
+    background: #fff;
+    margin: 5% 1%;
+    height: 650px;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+
+}
+
+.product-photo {
+    position: relative;
+    padding-bottom: 100%;
+    overflow: hidden;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+    border: 3px solid #312d2d;
+    border-radius: 20px;
+    margin: 0;
+    transition: transform .4s ease-out;
+
+}
+
+.prd-img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-width: 105%;
+    max-height: 105%;
+    margin: auto;
+    border-radius: 15px;
+}
+
+
+.product-photo:hover {
+    transform: scale(1.05);
+}
+
+.prd-name {
+    text-align: center;
+}
+
+.product-name {
+    font-size: 30px;
+    text-decoration: none;
+    color: #be4242;
+    font-style: italic;
+    font-weight: bold;
+    margin: 0;
+    transition-duration: 0.3s;
+}
+
+
+
+.product-name:hover {
+    font-size: 36px;
+}
+
+.product-description {
+    text-align: center;
+    font-size: 15px;
+    font-style: italic;
+    color: #7a6a6a;
+    margin: 5px 50px 5px 50px;
+}
+
+
+.product-price {
+    margin: 10px 0 10px 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    color: #be4242;
+    font-size: 20px;
+
+}
+
+.loading{
+    position: absolute;
+    bottom: 0;
+    margin: 0 50%;
+}
+
+.load-more-class{
+        display:block;
+
+    background-color: pink;
+    width: 150px;
+    height: 60px;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+    border: 1px solid #ea9292;
+    border-radius: 30px;
+
+
+}
+
+.load-more-class:hover{
+    background-color: #f5b3be;
+}
+
+.load-more-class a{
+    display:block;
+    text-decoration: none;
+    color: #484343;
+    transition: .4s ease-out;
+}
+
+.detail-product{
+    position: relative;
+    display: block;
+    max-width: 90%;
+    border: 1px solid #b5e9a7;
+    border-radius: 20px;
+    background: #fff;
+    margin: 5%;
+    height: 700px;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+    overflow: hidden;
+}
+
+.detail-photo{
+    float: left;
+	width: 50%;;
+}
+
+.detail-img{
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    height: 75%;
+    border-radius: 15px;
+}
+
+.detail-text{
+    float:right;
+    width: 50%;
+}
+
+.detail-name{
+    font-size: 60px;
+    text-align: center;
+    color: #be4242;
+    font-style: italic;
+    font-weight: bold;
+    margin: 5%;
+}
+
+.detail-descrition{
+    display: block;
+    text-align: left;
+    margin-top: 10%;
+    font-size: 30px;
+    font-style: italic;
+    color: #7a6a6a;
 }

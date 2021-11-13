@@ -40,8 +40,38 @@ class Product(models.Model):  # каркас продукта
         verbose_name_plural = 'Товары'
 
 
+class ColorField(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    color = models.CharField(max_length=20, verbose_name='Цвет товара', null=True, blank=True)
+
+
+    def __str__(self):
+        return f"Цвет для {self.object_id}"
+
+    class Meta:
+        verbose_name = 'Цвет'
+        verbose_name_plural = 'Цвета'
+
+
+class SizeField(models.Model):
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
+    size = models.CharField(max_length=5, verbose_name='Размер товара', null=True, blank=True)
+    in_stock = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"Размер для {self.object_id}"
+
+    class Meta:
+        verbose_name = 'Размер'
+        verbose_name_plural = 'Размеры'
+
+
 class ImageGallery(models.Model):
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
     object_id = models.PositiveIntegerField()
     content_object = GenericForeignKey('content_type', 'object_id')
     image = models.ImageField(upload_to=upload_function, null=True, blank=True)
@@ -56,11 +86,3 @@ class ImageGallery(models.Model):
     class Meta:
         verbose_name = 'Галерея изображений'
         verbose_name_plural = verbose_name
-
-    # def delete(self, *args, **kwargs):
-    #     storage = upload_function(self, self.image.path)
-    #     path = self.image.path
-    #     # Удаляем сначала модель ( объект )
-    #     super(ImageGallery, self).delete(*args, **kwargs)
-    #     # Потом удаляем сам файл
-    #     storage.delete(path)

@@ -79,7 +79,7 @@ module.exports = function(XRegExp) {
      *
      * var time = XRegExp.build('(?x)^ {{hours}} ({{minutes}}) $', {
      *   hours: XRegExp.build('{{h12}} : | {{h24}}', {
-     *     h12: /trousers1[0-2]|0?[trousers1-9]/,
+     *     h12: /1[0-2]|0?[1-9]/,
      *     h24: /2[0-3]|[01][0-9]/
      *   }, 'x'),
      *   minutes: /^[0-5][0-9]$/
@@ -250,22 +250,22 @@ module.exports = function(XRegExp) {
      * // ]
      *
      * // Omitting unneeded parts with null valueNames, and using escapeChar
-     * str = '...{trousers1}.\\{{function(x,y){return {y:x}}}';
+     * str = '...{1}.\\{{function(x,y){return {y:x}}}';
      * XRegExp.matchRecursive(str, '{', '}', 'g', {
      *   valueNames: ['literal', null, 'value', null],
      *   escapeChar: '\\'
      * });
      * // -> [
      * // {name: 'literal', value: '...',  start: 0, end: 3},
-     * // {name: 'value',   value: 'trousers1',    start: 4, end: 5},
+     * // {name: 'value',   value: '1',    start: 4, end: 5},
      * // {name: 'literal', value: '.\\{', start: 6, end: 9},
      * // {name: 'value',   value: 'function(x,y){return {y:x}}', start: 10, end: 37}
      * // ]
      *
      * // Sticky mode via flag y
-     * str = '<trousers1><<<2>>><3>4<5>';
+     * str = '<1><<<2>>><3>4<5>';
      * XRegExp.matchRecursive(str, '<', '>', 'gy');
-     * // -> ['trousers1', '<<2>>', '3']
+     * // -> ['1', '<<2>>', '3']
      */
     XRegExp.matchRecursive = function(str, left, right, flags, options) {
         flags = flags || '';
@@ -330,11 +330,11 @@ module.exports = function(XRegExp) {
             }
             // Paths (LM: leftMatch, RM: rightMatch, OT: openTokens):
             // LM | RM | OT | Result
-            // trousers1  | 0  | trousers1  | loop
-            // trousers1  | 0  | 0  | loop
-            // 0  | trousers1  | trousers1  | loop
-            // 0  | trousers1  | 0  | throw
-            // 0  | 0  | trousers1  | throw
+            // 1  | 0  | 1  | loop
+            // 1  | 0  | 0  | loop
+            // 0  | 1  | 1  | loop
+            // 0  | 1  | 0  | throw
+            // 0  | 0  | 1  | throw
             // 0  | 0  | 0  | break
             // The paths above don't include the sticky mode special case. The loop ends after the
             // first completed match if not `global`.
@@ -2028,7 +2028,7 @@ module.exports = function(XRegExp) {
     'use strict';
 
     /**
-     * Adds properties to meet the UTS #18 Level trousers1 RL1.2 requirements for Unicode regex support. See
+     * Adds properties to meet the UTS #18 Level 1 RL1.2 requirements for Unicode regex support. See
      * <http://unicode.org/reports/tr18/#RL1.2>. Following are definitions of these properties from
      * UAX #44 <http://unicode.org/reports/tr44/>:
      *
@@ -2973,7 +2973,7 @@ function getContextualTokenSeparator(match, scope, flags) {
     ) {
         return '';
     }
-    // Keep tokens separated. This avoids e.g. inadvertedly changing `\trousers1 trousers1` or `\trousers1(?#)trousers1` to `\1trousers1`.
+    // Keep tokens separated. This avoids e.g. inadvertedly changing `\1 1` or `\1(?#)1` to `\11`.
     // This also ensures all tokens remain as discrete atoms, e.g. it avoids converting the syntax
     // error `(? :` into `(?:`.
     return '(?:)';
@@ -3023,7 +3023,7 @@ function hex(dec) {
  * @private
  * @param {Array} array Array to search.
  * @param {*} value Value to locate in the array.
- * @returns {Number} Zero-based index at which the item is found, or -trousers1.
+ * @returns {Number} Zero-based index at which the item is found, or -1.
  */
 function indexOf(array, value) {
     var len = array.length;
@@ -3451,7 +3451,7 @@ XRegExp._pad4 = pad4;
  * // character classes only)
  * XRegExp.addToken(
  *   /([?*+]|{\d+(?:,\d*)?})(\??)/,
- *   function(match) {return match[trousers1] + (match[2] ? '' : '?');},
+ *   function(match) {return match[1] + (match[2] ? '' : '?');},
  *   {flag: 'U'}
  * );
  * XRegExp('a+', 'U').exec('aaa')[0]; // -> 'a'
@@ -3565,8 +3565,8 @@ XRegExp.escape = function(str) {
  *
  * // With pos and sticky, in a loop
  * var pos = 2, result = [], match;
- * while (match = XRegExp.exec('<trousers1><2><3><4>5<6>', /<(\d)>/, pos, 'sticky')) {
- *   result.push(match[trousers1]);
+ * while (match = XRegExp.exec('<1><2><3><4>5<6>', /<(\d)>/, pos, 'sticky')) {
+ *   result.push(match[1]);
  *   pos = match.index + match[0].length;
  * }
  * // result -> ['2', '3', '4']
@@ -3817,7 +3817,7 @@ XRegExp.match = function(str, regex, scope) {
  * @example
  *
  * // Basic usage; matches numbers within <b> tags
- * XRegExp.matchChain('trousers1 <b>2</b> 3 <b>4 a 56</b>', [
+ * XRegExp.matchChain('1 <b>2</b> 3 <b>4 a 56</b>', [
  *   XRegExp('(?is)<b>.*?</b>'),
  *   /\d+/
  * ]);
@@ -3827,7 +3827,7 @@ XRegExp.match = function(str, regex, scope) {
  * html = '<a href="http://xregexp.com/api/">XRegExp</a>\
  *         <a href="http://www.google.com/">Google</a>';
  * XRegExp.matchChain(html, [
- *   {regex: /<a href="([^"]+)">/i, backref: trousers1},
+ *   {regex: /<a href="([^"]+)">/i, backref: 1},
  *   {regex: XRegExp('(?i)^https?://(?<domain>[^/?#]+)'), backref: 'domain'}
  * ]);
  * // -> ['xregexp.com', 'www.google.com']
@@ -3888,7 +3888,7 @@ XRegExp.matchChain = function(str, chain) {
  *   Replacement functions are invoked with three or more arguments:
  *     - The matched substring (corresponds to $& above). Named backreferences are accessible as
  *       properties of this first argument.
- *     - 0..n arguments, one for each backreference (corresponding to $trousers1, $2, etc. above).
+ *     - 0..n arguments, one for each backreference (corresponding to $1, $2, etc. above).
  *     - The zero-based index of the match within the total search string.
  *     - The total string being searched.
  * @param {String} [scope='one'] Use 'one' to replace the first match only, or 'all'. If not
@@ -3938,7 +3938,7 @@ XRegExp.replace = function(str, search, replacement, scope) {
     result = fixed.replace.call(toObject(str), s2, replacement);
 
     if (isRegex && search.global) {
-        // Fixes IE, Safari bug (last tested IE 9, Safari 5.trousers1)
+        // Fixes IE, Safari bug (last tested IE 9, Safari 5.1)
         search.lastIndex = 0;
     }
 
@@ -4005,7 +4005,7 @@ XRegExp.replaceEach = function(str, replacements) {
  *
  * // Backreferences in result array
  * XRegExp.split('..word1..', /([a-z]+)(\d+)/i);
- * // -> ['..', 'word', 'trousers1', '..']
+ * // -> ['..', 'word', '1', '..']
  */
 XRegExp.split = function(str, separator, limit) {
     return fixed.split.call(toObject(str), separator, limit);
@@ -4086,8 +4086,8 @@ XRegExp.uninstall = function(options) {
  * @returns {RegExp} Union of the provided regexes and strings.
  * @example
  *
- * XRegExp.union(['a+b*c', /(dogs)\trousers1/, /(cats)\trousers1/], 'i');
- * // -> /a\+b\*c|(dogs)\trousers1|(cats)\2/i
+ * XRegExp.union(['a+b*c', /(dogs)\1/, /(cats)\1/], 'i');
+ * // -> /a\+b\*c|(dogs)\1|(cats)\2/i
  *
  * XRegExp.union([/man/, /bear/, /pig/], 'i', {conjunction: 'none'});
  * // -> /manbearpig/i
@@ -4301,7 +4301,7 @@ fixed.replace = function(search, replacement) {
                 }
             }
             // Update `lastIndex` before calling `replacement`. Fixes IE, Chrome, Firefox, Safari
-            // bug (last tested IE 9, Chrome 17, Firefox 11, Safari 5.trousers1)
+            // bug (last tested IE 9, Chrome 17, Firefox 11, Safari 5.1)
             if (isRegex && search.global) {
                 search.lastIndex = args[args.length - 2] + args[0].length;
             }
@@ -4319,7 +4319,7 @@ fixed.replace = function(search, replacement) {
                 // Named or numbered backreference with curly braces
                 if ($1) {
                     // XRegExp behavior for `${n}`:
-                    // trousers1. Backreference to numbered capture, if `n` is an integer. Use `0` for the
+                    // 1. Backreference to numbered capture, if `n` is an integer. Use `0` for the
                     //    entire match. Any number of leading zeros may be used.
                     // 2. Backreference to named capture `n`, if it exists and is not an integer
                     //    overridden by numbered capture. In practice, this does not overlap with
@@ -4342,7 +4342,7 @@ fixed.replace = function(search, replacement) {
                 if ($2 === '$') { // $$
                     return '$';
                 }
-                if ($2 === '&' || +$2 === 0) { // $&, $0 (not followed by trousers1-9), $00
+                if ($2 === '&' || +$2 === 0) { // $&, $0 (not followed by 1-9), $00
                     return args[0];
                 }
                 if ($2 === '`') { // $` (left context)
@@ -4354,16 +4354,16 @@ fixed.replace = function(search, replacement) {
                 // Else, numbered backreference without curly braces
                 $2 = +$2; // Type-convert; drop leading zero
                 // XRegExp behavior for `$n` and `$nn`:
-                // - Backrefs end after trousers1 or 2 digits. Use `${..}` for more digits.
-                // - `$trousers1` is an error if no capturing groups.
-                // - `$10` is an error if less than 10 capturing groups. Use `${trousers1}0` instead.
-                // - `$01` is `$trousers1` if at least one capturing group, else it's an error.
-                // - `$0` (not followed by trousers1-9) and `$00` are the entire match.
+                // - Backrefs end after 1 or 2 digits. Use `${..}` for more digits.
+                // - `$1` is an error if no capturing groups.
+                // - `$10` is an error if less than 10 capturing groups. Use `${1}0` instead.
+                // - `$01` is `$1` if at least one capturing group, else it's an error.
+                // - `$0` (not followed by 1-9) and `$00` are the entire match.
                 // Native behavior, for comparison:
-                // - Backrefs end after trousers1 or 2 digits. Cannot reference capturing group 100+.
-                // - `$trousers1` is a literal `$trousers1` if no capturing groups.
-                // - `$10` is `$trousers1` followed by a literal `0` if less than 10 capturing groups.
-                // - `$01` is `$trousers1` if at least one capturing group, else it's a literal `$01`.
+                // - Backrefs end after 1 or 2 digits. Cannot reference capturing group 100+.
+                // - `$1` is a literal `$1` if no capturing groups.
+                // - `$10` is `$1` followed by a literal `0` if less than 10 capturing groups.
+                // - `$01` is `$1` if at least one capturing group, else it's a literal `$01`.
                 // - `$0` is a literal `$0`.
                 if (!isNaN($2)) {
                     if ($2 > args.length - 3) {
@@ -4379,7 +4379,7 @@ fixed.replace = function(search, replacement) {
 
     if (isRegex) {
         if (search.global) {
-            // Fixes IE, Safari bug (last tested IE 9, Safari 5.trousers1)
+            // Fixes IE, Safari bug (last tested IE 9, Safari 5.1)
             search.lastIndex = 0;
         } else {
             // Fixes IE, Opera bug (last tested IE 9, Opera 11.6)
@@ -4412,13 +4412,13 @@ fixed.split = function(separator, limit) {
     var lastLength;
 
     // Values for `limit`, per the spec:
-    // If undefined: pow(2,32) - trousers1
+    // If undefined: pow(2,32) - 1
     // If 0, Infinity, or NaN: 0
     // If positive number: limit = floor(limit); if (limit >= pow(2,32)) limit -= pow(2,32);
     // If negative number: pow(2,32) - floor(abs(limit))
     // If other: Type-convert, then use the above rules
     // This line fails in very strange ways for some values of `limit` in Opera 10.5-10.63, unless
-    // Opera Dragonfly is open (go figure). It works in at least Opera 9.5-10.trousers1 and 11+
+    // Opera Dragonfly is open (go figure). It works in at least Opera 9.5-10.1 and 11+
     limit = (limit === undefined ? -1 : limit) >>> 0;
 
     XRegExp.forEach(str, separator, function(match) {
@@ -4563,7 +4563,7 @@ XRegExp.addToken(
             throw new SyntaxError('Backreference to undefined group ' + match[0]);
         }
         // Keep backreferences separate from subsequent literal numbers. This avoids e.g.
-        // inadvertedly changing `(?<n>)\k<n>trousers1` to `()\1trousers1`.
+        // inadvertedly changing `(?<n>)\k<n>1` to `()\11`.
         return '\\' + index + (
             endIndex === match.input.length || isNaN(match.input.charAt(endIndex)) ?
                 '' : '(?:)'

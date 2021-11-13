@@ -1,4 +1,5 @@
 {% load static %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,6 +11,8 @@
     <title>Каталог</title>
 </head>
 <body>
+
+{% block header_content %}
 <header class="header">
     <div class="header-content">
         <div class="container">
@@ -19,6 +22,9 @@
         </div>
     </div>
 </header>
+{% endblock %}
+
+{% block catalog %}
 
 <main class="wrapper">
     <h1 class="name-wrapper">
@@ -29,39 +35,57 @@
 
 
             <ul class="categories">
+                <h2>Категории</h2>
                 <li class="category-list"><a href="{%url 'product_list'%}" class="category-name">Все</a></li>
                 {% for category in categories %}
-                <li class="category-list"><a href="{{category.get_absolute_url}}" class="category-name">{{category.name}}</a></li>
+                <li class="category-list"><a href="{{category.get_absolute_url}}" class="category-name">{{category.name}}</a>
+                </li>
                 {%endfor%}
             </ul>
 
-            <div class="product-list">
-                <div class="products">
-                    <a href="" class="product">
-                        <img src="" alt="">
-                    </a>
-                    <a href="" class="product">2</a>
-                    <a href="" class="product">3</a>
-                </div>
-                <div class="products p2">
-                    <a href="" class="product">4</a>
-                    <a href="" class="product">5</a>
-                    <a href="" class="product">6</a>
-                </div>
 
-                <div class="load-more">
+            <ul class="product-list">
+                {% for product in products %}
+                <li class="products">
 
-                </div>
+                    {% for img in images %}
+                    {% if img.object_id == product.id and img.is_main %}
+                    <div class="product-photo"><img src="{{img.image.url}}" alt="priv" class="prd-img"></div>
+                    {% endif %}
+                    {% endfor %}
+                    <div class="text-product">
+                        <p class="prd-name"><a href="{{product.get_absolute_url}}" class="product-name">{{product.title}}</a></p>
+                        <p class="product-description">{{product.description }}</p>
+                        <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
+
+                    </div>
+
+                </li>
+                {% endfor%}
+            </ul>
+
+            <div class="loading">
+                <button class="load-more-class" id="load-more"><a href="">Загрузить еще</a></button>
             </div>
 
         </div>
     </div>
 </main>
+{% endblock %}
 
 
 <footer>
 
 </footer>
 
+
+
+
+
 </body>
+
+
+
+<script src="{% static 'shop/js/script.js' %}"></script>
+
 </html>
