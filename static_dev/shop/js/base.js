@@ -14,15 +14,8 @@ function burgerMenu(selector){
 
 	function toggleMenu(){
 		menu.toggleClass('menu-burger');
-		if(menu.hasClass('menu-burger')){
-			$('body').css('overflow','hidden');
-		} else{
-			$('body').css('overflow','visible');
-		}
 	}
 }
-
-
 
 $(function() {
 	burgerMenu('.menu');
@@ -44,9 +37,5 @@ $(function() {
 		arrows: false,
 		focusOnSelect:true
 	});
-
-	
 });
-
-
 
