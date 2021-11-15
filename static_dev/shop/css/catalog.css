@@ -1,100 +1,90 @@
 body {
-    background: rgba(213, 227, 188, 0.84);
+    background: #fdd5b1;
     margin: 40px;
 
 }
 
-.header-content {
-    background: grey;
-    padding: 20px;
-    height: 80px;
-}
-
-.wrapper {
-    display: block;
-    margin: 0 auto;
-
-}
 
 .name-wrapper {
+    font-family: "Times New Roman";
+
     color: #f17180;
     font-style: italic;
     font-size: 72px;
-    text-align: center;
-}
+    text-align: left;
+    margin: 3% 0 3% 0;
 
-.content {
-    display: flex;
-    margin: 0 auto;
-    position: relative;
 }
 
 .categories {
-    position: sticky;
-    top: 42px;
-    height: 21%;
-    width: 13%;
+    display: flex;
+    width: 100%;
+    margin: 2% 0 2% 0;
+
 }
 
-.categories h2 {
-    font-size: 25px;
-    font-style: italic;
-    color: #f17180;
-    text-align: center;
+.categories ul {
+    margin: 0;
+    padding: 0;
+
 }
 
-
-.category-list {
-    display: block;
-    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
-    border: 1px solid #cb8989;
-    border-radius: 20px;
-    background: #ffbdbd;
-    text-align: left;
-    margin-bottom: 3px;
+.categories li {
+    display: inline-block;
+    margin-right: 10px;
     transition: .4s ease-out;
-
-
 }
 
 
 .category-name {
+    font-family: "Times New Roman";
     display: block;
-    color: #484343;
-    font-size: 20px;
     font-style: italic;
+    color: #f17180;
+    font-size: 20px;
     text-decoration: none;
     transition-duration: 0.3s;
-    padding-left: 10px;
 }
 
-.category-list:hover {
-    background-color: #cc8585;
+.categories li :hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    color: #f17180;
+    transform: scale(1.2)
 }
 
-.active{
-    color: red;
-    background: #fff;
+.active-category {
+    color: #f17180;
+    font-weight: bold;
+    font-size: 30px;
+    font-style: italic;
+    text-decoration: none;
 }
 
+.content {
+    display: flex;
+    position: relative;
+}
 
 .product-list {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
+    padding: 0;
+    margin-bottom: 10%;
+
 }
 
 .products {
     position: relative;
     display: block;
-    width: 30%;
+    width: 31%;
     border: 1px solid #b5e9a7;
     border-radius: 20px;
     background: #fff;
-    margin: 5% 1%;
-    height: 650px;
+    margin: 2% 2% 5% 0;
+    height: 700px;
     box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
-
 }
 
 .product-photo {
@@ -126,14 +116,19 @@ body {
     transform: scale(1.05);
 }
 
+.text-product{
+    margin-top: 2%;
+}
+
 .prd-name {
-    text-align: center;
+    text-indent: 0 !important;
+    text-align: center !important;
 }
 
 .product-name {
     font-size: 30px;
     text-decoration: none;
-    color: #be4242;
+    color: #f17180;
     font-style: italic;
     font-weight: bold;
     margin: 0;
@@ -141,17 +136,18 @@ body {
 }
 
 
-
 .product-name:hover {
+    color: #f17180;
     font-size: 36px;
 }
 
 .product-description {
-    text-align: center;
-    font-size: 15px;
+    text-indent: 0 !important;
+    text-align: center !important;
+    font-size: 12px;
     font-style: italic;
     color: #7a6a6a;
-    margin: 5px 50px 5px 50px;
+    margin: 5px;
 }
 
 
@@ -162,20 +158,20 @@ body {
     right: 0;
     bottom: 0;
     text-align: center;
-    color: #be4242;
+    color: #f17180 !important;
     font-size: 20px;
 
 }
 
-.loading{
+.loading {
     position: absolute;
     bottom: 0;
-    margin: 0 50%;
+    margin: 5% 50%;
+
 }
 
-.load-more-class{
-        display:block;
-
+.load-more-class {
+    display: block;
     background-color: pink;
     width: 150px;
     height: 60px;
@@ -186,18 +182,17 @@ body {
 
 }
 
-.load-more-class:hover{
+.load-more-class:hover {
     background-color: #f5b3be;
 }
 
-.load-more-class a{
-    display:block;
+.load-more-class a {
     text-decoration: none;
     color: #484343;
     transition: .4s ease-out;
 }
 
-.detail-product{
+.detail-product {
     position: relative;
     display: block;
     max-width: 90%;
@@ -210,12 +205,12 @@ body {
     overflow: hidden;
 }
 
-.detail-photo{
+.detail-photo {
     float: left;
-	width: 50%;;
+    width: 50%;;
 }
 
-.detail-img{
+.detail-img {
     position: absolute;
     top: 2%;
     left: 5%;
@@ -223,12 +218,12 @@ body {
     border-radius: 15px;
 }
 
-.detail-text{
-    float:right;
+.detail-text {
+    float: right;
     width: 50%;
 }
 
-.detail-name{
+.detail-name {
     font-size: 60px;
     text-align: center;
     color: #be4242;
@@ -237,7 +232,7 @@ body {
     margin: 5%;
 }
 
-.detail-descrition{
+.detail-descrition {
     display: block;
     text-align: left;
     margin-top: 10%;

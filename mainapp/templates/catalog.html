@@ -1,42 +1,24 @@
+{% extends 'base.html' %}
+
 {% load static %}
 
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
-    <title>Каталог</title>
-</head>
-<body>
-
-{% block header_content %}
-<header class="header">
-    <div class="header-content">
-        <div class="container">
-            <logo>logo</logo>
-            <nav>navbar</nav>
-            <div class="inst">instagram</div>
-        </div>
-    </div>
-</header>
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
 {% endblock %}
 
-{% block catalog %}
 
-<main class="wrapper">
+<body>
+
+{% block main-content %}
+<main class="container">
     <h1 class="name-wrapper">
         Каталог товаров
     </h1>
     <div class="list">
-        <div class="content">
-
-
-            <ul class="categories">
-                <h2>Категории</h2>
-                <li class="category-list"><a href="{%url 'product_list'%}" class="category-name">Все</a></li>
+        <div class="categories">
+            <ul>
+                <li class="category-list"><a href="{%url 'product_list'%}" class="category-name ">Все</a></li>
                 {% for category in categories %}
                 <li class="category-list"><a href="{{category.get_absolute_url}}" class="category-name">{{category.name}}</a>
                 </li>
@@ -44,6 +26,8 @@
             </ul>
 
 
+        </div>
+        <div class="content">
             <ul class="product-list">
                 {% for product in products %}
                 <li class="products">
@@ -54,7 +38,8 @@
                     {% endif %}
                     {% endfor %}
                     <div class="text-product">
-                        <p class="prd-name"><a href="{{product.get_absolute_url}}" class="product-name">{{product.title}}</a></p>
+                        <p class="prd-name"><a href="{{product.get_absolute_url}}" class="product-name">{{product.title}}</a>
+                        </p>
                         <p class="product-description">{{product.description }}</p>
                         <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
 
@@ -71,21 +56,7 @@
         </div>
     </div>
 </main>
+<script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
+
 {% endblock %}
-
-
-<footer>
-
-</footer>
-
-
-
-
-
 </body>
-
-
-
-<script src="{% static 'shop/js/script.js' %}"></script>
-
-</html>

@@ -11,9 +11,11 @@
     z-index: 0;
 }
 
+
 .header a {
     color: #403b3b;
 }
+
 
 .nav {
     align-items: center;
@@ -108,6 +110,9 @@
     font-style: italic;
 }
 
+.main{
+    background: #fdd5b1;
+}
 .slogan {
     display: flex;
 }
