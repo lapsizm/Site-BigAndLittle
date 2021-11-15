@@ -68,3 +68,5 @@ class DynamicProductLoad(View):
         data[-1]['last_product'] = True
 
         return JsonResponse({'data': data})
+
+    class LoginUser(DataMixin)

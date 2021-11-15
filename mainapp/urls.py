@@ -9,6 +9,8 @@ urlpatterns = [
     path('', BaseView.as_view(), name='base'),
     path('products/', ProductList, name='product_list'),
     path('products/<str:category_slug>/', CategoryDetail, name='category_detail'),
+    path('regi', ProductList, name='product_list'),
+
     path('products/<str:category_slug>/<str:product_slug>/', ProductDetail, name='product_detail'),
     path('load-more-products/', DynamicProductLoad.as_view(), name='load-more-products')
 ]
