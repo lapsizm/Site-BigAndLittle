@@ -5,6 +5,7 @@ from .models import *
 
 class ImageGalleryInline(GenericTabularInline):
     model = ImageGallery
+    max_num = 5
     readonly_fields = ('image_url',)
 
 

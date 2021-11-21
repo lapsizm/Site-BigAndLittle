@@ -56,7 +56,11 @@
         </div>
     </div>
 </main>
-<script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
 
 {% endblock %}
+
+{% block js-scripts %}
+    <script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
+{% endblock %}
+
 </body>

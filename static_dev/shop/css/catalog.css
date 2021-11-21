@@ -1,7 +1,5 @@
 body {
     background: #fdd5b1;
-    margin: 40px;
-
 }
 
 
@@ -183,7 +181,7 @@ body {
 }
 
 .load-more-class:hover {
-    background-color: #f5b3be;
+    background-color: #000000;
 }
 
 .load-more-class a {
@@ -192,51 +190,3 @@ body {
     transition: .4s ease-out;
 }
 
-.detail-product {
-    position: relative;
-    display: block;
-    max-width: 90%;
-    border: 1px solid #b5e9a7;
-    border-radius: 20px;
-    background: #fff;
-    margin: 5%;
-    height: 700px;
-    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
-    overflow: hidden;
-}
-
-.detail-photo {
-    float: left;
-    width: 50%;;
-}
-
-.detail-img {
-    position: absolute;
-    top: 2%;
-    left: 5%;
-    height: 75%;
-    border-radius: 15px;
-}
-
-.detail-text {
-    float: right;
-    width: 50%;
-}
-
-.detail-name {
-    font-size: 60px;
-    text-align: center;
-    color: #be4242;
-    font-style: italic;
-    font-weight: bold;
-    margin: 5%;
-}
-
-.detail-descrition {
-    display: block;
-    text-align: left;
-    margin-top: 10%;
-    font-size: 30px;
-    font-style: italic;
-    color: #7a6a6a;
-}
