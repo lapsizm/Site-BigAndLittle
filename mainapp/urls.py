@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import BaseView, ProductList, ProductDetail, CategoryDetail, DynamicProductLoad
+from .views import BaseView, ProductList, ProductDetail, CategoryDetail, DynamicProductLoad, PersonalArea
 
 
 urlpatterns = [
@@ -10,7 +10,9 @@ urlpatterns = [
     path('products/', ProductList, name='product_list'),
     path('products/<str:category_slug>/', CategoryDetail, name='category_detail'),
     path('products/<str:category_slug>/<str:product_slug>/', ProductDetail, name='product_detail'),
-    path('load-more-products/', DynamicProductLoad.as_view(), name='load-more-products')
+    path('load-more-products/', DynamicProductLoad.as_view(), name='load-more-products'),
+    path('personal_area/', PersonalArea, name='personal_area')
+
 ]
 # ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

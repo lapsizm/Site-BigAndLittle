@@ -22,20 +22,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,700;1,300&display=swap" rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,700&family=Exo:ital,wght@1,900&display=swap"
-          rel="stylesheet">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Exo+2:ital,wght@0,700;1,300;1,500;1,700&family=Exo:ital,wght@1,900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -52,13 +39,15 @@
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
-                    <a href="#" class="menu-link">Главная</a>
+                    <a href="{%url 'personal_area'%}" class="menu-link">Главная</a>
 
                     <a href="#about" class="menu-link">О нас</a>
 
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
                     <a href="#information" class="menu-link">Информация</a>
+
+                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link">Личный кабинет</a>
                 </div>
 
 
@@ -343,6 +332,9 @@
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
                     <a href="#information" class="menu-link">Информация</a>
+
+                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link">Личный кабинет</a>
+
                 </div>
 
             </menu>

@@ -13,6 +13,11 @@ class BaseView(views.View):
 
 
 
+def PersonalArea(request):
+    return render(request, 'personal_area.html', {})
+
+
+
 def ProductList(request):
     categories = Category.objects.all()
     products = Product.objects.all()[:9]

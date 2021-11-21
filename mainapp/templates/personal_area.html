@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/personal_area.css' %}">
+{% endblock %}
+
+<body>
+{% block main-content %}
+<div class="container">
+
+    <div class="data">
+        <button class="block current-orders">
+            <img class="icon" src="https://img.icons8.com/ios/50/000000/ingredients-list.png"/>
+            <h2>Текущие заказы</h2>
+        </button>
+        <button class="block personal-data">
+            <img class="icon" src="https://img.icons8.com/pastel-glyph/64/000000/user-male-circle.png"/>
+            <h2>Личные данные</h2>
+        </button>
+        <button class="block history-of-orders">
+            <img class="icon " src="https://img.icons8.com/wired/64/000000/list.png"/>
+            <h2>История заказов</h2>
+        </button>
+
+        <button class="block basket">
+            <img class="icon" src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v2.png"/>
+            <h2>Корзина</h2>
+        </button>
+        <button class="block exit">
+            <img class="icon " src="https://img.icons8.com/ios-glyphs/30/000000/lock--v1.png"/>
+            <h2>Выход</h2>
+        </button>
+    </div>
+</div>
+
+{% endblock %}
+</body>

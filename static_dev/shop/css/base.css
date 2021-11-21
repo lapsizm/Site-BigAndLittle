@@ -68,6 +68,10 @@
     padding-bottom: 3.5%;
 }
 
+.personal-area-link{
+    display:none;
+}
+
 .menu-nav a:hover {
     color: #f17180;
     -webkit-transform: scale(1.2);
@@ -289,7 +293,7 @@
 .contacts li:hover {
     -webkit-transform: scale(1.2);
     -ms-transform: scale(1.2);
-    transform: scale(1.2)
+    transform: scale(1.2);
 }
 
 .contacts .telegram {
@@ -351,6 +355,7 @@
 .slider img {
     width: 350px;
     height: 400px;
+    border-radius: 5%;
 }
 
 .slider-nav {
@@ -361,6 +366,7 @@
 .slider-nav img {
     width: 87px;
     height: 87px;
+    border-radius: 5%;
 }
 
 /* Ограничивающая оболочка */
@@ -468,6 +474,10 @@ footer .container{
         width:1260px;
     }
 
+    .menu{
+        padding-left: 80px;
+    }
+
     .menu-nav a {
         font-size: 19px;
     }
@@ -561,6 +571,14 @@ footer .container{
         font-size: 19px;
     }
 
+    .menu{
+        padding-left: 100px;
+    }
+
+    .logo{
+        margin-right: 0;
+    }
+
     .instText a {
         font-size: 19px;
     }
@@ -625,8 +643,13 @@ footer .container{
         width: 1070px;
     }
 
+    .menu{
+        padding-left: 80px;
+    }
+
     .menu-nav a {
         font-size: 18px;
+        margin-right: 13%;
     }
 
     .instText a {
@@ -799,7 +822,6 @@ footer .container{
 
     .menu {
         width: 68%;
-
     }
 
     .menu-nav a {
@@ -921,11 +943,12 @@ footer .container{
 
     .menu {
         width: 68%;
-        padding-left: 0;
+        padding-left: 60px;
     }
 
     .menu-nav a {
         font-size: 15px;
+        margin-right: 10%;
     }
 
     .instText a {
@@ -1057,11 +1080,6 @@ footer .container{
         flex-wrap: unset;
     }
 
-    .menu {
-        left: 0;
-        margin: 0;
-        overflow: hidden;
-    }
 
     .logo a {
         font-size: 60px;
@@ -1107,8 +1125,12 @@ footer .container{
         margin-top: 40px;
         font-weight: 900;
         padding-left: 40px ;
-        width: 110%;
+        width: 100%;
         border-bottom: 1px solid #8a7a73;
+    }
+
+    .menu-burger .personal-area-link{
+                display: flex;
     }
 
     .menu-burger .menu-nav {
@@ -1265,10 +1287,6 @@ footer .container{
         font-size: 15px;
     }
 
-    .header .menu-burger a {
-        font-size: 9px;
-    }
-
     .instText a {
         font-size: 14px;
     }
@@ -1415,8 +1433,12 @@ footer .container{
         font-size: 35px;
     }
 
+    .menu-nav{
+        width: 35%;
+    }
     .menu-nav a {
         font-size: 14px;
+        padding-left: 20px;
     }
 
     .header .menu-burger a {
@@ -1772,6 +1794,19 @@ footer .container{
 @media screen and (max-width: 370px) {
     .container {
         width: 315px;
+    }
+
+    .header{
+        padding-bottom: 0;
+        padding-top: 37px;
+    }
+
+    .menu-nav{
+        width:45%;
+    }
+
+    .slogan h1{
+        margin: 0;
     }
 
     .slogan p{
