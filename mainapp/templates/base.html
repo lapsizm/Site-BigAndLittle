@@ -84,7 +84,7 @@
         <div class="container">
             <div class="slogan">
             <box>
-                <h1>Женская одежда & костюмы</h1>
+                <h1>Женская одежда & Костюмы</h1>
                 <p>Подарите себе стиль, не отказываясь от удобства, и грейтесь вместе с Big&Little</p>
                 <a href="{%url 'product_list'%}" class="btn">Перейти в каталог</a>
 
@@ -361,8 +361,11 @@
 </footer>
 {% endblock %}
 
+{% block js-scripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
 <script src="{% static 'shop/js/slick.min.js' %}"></script>
 <script src="{% static 'shop/js/base.js' %}"></script>
+{% endblock %}
+
 </body>
 </html>

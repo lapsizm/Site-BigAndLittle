@@ -1,0 +1,146 @@
+.content {
+    position: relative;
+    display: flex;
+    border: 1px solid #b5e9a7;
+    border-radius: 20px;
+    background: #fff;
+    height: 650px;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+    overflow: hidden;
+    margin: 2% 0 5% 0;
+}
+
+.detail-photo {
+    float: left;
+    width: 40%;
+    margin: 1% 1%;
+
+}
+.detail-text {
+    float: right;
+    width: 50%;
+}
+
+.slider {
+    min-width: 0;
+    left: 0;
+    width: 500px;
+    z-index: 1;
+}
+
+.slider img {
+    width: 500px;
+    height: 500px;
+    border-radius: 15px;
+}
+
+
+.slider-nav {
+    min-width: 0;
+    z-index: 1;
+
+}
+
+
+.slider-nav img {
+    width: 87px;
+    height: 87px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+
+/* Ограничивающая оболочка */
+.slick-list {
+    width: 500px !important;
+    overflow-x: hidden;
+}
+
+.slick-list.draggable {
+    padding: 0 !important;
+    margin: 0;
+}
+
+/* Лента слайдов */
+.slick-track {
+    display: flex;
+}
+
+.slick-current {
+    opacity: 0.2;
+}
+
+.slider {
+    position: relative;
+}
+
+.slider-item.slick-slide {
+    z-index: 1 !important;
+}
+
+.slider .slick-arrow {
+    position: absolute;
+    top: 45%;
+    z-index: 10;
+    font-size: 0;
+    width: 20px;
+    height: 40px;
+    transition: 0.2s;
+    opacity: 0.4;
+}
+
+.slider .slick-arrow:hover {
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+.slider-nav .slick-track {
+    padding-top: 4%;
+}
+
+
+.detail-text {
+    margin: 3%;
+}
+
+
+.detail-name {
+    font-size: 60px !important;
+    color: #f17180 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-indent: 0 !important;
+    line-height: 0.2em !important;
+}
+
+.detail-description {
+    margin-top: 5%;
+}
+
+.specification{
+    display: flex;
+}
+
+.colors-div{
+    float: left;
+    width: 50%;
+}
+
+.sizes-div{
+    float: right;
+    width: 50%;
+}
+
+.name-specification{
+    font-size: 22px !important;
+    color: #f17180 !important;
+}
+
+.sizes{
+    margin: 0;
+}
+.colors{
+    margin: 0;
+}

@@ -1,34 +1,106 @@
 {% extends 'catalog.html' %}
+{% load static %}
+
+
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/catalog.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/product_detail.css' %}">
+
+{% endblock %}
+
 
 {% block main-content %}
-<div class="detail-product">
-    <div class="detail-photo">
-            <img src="{{main_image.image.url}}" alt="priv" class="detail-img">
+<div class="container">
+    <div class="content">
+        <div class="detail-photo">
+            <div class="double-slider">
+                <style>
+                    .slider .slick-arrow.slick-prev {
+                        left: 0;
+                        background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100 % no-repeat;
+                        border: 0;
+                    }
+
+                    .slider .slick-arrow.slick-next {
+                        right: 0;
+                        background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100 % no-repeat;
+                        border: 0;
+                    }
+                </style>
+                <div class="slider">
+                    {% for img in images %}
+                    <div class="slider-item">
+                        <img src="{{img.image.url}}" loading="lazy" alt="">
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="down-imgs">
+                    <div class="slider-nav">
+                        {% for img in images %}
+                        <div class="slider-nav-item">
+                            <img src="{{img.image.url}}" loading="lazy" alt="">
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="detail-text">
+            <p class="detail-name">
+                {{product.title}}
+            </p>
+
+            <p class="detail-description">
+                {{product.description}}
+            </p>
+
+            <div class="specification">
+                <div class="colors-div">
+                    <p class="name-specification">Доступные цвета</p>
+                    <select>
+                        {% for color in colors %}
+                        <option class="colors">
+                            {{color.color}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="sizes-div">
+                    <p class="name-specification">Доступные размеры</p>
+                    <select>
+                        {% for size in sizes %}
+                        <option class="sizes">
+                            {{size.size}}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <p class="detail-price">
+                {{product.price}} руб.
+            </p>
+            <button class="add-to-cart">Добавить в корзину</button>
+
+        </div>
     </div>
-
-    <div class="detail-text">
-        <p class="detail-name">
-            {{product.title}}
-        </p>
-
-        <p class="detail-descrition">
-            {{product.description}}
-        </p>
-
-        {% for color in colors %}
-        {{color.color}}
-        {% endfor %}
-
-        {% for size in sizes %}
-        {{size.size}}
-        {% endfor %}
-
-        <p class="detail-price">
-            {{product.price}}
-        </p>
-    </div>
-
 </div>
 
+<!--<div id="count-for-js" style="display: none">-->
+<!--    {{images|length}}-->
+<!--</div>-->
+
+{% endblock %}
+
+{% block js-scripts %}
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+<script src="{% static 'shop/js/slick.min.js' %}"></script>
+<script src="{% static 'shop/js/base.js' %}"></script>
+<script src="{% static 'shop/js/product-detail.js' %}"></script>
 {% endblock %}
 
