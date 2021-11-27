@@ -22,24 +22,39 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Exo+2:ital,wght@0,700;1,300;1,500;1,700&family=Exo:ital,wght@1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Exo+2:ital,wght@0,700;1,300;1,500;1,700&family=Exo:ital,wght@1,900&display=swap"
+          rel="stylesheet">
 </head>
 
 <body>
 
 {% block header-content %}
 <header id="header" class="header">
+
+    {{request.user}}
     <div class="container">
         <nav class="nav">
-            <logo class="logo">
+            <div class="logo">
                 <a href="{%url 'base' %}">B&L</a>
-            </logo>
+            </div>
             <menu class="menu">
 
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
-                    <a href="{%url 'personal_area'%}" class="menu-link">Главная</a>
+                    <a href="{%url 'base' %}" class="menu-link">Главная</a>
+
+                    {% if not request.user.is_authenticated %}
+                    <a href="{%url 'login'%}" class="menu-link">Войти</a>
+                    <a href="{%url 'registration'%}" class="menu-link">Регистрация</a>
+                    {% else %}
+                    <a href="{%url 'personal_area'%}" class="menu-link">Личный кабинет</a>
+                    <a href="{%url 'logout'%}" class="menu-link">Выйти</a>
+                    {% endif %}
+
+
+
+                    <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
                     <a href="#about" class="menu-link">О нас</a>
 
@@ -63,7 +78,7 @@
                 <i class="fas fa-bars"></i>
             </button>
         </nav>
- </div>
+    </div>
 </header>
 {% endblock %}
 
@@ -72,14 +87,14 @@
     <section class="main">
         <div class="container">
             <div class="slogan">
-            <box>
-                <h1>Женская одежда & Костюмы</h1>
-                <p>Подарите себе стиль, не отказываясь от удобства, и грейтесь вместе с Big&Little</p>
-                <a href="{%url 'product_list'%}" class="btn">Перейти в каталог</a>
+                <box>
+                    <h1>Женская одежда & Костюмы</h1>
+                    <p>Подарите себе стиль, не отказываясь от удобства, и грейтесь вместе с Big&Little</p>
+                    <a href="{%url 'product_list'%}" class="btn">Перейти в каталог</a>
 
-            </box>
-            <img class="photo" src="{% static 'shop/img/photo.jpg' %}" loading="eager" alt="">
-        </div>
+                </box>
+                <img class="photo" src="{% static 'shop/img/photo.jpg' %}" loading="eager" alt="">
+            </div>
         </div>
     </section>
 
@@ -114,13 +129,13 @@
                     <style>
                         .slider .slick-arrow.slick-prev {
                             left: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100% no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100 % no-repeat;
                             border: 0;
                         }
 
                         .slider .slick-arrow.slick-next {
                             right: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100% no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100 % no-repeat;
                             border: 0;
                         }
                     </style>

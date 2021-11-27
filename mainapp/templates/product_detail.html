@@ -59,33 +59,31 @@
             </p>
 
             <div class="specification">
-                <div class="colors-div">
-                    <p class="name-specification">Доступные цвета</p>
-                    <select>
-                        {% for color in colors %}
-                        <option class="colors">
-                            {{color.color}}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <div class="colors-div">
+                        <p class="name-specification">Доступные цвета</p>
+                        <select name="color">
+                            {% for color in colors %}
+                            <option class="colors" value="{{color.color}}">{{color.color}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="sizes-div">
+                        <p class="name-specification">Доступные размеры</p>
 
-                <div class="sizes-div">
-                    <p class="name-specification">Доступные размеры</p>
-                    <select>
-                        {% for size in sizes %}
-                        <option class="sizes">
-                            {{size.size}}
-                        </option>
-                        {% endfor %}
-                    </select>
-                </div>
+                        <select name="size">
+                            {% for size in sizes %}
+                            <option class="sizes" value="{{size.size}}">
+                                {{size.size}}
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <input type="submit" value="Add to cart" class="add-to-cart">
+                </form>
             </div>
 
-            <p class="detail-price">
-                {{product.price}} руб.
-            </p>
-            <button class="add-to-cart">Добавить в корзину</button>
 
         </div>
     </div>

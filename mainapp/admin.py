@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from .models import *
 
-
 class ImageGalleryInline(GenericTabularInline):
     model = ImageGallery
     max_num = 5
@@ -27,5 +26,12 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(SizeField)
 admin.site.register(ColorField)
+admin.site.register(CartProduct)
+admin.site.register(Cart)
+admin.site.register(Customer)
+admin.site.register(Order)
+admin.site.register(Notification)
+
+
 
 

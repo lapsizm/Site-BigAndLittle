@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block main-content %}
+
+
+<table>
+    <thead>
+    <tr>
+        <th>Наименование</th>
+        <th>Изображение</th>
+        <th>Цена</th>
+        <th>Кол-во</th>
+        <th>Общая цена</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in cart.products.all %}
+    <tr>
+        <td>{{item.product.title}}</td>
+        {% for img in images %}
+        {% if img.object_id == item.product.id %}
+        <td><img src="{{img.image.url}}" alt="priv" style="width: 100px"></td>
+        {% endif %}
+        {% endfor %}
+        <td>{{item.product.price}}</td>
+        <td>{{item.qty}}</td>
+        <td>{{item.final_price}}</td>
+        <td><a href="{% url 'delete-from-cart' product_slug=item.product.slug%}">delete product</a></td>
+    </tr>
+    {% endfor %}
+        <tr>
+            <td>Итого: {{cart.final_price}}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+{% endblock %}
