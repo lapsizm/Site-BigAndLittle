@@ -26,7 +26,7 @@
 
 .logo {
     margin-right: 6%;
-    left:0;
+    left: 0;
 }
 
 .logo a {
@@ -69,8 +69,8 @@
     padding-bottom: 3.5%;
 }
 
-.personal-area-link{
-    display:none;
+.personal-area-link {
+    display: none;
 }
 
 .menu-nav a:hover {
@@ -90,8 +90,18 @@
     text-decoration: none;
 }
 
-.instText {
+.instText-user {
+    display: flex;
+}
+
+.instText-user img{
     margin-left: auto;
+    width: 50px;
+    height: 50px;
+}
+
+.instText {
+    margin-left: 4%;
 }
 
 .instText a {
@@ -115,9 +125,10 @@
     font-style: italic;
 }
 
-.main{
+.main {
     background: #fdd5b1;
 }
+
 .slogan {
     display: flex;
 }
@@ -156,7 +167,7 @@
     font-style: italic;
     background: white;
     color: #f17180 !important;
-    text-align:center;
+    text-align: center;
     letter-spacing: 0.1em;
     margin-top: 10%;
     padding: 3% 10%;
@@ -313,7 +324,7 @@
     margin-left: 6%;
 }
 
-.content .marked a{
+.content .marked a {
     text-decoration: none;
     color: #f17180;
 }
@@ -419,13 +430,13 @@
     padding-top: 4%;
 }
 
-.information{
+.information {
     background: #fdd5b1;
     padding-bottom: 20px;
 }
 
 
-.information .container h2{
+.information .container h2 {
     font-size: 60px;
     color: #f17180;
     font-style: italic;
@@ -434,14 +445,15 @@
     padding-bottom: 3%;
 }
 
-.question{
+.question {
     color: #390000;
     font-weight: 700;
     font-size: 19px;
 
 }
-.answer{
-   color: #827067;
+
+.answer {
+    color: #827067;
     font-family: 'Exo 2', sans-serif;
     font-style: italic;
     font-weight: 500;
@@ -461,21 +473,21 @@
     color: #f17180;
 }
 
-footer{
+footer {
     background: #fdd5b1;
 }
 
-footer .container{
+footer .container {
     border-top: 1px solid;
 }
 
 
 @media screen and (min-width: 1400px) {
     .container {
-        width:1260px;
+        width: 1260px;
     }
 
-    .menu{
+    .menu {
         padding-left: 80px;
     }
 
@@ -513,8 +525,8 @@ footer .container{
     }
 
     .content p {
-    font-size: 19px;
-}
+        font-size: 19px;
+    }
 
     .content .marked {
         font-size: 20px;
@@ -524,37 +536,38 @@ footer .container{
         font-size: 50px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 30px !important;
     }
 
-    .contacts li{
+    .contacts li {
         margin-bottom: 15px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 19px;
     }
 
-    .map{
+    .map {
         margin-left: auto;
     }
 
 
-    .location{
+    .location {
         padding-left: 7%;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 50px;
         padding-bottom: 3%;
     }
 
-    .question{
+    .question {
         font-size: 19px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 19px;
         margin-top: -20px;
         margin-bottom: 20px;
@@ -572,12 +585,18 @@ footer .container{
         font-size: 19px;
     }
 
-    .menu{
+    .menu {
         padding-left: 100px;
     }
 
-    .logo{
+    .logo {
         margin-right: 0;
+    }
+
+    .instText-user img{
+        width: 45px;
+        height: 45px;
+        margin-top: 3px;
     }
 
     .instText a {
@@ -592,7 +611,7 @@ footer .container{
         font-size: 60px;
     }
 
-    .slogan p{
+    .slogan p {
         font-size: 19px;
     }
 
@@ -608,31 +627,31 @@ footer .container{
         font-size: 50px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 30px !important;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 19px;
     }
 
-    .contacts{
+    .contacts {
         margin-left: 0;
     }
 
-    .contacts li{
+    .contacts li {
         margin-bottom: 15px;
     }
 
-    .location{
+    .location {
         padding-left: 7%;
     }
 
-    .map{
+    .map {
         margin-left: auto;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 50px;
     }
 }
@@ -644,13 +663,19 @@ footer .container{
         width: 1070px;
     }
 
-    .menu{
-        padding-left: 80px;
+    .menu {
+        padding-left: 40px;
     }
 
     .menu-nav a {
         font-size: 18px;
         margin-right: 13%;
+    }
+
+    .instText-user img{
+        width: 40px;
+        height: 40px;
+        margin-top: 5px;
     }
 
     .instText a {
@@ -708,8 +733,8 @@ footer .container{
     }
 
     .content p {
-    font-size: 18px;
-}
+        font-size: 18px;
+    }
 
     .content .marked {
         font-size: 18px;
@@ -719,40 +744,41 @@ footer .container{
         font-size: 50px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 30px !important;
     }
 
-    .contacts ul{
+    .contacts ul {
         padding-left: 0 !important;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 18px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 18px;
     }
 
-    .location{
+    .location {
         padding-left: 3%;
     }
 
-    .map{
+    .map {
         margin-left: auto;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 50px;
         padding-bottom: 3%;
     }
 
-    .question{
+    .question {
         font-size: 18px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 18px;
         margin-top: -20px;
         margin-bottom: 20px;
@@ -862,7 +888,7 @@ footer .container{
         font-size: 26px;
     }
 
-     .slider img {
+    .slider img {
         width: 270px;
         height: 325px;
     }
@@ -892,38 +918,39 @@ footer .container{
         font-size: 50px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 22px !important;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 18px;
         margin-left: 0px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 17px;
     }
 
-    .location{
+    .location {
         margin-top: -20px;
         padding-left: 2%;
         align-items: center;
     }
 
-    .map{
+    .map {
         margin-right: 20px;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 50px;
     }
 
-    .question{
+    .question {
         font-size: 17px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 17px;
     }
 
@@ -944,12 +971,18 @@ footer .container{
 
     .menu {
         width: 68%;
-        padding-left: 60px;
+        padding-left: 50px;
     }
 
     .menu-nav a {
         font-size: 15px;
         margin-right: 10%;
+    }
+
+    .instText-user img{
+        width: 35px;
+        height: 35px;
+        margin-top: 3px;
     }
 
     .instText a {
@@ -985,7 +1018,7 @@ footer .container{
         font-size: 23px;
     }
 
-     .slider img {
+    .slider img {
         width: 270px;
         height: 310px;
     }
@@ -1015,48 +1048,49 @@ footer .container{
         font-size: 40px;
     }
 
-    .contacts-map{
-        display:block;
+    .contacts-map {
+        display: block;
     }
 
-    .contacts{
+    .contacts {
         position: absolute;
         margin-top: -180px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 26px !important;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 17px;
         margin-left: 50px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 16px;
     }
 
-    .location{
+    .location {
         margin-top: -20px;
         padding-left: 0;
         align-items: center;
     }
 
-    .map{
+    .map {
         margin-right: 0;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 40px;
         padding-bottom: 3%;
     }
 
-    .question{
+    .question {
         font-size: 16px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 16px;
         margin-top: -20px;
         margin-bottom: 20px;
@@ -1118,20 +1152,20 @@ footer .container{
     }
 
     .menu-nav a:hover {
-        color:#8a7a73;
+        color: #8a7a73;
     }
 
     .menu-link {
         display: flex;
         margin-top: 40px;
         font-weight: 900;
-        padding-left: 40px ;
+        padding-left: 40px;
         width: 100%;
         border-bottom: 1px solid #8a7a73;
     }
 
-    .menu-burger .personal-area-link{
-                display: flex;
+    .menu-burger .personal-area-link {
+        display: flex;
     }
 
     .menu-burger .menu-nav {
@@ -1146,7 +1180,7 @@ footer .container{
         font-size: 14px;
     }
 
-    .fas.fa-bars i ::before{
+    .fas.fa-bars i ::before {
         width: 20px !important;
         height: 25px !important;
     }
@@ -1164,18 +1198,19 @@ footer .container{
         width: auto;
     }
 
-    .achievements{
+    .achievements {
         padding-bottom: 0;
     }
 
-     .central{
+    .central {
         width: 50%;
     }
-    .left, .right{
-        width:25%;
+
+    .left, .right {
+        width: 25%;
     }
 
-    .left{
+    .left {
         line-height: 1em;
     }
 
@@ -1191,7 +1226,7 @@ footer .container{
         font-size: 20px;
     }
 
-     .slider img {
+    .slider img {
         width: 150px;
         height: 190px;
     }
@@ -1218,7 +1253,7 @@ footer .container{
         font-size: 16px;
     }
 
-    .text{
+    .text {
         margin-left: 4%;
     }
 
@@ -1230,47 +1265,48 @@ footer .container{
         font-size: 40px;
     }
 
-    .contacts-map{
-        display:block;
+    .contacts-map {
+        display: block;
     }
 
-    .contacts{
+    .contacts {
         position: absolute;
         margin-top: -190px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 20px !important;
         text-align: left !important;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 16px;
         margin-left: 5px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 16px;
     }
 
-    .location{
+    .location {
         margin-top: -10px;
         padding-left: 2%;
         align-items: center;
     }
+
     .about .container .location h2 {
         white-space: pre-wrap;
     }
 
-    .address{
+    .address {
         padding-top: 14px;
     }
 
-    .address p{
+    .address p {
         margin-left: 0;
     }
 
-    .map{
+    .map {
         margin-right: 0;
     }
 }
@@ -1281,7 +1317,7 @@ footer .container{
     }
 
     .logo a {
-        font-size: 40px;
+        font-size: 45px;
     }
 
     .menu-nav a {
@@ -1289,11 +1325,11 @@ footer .container{
     }
 
     .instText a {
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .instText p {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .slogan h1 {
@@ -1308,9 +1344,10 @@ footer .container{
         font-size: 14px;
     }
 
-    .achievements{
+    .achievements {
         padding-bottom: 0;
     }
+
     .achievements p {
         font-size: 12px;
     }
@@ -1323,7 +1360,7 @@ footer .container{
         font-size: 15px;
     }
 
-     .slider img {
+    .slider img {
         width: 185px;
         height: 230px;
     }
@@ -1345,7 +1382,7 @@ footer .container{
         font-size: 14px;
     }
 
-    .text{
+    .text {
         margin-left: 4%;
     }
 
@@ -1357,63 +1394,64 @@ footer .container{
         font-size: 30px;
     }
 
-    .contacts{
+    .contacts {
         position: absolute;
         margin-top: -320px;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 18px !important;
         margin-bottom: 0;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 15px;
         margin-left: 15px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 14px;
     }
 
-    .location{
+    .location {
         display: block;
         margin-top: -10px;
         padding-left: 2%;
         align-items: center;
     }
 
-    .address{
+    .address {
         position: absolute;
         margin-top: -190px;
-        width:180px;
+        width: 180px;
         padding-top: 10px;
     }
 
-    .address p{
-        margin-left: 0 ;
+    .address p {
+        margin-left: 0;
     }
 
-    .slider .slick-arrow{
-        width:10px;
-        height:20px;
+    .slider .slick-arrow {
+        width: 10px;
+        height: 20px;
     }
 
-    .map{
+    .map {
         margin-left: 100px;
         padding: 0;
     }
 
-    .information .container h2{
+    .information .container h2 {
         font-size: 40px;
         padding-bottom: 3%;
     }
 
-    .question{
+    .question {
         font-size: 14px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 14px;
         margin-top: -20px;
         margin-bottom: 20px;
@@ -1426,17 +1464,18 @@ footer .container{
 
 @media screen and (max-width: 575px) {
     .container {
-        width:  420px;
+        width: 420px;
     }
 
     .logo a {
         margin-left: 20px;
-        font-size: 35px;
+        font-size: 40px;
     }
 
-    .menu-nav{
+    .menu-nav {
         width: 35%;
     }
+
     .menu-nav a {
         font-size: 14px;
         padding-left: 20px;
@@ -1447,11 +1486,11 @@ footer .container{
     }
 
     .instText a {
-        font-size: 12px;
+        font-size: 16px;
     }
 
     .instText p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .slogan h1 {
@@ -1470,13 +1509,16 @@ footer .container{
     .achievements p {
         font-size: 12px;
     }
-    .central{
+
+    .central {
         width: 60%;
     }
-    .left, .right{
-        width:20%;
+
+    .left, .right {
+        width: 20%;
     }
-    .left{
+
+    .left {
         line-height: 1em;
     }
 
@@ -1488,7 +1530,7 @@ footer .container{
         font-size: 15px;
     }
 
-     .slider img {
+    .slider img {
         width: 170px;
         height: 230px;
     }
@@ -1506,7 +1548,7 @@ footer .container{
         width: 170px !important;
     }
 
-    .content{
+    .content {
         display: block;
     }
 
@@ -1515,7 +1557,7 @@ footer .container{
         text-align: left;
     }
 
-    .double-slider{
+    .double-slider {
         position: relative;
         float: left;
         margin-right: 13px;
@@ -1530,70 +1572,71 @@ footer .container{
         font-size: 26px;
     }
 
-    .contacts{
+    .contacts {
         margin-top: 20px;
         margin-left: 20px;
         position: static;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 18px !important;
         margin-bottom: 0;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 14px;
-        margin-left:0;
+        margin-left: 0;
     }
 
-    .contacts li{
+    .contacts li {
         margin-bottom: 18px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 14px;
     }
 
-    .location{
+    .location {
         position: static;
         margin-top: -10px;
         padding-left: 2%;
         align-items: center;
     }
 
-    .address{
-        width:240px;
+    .address {
+        width: 240px;
         margin-top: -174px;
         margin-left: 150px;
         padding-top: 10px;
         line-height: 0.8em;
     }
 
-    .address p{
+    .address p {
         margin-left: 30px;
     }
 
-    .slider .slick-arrow{
-        width:10px;
-        height:20px;
+    .slider .slick-arrow {
+        width: 10px;
+        height: 20px;
     }
 
-    .map{
+    .map {
         position: static;
         margin-top: 40px;
         margin-left: 45px;
         padding: 0;
     }
 
-     .information .container h2{
+    .information .container h2 {
         font-size: 26px;
     }
 
-    .question{
+    .question {
         font-size: 14px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 14px;
         margin-top: -20px;
         margin-bottom: 20px;
@@ -1621,16 +1664,16 @@ footer .container{
         width: 365px;
     }
 
-    .header{
+    .header {
         padding-bottom: 10px;
     }
 
     .logo a {
         margin-left: 20px;
-        font-size: 30px;
+        font-size: 40px;
     }
 
-    .menu-nav{
+    .menu-nav {
         width: 40%;
     }
 
@@ -1643,11 +1686,11 @@ footer .container{
     }
 
     .instText a {
-        font-size: 12px;
+        font-size: 15px;
     }
 
     .instText p {
-        font-size: 10px;
+        font-size: 14px;
     }
 
     .slogan h1 {
@@ -1659,9 +1702,9 @@ footer .container{
         font-size: 10px;
     }
 
-     .slogan box{
+    .slogan box {
         width: 70%;
-         padding-left: 0;
+        padding-left: 0;
     }
 
     .btn {
@@ -1672,15 +1715,15 @@ footer .container{
         font-size: 12px;
     }
 
-    .central{
+    .central {
         width: 60%;
     }
 
-    .left, .right{
-        width:20%;
+    .left, .right {
+        width: 20%;
     }
 
-    .left{
+    .left {
         line-height: 1em;
     }
 
@@ -1692,7 +1735,7 @@ footer .container{
         font-size: 15px;
     }
 
-     .slider img {
+    .slider img {
         width: 140px;
         height: 190px;
     }
@@ -1710,7 +1753,7 @@ footer .container{
         width: 140px !important;
     }
 
-    .content{
+    .content {
         display: block;
     }
 
@@ -1719,7 +1762,7 @@ footer .container{
         text-align: left;
     }
 
-    .double-slider{
+    .double-slider {
         position: relative;
         float: left;
         margin-right: 13px;
@@ -1734,59 +1777,59 @@ footer .container{
         font-size: 23px;
     }
 
-    .contacts{
+    .contacts {
         margin-top: 20px;
         margin-left: 0;
         position: static;
     }
 
-    .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 18px !important;
         margin-bottom: 0;
     }
 
-    .contacts h2{
+    .contacts h2 {
         margin-bottom: 10px;
     }
 
-    .contacts a{
+    .contacts a {
         font-size: 14px;
-        margin-left:0;
+        margin-left: 0;
     }
 
-    .contacts li{
+    .contacts li {
         margin-bottom: 18px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 14px;
     }
 
-    .location{
+    .location {
         position: static;
         margin-top: -10px;
         padding-left: 2%;
         align-items: center;
     }
 
-    .address{
-        width:200px;
+    .address {
+        width: 200px;
         margin-top: -190px;
         margin-left: 130px;
         padding-top: 10px;
         line-height: 0.8em;
     }
 
-    .address p{
+    .address p {
         margin-left: 30px;
     }
 
-    .slider .slick-arrow{
-        width:10px;
-        height:20px;
+    .slider .slick-arrow {
+        width: 10px;
+        height: 20px;
     }
 
-    .map{
+    .map {
         margin-top: 40px;
         margin-left: 10px;
     }
@@ -1797,28 +1840,28 @@ footer .container{
         width: 315px;
     }
 
-    .header{
+    .header {
         padding-bottom: 0;
         padding-top: 37px;
     }
 
-    .menu-nav{
-        width:45%;
+    .menu-nav {
+        width: 45%;
     }
 
-    .slogan h1{
+    .slogan h1 {
         margin: 0;
     }
 
-    .slogan p{
+    .slogan p {
         font-size: 9px;
     }
 
-    .btn{
+    .btn {
         font-size: 10px;
     }
 
-     .slider img {
+    .slider img {
         width: 120px;
         height: 150px;
     }
@@ -1840,15 +1883,15 @@ footer .container{
         font-size: 11px;
     }
 
-    .central{
+    .central {
         width: 60%;
     }
 
-    .left, .right{
-        width:20%;
+    .left, .right {
+        width: 20%;
     }
 
-    .left{
+    .left {
         line-height: 1.1em;
     }
 
@@ -1865,50 +1908,52 @@ footer .container{
         font-size: 13px;
     }
 
-    .content .marked{
+    .content .marked {
         font-size: 13px;
     }
 
-    .location{
+    .location {
         padding-left: 0;
     }
 
-    .contacts li{
+    .contacts li {
         margin-bottom: 15px;
     }
 
-    .contacts-map p{
+    .contacts-map p {
         font-size: 12px;
     }
 
-     .contacts h2, .location  h2{
+    .contacts h2, .location h2 {
         font-size: 16px !important;
     }
 
-    .contacts-map a{
+    .contacts-map a {
         font-size: 12px;
     }
 
-    .address{
-        width:180px;
+    .address {
+        width: 180px;
         margin-top: -175px;
         margin-left: 110px;
     }
-    .address p{
+
+    .address p {
         margin-left: 25px;
     }
 
-    .map{
+    .map {
         margin-top: 40px;
         margin-left: -5px;
     }
 
 
-    .question{
+    .question {
         font-size: 13px;
 
     }
-    .answer{
+
+    .answer {
         font-size: 13px;
         margin-top: -20px;
         margin-bottom: 20px;

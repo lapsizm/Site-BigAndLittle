@@ -65,11 +65,11 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Пароли не совпадают')
         return self.cleaned_data
 
-        # def clean_email(self):
-        #     email = self.cleaned_data['email']
-        #     if User.objects.filter(email=email).exists():
-        #         raise forms.ValidationError('Пользователь с таким email существует')
-        #     return self.cleaned_data
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError('Пользователь с такой почтой уже зарегистрирован')
+        return email
 
 
     class Meta:

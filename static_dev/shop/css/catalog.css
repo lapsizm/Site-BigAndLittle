@@ -5,17 +5,15 @@ body {
 
 .name-wrapper {
     font-family: "Times New Roman";
-
     color: #f17180;
     font-style: italic;
-    font-size: 72px;
+    font-size: 55px;
     text-align: left;
     margin: 3% 0 3% 0;
 
 }
 
 .categories {
-    display: flex;
     width: 100%;
     margin: 2% 0 2% 0;
 
@@ -29,7 +27,7 @@ body {
 
 .categories li {
     display: inline-block;
-    margin-right: 10px;
+    margin-right: 5%;
     transition: .4s ease-out;
 }
 
@@ -59,18 +57,36 @@ body {
     text-decoration: none;
 }
 
+.select {
+    -webkit-appearance: menulist;
+    width: 220px;
+    height: 40px;
+    border: 1px solid #999;
+    font-size: 18px;
+    color: #1c87c9;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+    display: none;
+}
+
 .content {
     display: flex;
     position: relative;
 }
+
+.content {
+    text-align: center;
+    line-height: 1.4em;
+    text-align: center;
+}
+
 
 .product-list {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     padding: 0;
-    margin-bottom: 10%;
-
 }
 
 .products {
@@ -81,32 +97,29 @@ body {
     border-radius: 20px;
     background: #fff;
     margin: 2% 2% 5% 0;
-    height: 700px;
     box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
+}
+
+.products p {
+    line-height: 1.4em;
 }
 
 .product-photo {
     position: relative;
     padding-bottom: 100%;
-    overflow: hidden;
-    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
-    border: 3px solid #312d2d;
-    border-radius: 20px;
     margin: 0;
     transition: transform .4s ease-out;
-
 }
 
 .prd-img {
+    border: 3px solid #312d2d;
+    border-radius: 20px;
+    border-collapse: collapse;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
     right: 0;
-    max-width: 105%;
-    max-height: 105%;
-    margin: auto;
-    border-radius: 15px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -114,70 +127,57 @@ body {
     transform: scale(1.05);
 }
 
-.text-product{
-    margin-top: 2%;
+.text-product {
+    margin-top: 5%;
 }
 
 .prd-name {
-    text-indent: 0 !important;
     text-align: center !important;
+    margin-bottom: 10%;
+
 }
 
 .product-name {
+    margin: 0;
+    margin-left: -8% !important;
     font-size: 30px;
     text-decoration: none;
     color: #f17180;
     font-style: italic;
-    font-weight: bold;
-    margin: 0;
-    transition-duration: 0.3s;
-}
+    font-weight: 500;
 
+}
 
 .product-name:hover {
     color: #f17180;
-    font-size: 36px;
 }
 
-.product-description {
-    text-indent: 0 !important;
-    text-align: center !important;
-    font-size: 12px;
-    font-style: italic;
-    color: #7a6a6a;
-    margin: 5px;
+.prd-name:hover {
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: 0.3s;
 }
 
 
 .product-price {
-    margin: 10px 0 10px 10px;
     position: absolute;
     left: 0;
-    right: 0;
-    bottom: 0;
-    text-align: center;
+    bottom: 0 !important;
     color: #f17180 !important;
     font-size: 20px;
-
-}
-
-.loading {
-    position: absolute;
-    bottom: 0;
-    margin: 5% 50%;
-
+    margin-bottom: 0;
 }
 
 .load-more-class {
     display: block;
+    margin: 0 auto;
     background-color: pink;
     width: 150px;
     height: 60px;
     box-shadow: 5px 10px 25px 5px rgb(0 0 0 / 20%);
     border: 1px solid #ea9292;
     border-radius: 30px;
-
-
 }
 
 .load-more-class:hover {
@@ -190,3 +190,55 @@ body {
     transition: .4s ease-out;
 }
 
+@media screen and (max-width: 991px) {
+
+    .products {
+        width: 48%;
+    }
+
+    .product-name {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    .categories {
+        display: none;
+    }
+
+    .select {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .products {
+        width: 98%;
+    }
+
+    .name-wrapper {
+        font-size: 40px;
+    }
+
+    .product-name {
+        font-size: 25px;
+    }
+
+    .category-name {
+        font-size: 17px;
+    }
+
+    .active-category {
+        font-size: 20px;
+    }
+
+    .categories li {
+        margin-right: 3.5%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .name-wrapper {
+        font-size: 35px;
+    }
+}

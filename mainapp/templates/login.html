@@ -2,17 +2,65 @@
 {% load crispy_forms_tags %}
 
 {% block main-content %}
+<style>
+    .main {
+        background: #fdd5b1;
+        padding-bottom: 5%;
+        padding-top: 5%;
+    }
 
-<div class="container">
-    <h3>Авторизация</h3>
+    .reg {
 
-<form action="{% url 'login' %}" method="POST">
-    {% csrf_token %}
-    {{form | crispy}}
-    <input type="submit" value="Войти">
-</form>
+        display: flex;
+        align-items: center;
+    }
+
+    .reg p {
+        margin: 0;
+        margin-left: 5%;
+    }
+
+    .reg-btn {
+        margin-left: 0.5%;
+        border-radius: 2px;
+        border: 1px solid rgb(133, 133, 133);
+    }
+
+    .reg-btn p {
+        margin: 0;
+    }
+
+    h3 {
+        font-family: 'Exo 2', sans-serif;
+        font-size: 30px;
+        font-style: italic;
+
+        font-weight: 600;
+        color: #f17180;
+    }
+
+</style>
+<div class="main">
+    <div class="container">
+
+        <h3>Авторизация</h3>
+
+        <form class="login" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {{form | crispy}}
+            <div class="reg">
+
+                <input type="submit" value="Войти">
+
+                <p>Нет акаунта?</p>
+                <button class="reg-btn" onclick=" window.location.href = '{%url 'registration'%}'">
+                    <p>Зарегистрироваться</p>
+                </button>
+            </div>
+        </form>
+
+    </div>
 </div>
-
 
 
 {% endblock %}
