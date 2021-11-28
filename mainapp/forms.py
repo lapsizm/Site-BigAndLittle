@@ -6,7 +6,8 @@ User = get_user_model()
 
 
 class LoginForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(max_length=15)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=15)
 
     class Meta:
         model = User
@@ -29,8 +30,9 @@ class LoginForm(forms.ModelForm):
 
 
 class RegistrationForm(forms.ModelForm):
-    confirm_password = forms.CharField(widget=forms.PasswordInput)
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(max_length=15)
+    confirm_password = forms.CharField(widget=forms.PasswordInput, max_length=15)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=15)
     phone = forms.CharField(required=False)
     address = forms.CharField(required=False)
     email = forms.EmailField()
@@ -50,15 +52,26 @@ class RegistrationForm(forms.ModelForm):
         username = self.cleaned_data['username']
         if User.objects.filter(username=username).exists():
             raise forms.ValidationError(f'Пользователь с логином {username} уже существует')
+        if len(username) < 5:
+            raise forms.ValidationError('Логин состоит хотя бы из 5 символов')
         return username
 
     def clean(self):
         password = self.cleaned_data['password']
+        if len(password) < 8:
+            raise forms.ValidationError('Пароль состоит хотя бы из 5 символов')
         confirm_password = self.cleaned_data['confirm_password']
         if password != confirm_password:
             raise forms.ValidationError('Пароли не совпадают')
         return self.cleaned_data
 
+        # def clean_email(self):
+        #     email = self.cleaned_data['email']
+        #     if User.objects.filter(email=email).exists():
+        #         raise forms.ValidationError('Пользователь с таким email существует')
+        #     return self.cleaned_data
+
+
     class Meta:
         model = User
-        fields = ['username', 'password', 'confirm_password', 'first_name', 'last_name', 'address', 'phone', 'email']
+        fields = ['username', 'email', 'password', 'confirm_password', 'first_name', 'last_name', 'address', 'phone']
