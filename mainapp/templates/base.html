@@ -44,21 +44,9 @@
                 <div class="menu-nav">
                     <a href="{%url 'base' %}" class="menu-link">Главная</a>
 
-                    {% if not request.user.is_authenticated %}
-                    <a href="{%url 'login'%}" class="menu-link">Войти</a>
-                    <a href="{%url 'registration'%}" class="menu-link">Регистрация</a>
-                    {% else %}
-                    <a href="{%url 'personal_area'%}" class="menu-link">Личный кабинет</a>
-                    <a href="{%url 'logout'%}" class="menu-link">Выйти</a>
-                    {% endif %}
-
-
-
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
-                    <a href="#about" class="menu-link">О нас</a>
-
-                    <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
+                    <a href="{%url 'base'%}" class="menu-link">О нас</a>
 
                     <a href="#information" class="menu-link">Информация</a>
 
@@ -68,10 +56,20 @@
 
             </menu>
 
-            <div class="instText">
-                <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1" class="inst"><i
-                        class="fab fa-instagram"></i>&nbsp;@big_8_little</a>
-                <p>Наш Instagram</p>
+            <div class="instText-user">
+                {% if not request.user.is_authenticated %}
+                <a href="{%url 'login'%}"> <img src="https://img.icons8.com/windows/96/000000/user-lock--v1.png"/>
+                </a>
+                {% else %}
+                <a href="{%url 'personal_area'%}"> <img class="icon"
+                                                        src="https://img.icons8.com/pastel-glyph/64/000000/user-male-circle.png"/>
+                </a>
+                {% endif %}
+                <div class="instText">
+                    <a href="https://www.instagram.com/big_8_little/?igshid=zcw6j7z6tlz1" class="inst"><i
+                            class="fab fa-instagram"></i>&nbsp;@big_8_little</a>
+                    <p>Наш Instagram</p>
+                </div>
             </div>
 
             <button class="menu-open">
@@ -340,7 +338,7 @@
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
-                    <a href="#" class="menu-link">Главная</a>
+                    <a href="{%url 'personal_area'%}" class="menu-link">Главная</a>
 
                     <a href="#about" class="menu-link">О нас</a>
 

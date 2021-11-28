@@ -15,52 +15,66 @@
     <h1 class="name-wrapper">
         Каталог товаров
     </h1>
-    <div class="list">
-        <div class="categories">
-            <ul>
-                <li class="category-list"><a href="{%url 'product_list'%}" class="category-name ">Все</a></li>
-                {% for category in categories %}
-                <li class="category-list"><a href="{{category.get_absolute_url}}" class="category-name">{{category.name}}</a>
-                </li>
-                {%endfor%}
-            </ul>
+    <div class="categories">
+        <ul>
+            <li class="category-list"><a href="{%url 'product_list'%}" class="category-name ">Все</a></li>
+            {% for category in categories %}
+            <li class="category-list"><a href="{{category.get_absolute_url}}"
+                                         class="category-name">{{category.name}}</a>
+            </li>
+            {%endfor%}
+        </ul>
+    </div>
+
+    <select class="select" id="select" onchange="window.location.href=this.options[this.selectedIndex].value">
+        <option value="">Категория товара</option>
+        <option value="{%url 'product_list'%}">Все</option>
+        {% for category in categories %}
+        <option value="{{category.get_absolute_url}}">{{category.name}}</option>
+        {%endfor%}
+    </select>
 
 
-        </div>
-        <div class="content">
-            <ul class="product-list">
-                {% for product in products %}
-                <li class="products">
+    <div class="content">
+        <ul class="product-list">
+            {% for product in products %}
+            <li class="products">
+                {% for img in images %}
+                {% if img.object_id == product.id and img.is_main %}
+                <div class="product-photo"><a href="{{product.get_absolute_url}}"><img class="prd-img"
+                                                                                       src="{{img.image.url}}"
+                                                                                       alt="priv"></a>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="text-product">
+                    <p class="prd-name"><a href="{{product.get_absolute_url}}"
+                                           class="product-name">{{product.title}}</a>
+                    </p>
+                </div>
 
-                    {% for img in images %}
-                    {% if img.object_id == product.id and img.is_main %}
-                    <div class="product-photo"><img src="{{img.image.url}}" alt="priv" class="prd-img"></div>
-                    {% endif %}
-                    {% endfor %}
-                    <div class="text-product">
-                        <p class="prd-name"><a href="{{product.get_absolute_url}}" class="product-name">{{product.title}}</a>
-                        </p>
-                        <p class="product-description">{{product.description }}</p>
-                        <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
+                <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
 
-                    </div>
+            </li>
+            {% endfor%}
+        </ul>
+    </div>
+    <title>Buy cool new product</title>
+    <form action="/create-checkout-session" method="POST">
+      <button type="submit">Checkout</button>
+    </form>
+    <button class="load-more-class" id="load-more"><a href="">Загрузить еще</a></button>
 
-                </li>
-                {% endfor%}
-            </ul>
-
-            <div class="loading">
-                <button class="load-more-class" id="load-more"><a href="">Загрузить еще</a></button>
-            </div>
-
-        </div>
     </div>
 </main>
 
 {% endblock %}
 
 {% block js-scripts %}
-    <script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+
+<script src="{% static 'shop/js/base.js' %}" loading="lazy"></script>
+<script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
 {% endblock %}
 
 </body>
