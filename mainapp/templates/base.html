@@ -42,6 +42,18 @@
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'cart' %}">Корзина: {{cart.products.count}}</a>
+                    {% endif %}
+
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div>
+                        <strong>{{message}}</strong>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
                     <a href="{%url 'base' %}" class="menu-link">Главная</a>
 
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>

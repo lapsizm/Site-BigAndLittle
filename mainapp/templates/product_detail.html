@@ -18,13 +18,13 @@
                 <style>
                     .slider .slick-arrow.slick-prev {
                         left: 0;
-                        background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100% no-repeat;
+                        background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100 % no-repeat;
                         border: 0;
                     }
 
                     .slider .slick-arrow.slick-next {
                         right: 0;
-                        background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100% no-repeat;
+                        background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100 % no-repeat;
                         border: 0;
                     }
                 </style>
@@ -59,7 +59,8 @@
             </p>
 
             <div class="specification">
-                <form action="" method="post">
+
+                <form action="{% url 'add_to_cart' product_slug=product.slug%}" method="POST">
                     {% csrf_token %}
                     <div class="colors-div">
                         <p class="name-specification">Доступные цвета</p>
@@ -80,7 +81,7 @@
                             {% endfor %}
                         </select>
                     </div>
-                    <input type="submit" value="Add to cart" class="add-to-cart">
+                    <input type="submit" value="Добавить в корзину" class="add-to-cart">
                 </form>
             </div>
 

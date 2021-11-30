@@ -7,8 +7,6 @@ from django.urls import reverse
 from utils import upload_function
 
 
-
-
 class Category(models.Model):
     name = models.CharField(max_length=255, verbose_name='Наименование категории')
     slug = models.SlugField(unique=True)
@@ -48,9 +46,8 @@ class ColorField(models.Model):
     content_object = GenericForeignKey('content_type', 'object_id')
     color = models.CharField(max_length=20, verbose_name='Цвет товара', null=True, blank=True)
 
-
     def __str__(self):
-        return f"Цвет для {self.object_id}"
+        return f"Цвет для {self.object_id}, {self.color}"
 
     class Meta:
         verbose_name = 'Цвет'
@@ -65,7 +62,7 @@ class SizeField(models.Model):
     in_stock = models.BooleanField(default=True)
 
     def __str__(self):
-        return f"Размер для {self.object_id}"
+        return f"Размер для {self.object_id}, {self.size}"
 
     class Meta:
         verbose_name = 'Размер'
@@ -93,18 +90,23 @@ class ImageGallery(models.Model):
 class CartProduct(models.Model):
     user = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE)
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
-    content_object = GenericForeignKey('content_type', 'object_id')
+    product = models.ForeignKey(Product, verbose_name='Добавленный товар', on_delete=models.CASCADE, null=True,
+                                blank=True)
+
+    color = models.ForeignKey(ColorField, verbose_name='Цвет товара', on_delete=models.CASCADE, null=True,
+                              blank=True)
+    size = models.ForeignKey(SizeField, verbose_name='Цвет товара', on_delete=models.CASCADE, null=True, blank=True)
     qty = models.PositiveIntegerField(default=1)
-    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
+    final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена', null=True, blank=True,
+                                      default=0)
+
+    def recalc_product(self, *args, **kwargs):
+        self.final_price = self.product.price * int(self.qty)
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
-        return f"Продукт корзины: {self.content_object.title}"
-
-    def save(self, *args, **kwargs):
-        self.final_price = self.final_price * self.content_object.price
-        super().save(*args, **kwargs)
+        return f"Продукт корзины: {self.product.title}"
 
     class Meta:
         verbose_name = 'Продукт корзины'
@@ -113,24 +115,24 @@ class CartProduct(models.Model):
 
 class Cart(models.Model):
     owner = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
-    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart', verbose_name='Продукты корзины')
+    products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart',
+                                      verbose_name='Продукты корзины')
     total_products = models.PositiveIntegerField(default=0, verbose_name='Общее кол-во товаров')
-    total_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена')
-    in_order = models.BooleanField(default=False) #для истории заказов
-    for_anonymous_user = models.BooleanField(default=False) #загушка для неавторизованных
+    total_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена', null=True, blank=True)
+    in_order = models.BooleanField(default=False)  # для истории заказов
+    for_anonymous_user = models.BooleanField(default=False)  # загушка для неавторизованных
 
     def __str__(self):
         return str(self.id)
 
-    # def save(self, *args, **kwargs):
-    #     cart_data = self.products.aggregate(models.Sum('final_price'), models.Count('id'))
-    #     print(cart_data)
-    #     if cart_data.get('final_price__sum'):
-    #         self.total_price = cart_data['final_price__sum']
-    #     else:
-    #         self.final_price=0
-    #     self.total_products = cart_data['id__count']
-    #     super().save(*args, **kwargs)
+    def recalc(self, *args, **kwargs):
+        cart_data = self.products.aggregate(models.Sum('final_price'), models.Count('id'))
+        if cart_data.get('final_price__sum'):
+            self.total_price = cart_data['final_price__sum']
+        else:
+            self.total_price = 0
+        self.total_products = cart_data['id__count']
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = 'Корзина'
@@ -171,7 +173,8 @@ class Order(models.Model):
 
 class Customer(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, verbose_name='Пользователь', on_delete=models.CASCADE)
-    customer_orders = models.ManyToManyField(Order, verbose_name='Заказы покупателя', related_name='related_customer', blank=True)
+    customer_orders = models.ManyToManyField(Order, verbose_name='Заказы покупателя', related_name='related_customer',
+                                             blank=True)
     phone = models.CharField(max_length=20, verbose_name='Телефон')
     address = models.CharField(max_length=255, verbose_name='Адрес', blank=True)
 

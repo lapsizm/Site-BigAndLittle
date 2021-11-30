@@ -3,37 +3,58 @@
 {% block main-content %}
 
 
-<table>
-    <thead>
-    <tr>
-        <th>Наименование</th>
-        <th>Изображение</th>
-        <th>Цена</th>
-        <th>Кол-во</th>
-        <th>Общая цена</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for item in cart.products.all %}
-    <tr>
-        <td>{{item.product.title}}</td>
-        {% for img in images %}
-        {% if img.object_id == item.product.id %}
-        <td><img src="{{img.image.url}}" alt="priv" style="width: 100px"></td>
-        {% endif %}
-        {% endfor %}
-        <td>{{item.product.price}}</td>
-        <td>{{item.qty}}</td>
-        <td>{{item.final_price}}</td>
-        <td><a href="{% url 'delete-from-cart' product_slug=item.product.slug%}">delete product</a></td>
-    </tr>
-    {% endfor %}
-        <tr>
-            <td>Итого: {{cart.final_price}}</td>
-        </tr>
+<div class="container">
+    <div class="content">
+        <h3>Корзина {% if not cart.products.count %}пуста{% endif %}</h3>
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Наименование</th>
+                    <th>Изображение</th>
+                    <th>Цена</th>
+                    <th>Кол-во</th>
+                    <th>Размер</th>
+                    <th>Цвет</th>
+                    <th>Общая цена</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart.products.all %}
+                <tr>
+                    <td>{{item.product.title}}</td>
+                    {% for img in images %}
+                    {% if img.object_id == item.product.id %}
+                    <td><img src="{{img.image.url}}" alt="priv" style="width: 100px"></td>
+                    {% endif %}
+                    {% endfor %}
+                    <td>{{item.product.price}} руб.</td>
+                    <td>
+                        <form action="{% url 'change_qty' product_slug=item.product.slug size=item.size.size color=item.color.color %}"
+                              method="POST">
+                            {% csrf_token %}
+                            <input type="number" name="qty" min="1" value="{{item.qty}}">
+                            <br>
+                            <input type="submit" value="Изменить">
+                        </form>
+                    </td>
+                    <td>{{item.size.size}}</td>
+                    <td>{{item.color.color}}</td>
+                    <td>{{item.final_price}}</td>
+                    <td>
+                        <a href="{% url 'delete_from_cart' product_slug=item.product.slug size=item.size.size color=item.color.color qty=item.qty %}">delete
+                            product</a></td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>Итого: {{cart.total_price}} руб.</td>
+                </tr>
 
-    </tbody>
-</table>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 {% endblock %}

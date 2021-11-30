@@ -40,7 +40,7 @@
             {% for product in products %}
             <li class="products">
                 {% for img in images %}
-                {% if img.object_id == product.id and img.is_main %}
+                {% if img.object_id == product.id %}
                 <div class="product-photo"><a href="{{product.get_absolute_url}}"><img class="prd-img"
                                                                                        src="{{img.image.url}}"
                                                                                        alt="priv"></a>
@@ -61,7 +61,7 @@
     </div>
     <title>Buy cool new product</title>
     <form action="/create-checkout-session" method="POST">
-      <button type="submit">Checkout</button>
+        <button type="submit">Checkout</button>
     </form>
     <button class="load-more-class" id="load-more"><a href="">Загрузить еще</a></button>
 

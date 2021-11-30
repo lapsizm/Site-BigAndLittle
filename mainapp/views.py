@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 from django.views import View
@@ -7,43 +6,49 @@ from .models import *
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import *
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 
-class BaseView(views.View):
+from .mixins import CartMixin
+
+
+class BaseView(CartMixin, views.View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'base.html', {})
+        context = {
+            'cart': self.cart
+        }
+        return render(request, 'base.html', context)
 
 
-def PersonalArea(request):
-    return render(request, 'personal_area.html', {})
+class ProductList(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        products = Product.objects.all()[:9]
+        images = ImageGallery.objects.filter(is_main=True)
+        cart = self.cart
+        return render(request, 'catalog.html', locals())
 
 
-def ProductList(request):
-    categories = Category.objects.all()
-    products = Product.objects.all()[:9]
-    images = []
-    for product in products:
-        images.append(get_object_or_404(ImageGallery, object_id=product.id, is_main=True))
-
-    return render(request, 'catalog.html', locals())
-
-
-def CategoryDetail(request, category_slug):
-    categories = Category.objects.all()
-    category = get_object_or_404(Category, slug=category_slug)
-    products = Product.objects.filter(category__slug=category_slug)
-    images = ImageGallery.objects.all()
-    return render(request, 'category_detail.html', locals())
+class CategoryDetail(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        category = get_object_or_404(Category, slug=kwargs.get('category_slug'))
+        products = Product.objects.filter(category__slug=kwargs.get('category_slug'))
+        images = []
+        for product in products:
+            images.append(get_object_or_404(ImageGallery, is_main=True, object_id=product.id))
+        cart = self.cart
+        return render(request, 'category_detail.html', locals())
 
 
-def ProductDetail(request, category_slug, product_slug):
-    categories = Category.objects.all()
-    category = get_object_or_404(Category, slug=category_slug)
-    product = get_object_or_404(Product, slug=product_slug)
-    images = ImageGallery.objects.filter(object_id=product.id)
-    main_image = get_object_or_404(ImageGallery, object_id=product.id, is_main=True)
-    colors = ColorField.objects.filter(object_id=product.id)
-    sizes = SizeField.objects.filter(object_id=product.id)
-    return render(request, 'product_detail.html', locals())
+class ProductDetail(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        category = get_object_or_404(Category, slug=kwargs.get('category_slug'))
+        product = get_object_or_404(Product, slug=kwargs.get('product_slug'))
+        images = ImageGallery.objects.filter(object_id=product.id)
+        colors = ColorField.objects.filter(object_id=product.id)
+        sizes = SizeField.objects.filter(object_id=product.id)
+        cart = self.cart
+        return render(request, 'product_detail.html', locals())
 
 
 class DynamicProductLoad(View):
@@ -124,7 +129,7 @@ class RegistrationView(views.View):
                 address=form.cleaned_data['address']
             )
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
-            login(request,user)
+            login(request, user)
             return HttpResponseRedirect('/')
         context = {
             'form': form
@@ -132,63 +137,104 @@ class RegistrationView(views.View):
         return render(request, 'registration.html', context)
 
 
+class AccountView(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        context = {
+            'customer': customer,
+            'cart': self.cart
+        }
+        return render(request, 'personal_area.html', context)
 
 
+class PersonalData(views.View):
+    pass
 
 
+class CartView(views.View):
+    pass
 
 
+class HistoryOrders(views.View):
+    pass
 
 
+class AddToCartView(CartMixin, views.View):
+    def post(self, request, *args, **kwargs):
+        product = Product.objects.get(slug=kwargs.get('product_slug'))
+        color = request.POST.get('color')
+        size = request.POST.get('size')
+        color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
+        size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
+        cart_product, created = CartProduct.objects.get_or_create(
+            user=self.cart.owner, cart=self.cart, product=product,
+            color=color_field, size=size_field
+        )
+        if created:
+            cart_product.recalc_product()
+            self.cart.products.add(cart_product)
+            self.cart.recalc()
+            messages.add_message(request, messages.INFO, "Товар успешно добавлен")
+            self.cart.save()
+        else:
+            messages.add_message(request, messages.INFO, "Товар уже добавлен в корзину")
 
-# class ChangeSpecification(View):
-#     def post(self, request, *args, **kwargs):
-#         print(request.POST)
-#         return HttpResponseRedirect('/cart/')
-#
-#
-# class AddToCartView(View):
-#     def get(self, request, *args, **kwargs):
-#         customer = Customer.objects.get(user=request.user)
-#         cart = Cart.objects.get(owner=customer, in_order=False)
-#         product = Product.objects.get(slug=kwargs.get('product_slug'))
-#
-#         cart_product, created = CartProduct.objects.get_or_create(
-#             user=cart.owner, product=product, final_price=product.price, qty=1
-#         )
-#         if(created):
-#             cart.products.add(cart_product)
-#
-#         cart.save()
-#         return HttpResponseRedirect('/cart/')
-#
-#
-# class DeleteFromCart(View):
-#     def get(self, request, *args, **kwargs):
-#         customer = Customer.objects.get(user=request.user)
-#         cart = Cart.objects.get(owner=customer, in_order=False)
-#
-#         product = Product.objects.get(slug=kwargs.get('product_slug'))
-#
-#         cart_product = CartProduct.objects.get(
-#             user=cart.owner, product=product,
-#         )
-#         cart.products.remove(cart_product)
-#         cart_product.delete()
-#         cart.save()
-#         return HttpResponseRedirect('/cart/')
-#
-#
-# class CartView(View):
-#     def get(self, request, *args, **kwargs):
-#         customer = Customer.objects.get(user=request.user)
-#         cart = Cart.objects.get(owner=customer)
-#         products = CartProduct.objects.filter(user=customer)
-#         images = []
-#         for product in products:
-#             images.append(get_object_or_404(ImageGallery, object_id=product.product.id, is_main=True))
-#         context = {
-#             'cart': cart,
-#             'images': images,
-#         }
-#         return render(request, 'cart.html', context)
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+class DeleteFromCart(CartMixin, View):
+    def get(self, request, *args, **kwargs):
+        product = Product.objects.get(slug=kwargs.get('product_slug'))
+        qty = kwargs.get('qty')
+        color = kwargs.get('color')
+        size = kwargs.get('size')
+        color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
+        size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
+        final_price = product.price * qty
+        cart_product = CartProduct.objects.get(
+            user=self.cart.owner, cart=self.cart, product=product, qty=qty, final_price=final_price,
+            color=color_field, size=size_field
+        )
+
+        self.cart.products.remove(cart_product)
+        self.cart.recalc()
+        cart_product.delete()
+        messages.add_message(request, messages.INFO, "Товар успешно удален")
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+class ChangeQTY(CartMixin, views.View):
+    def post(self, request, *args, **kwargs):
+        product = Product.objects.get(slug=kwargs.get('product_slug'))
+        color = kwargs.get('color')
+        size = kwargs.get('size')
+        color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
+        size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
+
+        cart_product = CartProduct.objects.get(
+            user=self.cart.owner, cart=self.cart, product=product,
+            color=color_field, size=size_field
+        )
+        qty = int(request.POST.get('qty'))
+        cart_product.qty = qty
+        cart_product.recalc_product()
+        self.cart.recalc()
+        messages.add_message(request, messages.INFO, "Кол-во успешно изменено")
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+class CartView(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        cart = Cart.objects.get(owner=customer)
+        products = CartProduct.objects.filter(user=customer)
+        images = []
+        for product in products:
+            image = get_object_or_404(ImageGallery, object_id=product.product.id, is_main=True)
+            if not image in images:
+                images.append(image)
+        context = {
+            'cart': cart,
+            'images': images,
+        }
+        return render(request, 'cart.html', context)
