@@ -47,12 +47,16 @@
                 </tr>
                 {% endfor %}
                 <tr>
-                    <td>Итого: {{cart.total_price}} руб.</td>
+                    <td>Итого: {% if cart.products.count == 0 %}0 {% else %} {{cart.total_price}} {% endif %}    руб.</td>
                 </tr>
 
                 </tbody>
             </table>
         </div>
+        <a href="">
+            <button>Оформить заказ</button>
+        </a>
+
     </div>
 </div>
 

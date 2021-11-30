@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from .models import *
-
+from django.contrib.sessions.models import Session
 class ImageGalleryInline(GenericTabularInline):
     model = ImageGallery
     max_num = 5
@@ -31,6 +31,7 @@ admin.site.register(Cart)
 admin.site.register(Customer)
 admin.site.register(Order)
 admin.site.register(Notification)
+admin.site.register(Session)
 
 
 

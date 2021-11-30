@@ -8,7 +8,7 @@ from .forms import *
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 
-from .mixins import CartMixin
+from .mixins import CartMixin, CreateNotAuthCart
 
 
 class BaseView(CartMixin, views.View):
@@ -96,6 +96,8 @@ class LoginView(views.View):
             user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
+                if request.session['cart_id']:
+                    CreateNotAuthCart(request)
                 return HttpResponseRedirect('/')
         context = {
             'form': form
@@ -130,6 +132,8 @@ class RegistrationView(views.View):
             )
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             login(request, user)
+            if request.session['cart_id']:
+                CreateNotAuthCart(request)
             return HttpResponseRedirect('/')
         context = {
             'form': form
@@ -166,10 +170,20 @@ class AddToCartView(CartMixin, views.View):
         size = request.POST.get('size')
         color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
         size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
-        cart_product, created = CartProduct.objects.get_or_create(
-            user=self.cart.owner, cart=self.cart, product=product,
-            color=color_field, size=size_field
-        )
+        data = {
+            'cart': self.cart,
+            'product': product,
+            'size': size_field,
+            'color': color_field
+        }
+        if request.user.is_authenticated:
+            data.update({'user': self.cart.owner})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
+
+        else:
+            data.update({'session_key': request.session.session_key})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
+
         if created:
             cart_product.recalc_product()
             self.cart.products.add(cart_product)
@@ -190,11 +204,20 @@ class DeleteFromCart(CartMixin, View):
         size = kwargs.get('size')
         color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
         size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
-        final_price = product.price * qty
-        cart_product = CartProduct.objects.get(
-            user=self.cart.owner, cart=self.cart, product=product, qty=qty, final_price=final_price,
-            color=color_field, size=size_field
-        )
+        # final_price = product.price * qty
+        data = {
+            'cart': self.cart,
+            'product': product,
+            'size': size_field,
+            'color': color_field
+        }
+        if request.user.is_authenticated:
+            data.update({'user': self.cart.owner})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
+
+        else:
+            data.update({'session_key': request.session.session_key})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
 
         self.cart.products.remove(cart_product)
         self.cart.recalc()
@@ -211,10 +234,20 @@ class ChangeQTY(CartMixin, views.View):
         color_field = ColorField.objects.filter(color=color, object_id=product.id).first()
         size_field = SizeField.objects.filter(size=size, object_id=product.id).first()
 
-        cart_product = CartProduct.objects.get(
-            user=self.cart.owner, cart=self.cart, product=product,
-            color=color_field, size=size_field
-        )
+        data = {
+            'cart': self.cart,
+            'product': product,
+            'size': size_field,
+            'color': color_field
+        }
+        if request.user.is_authenticated:
+            data.update({'user': self.cart.owner})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
+
+        else:
+            data.update({'session_key': request.session.session_key})
+            cart_product, created = CartProduct.objects.get_or_create(**data)
+
         qty = int(request.POST.get('qty'))
         cart_product.qty = qty
         cart_product.recalc_product()
@@ -225,16 +258,15 @@ class ChangeQTY(CartMixin, views.View):
 
 class CartView(CartMixin, views.View):
     def get(self, request, *args, **kwargs):
-        customer = Customer.objects.get(user=request.user)
-        cart = Cart.objects.get(owner=customer)
-        products = CartProduct.objects.filter(user=customer)
+        products = CartProduct.objects.filter(user=self.cart.owner)
         images = []
         for product in products:
             image = get_object_or_404(ImageGallery, object_id=product.product.id, is_main=True)
             if not image in images:
                 images.append(image)
+
         context = {
-            'cart': cart,
+            'cart': self.cart,
             'images': images,
         }
         return render(request, 'cart.html', context)
