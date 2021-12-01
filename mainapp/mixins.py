@@ -44,5 +44,5 @@ class CartMixin(views.View):
                     cart = Cart.objects.create(
                         session_key=uuid.uuid4()
                     )
-                self.cart = cart
+            self.cart = cart
         return super().dispatch(request, *args, **kwargs)

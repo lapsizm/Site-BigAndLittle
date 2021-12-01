@@ -1,8 +1,31 @@
 from django import forms
 
+from .models import Order
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+
+
+class OrderForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+        model = Order
+        fields = (
+            'first_name', 'second_name', 'last_name', 'phone', 'address', 'comment'
+        )
+
+
+
+
+
+
+
+
+
+
 
 
 class LoginForm(forms.ModelForm):

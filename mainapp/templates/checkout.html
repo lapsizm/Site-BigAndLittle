@@ -1,0 +1,18 @@
+{% extends 'cart.html' %}
+{% load crispy_forms_tags %}
+
+{% block main-content %}
+
+<div class="container">
+    <h3>Оформление заказа</h3>
+    <form action="{% url 'make_order' %}" method="POST">
+        {% csrf_token %}
+        {{form | crispy}}
+        <input type="submit" value="Оформить заказ">
+    </form>
+
+
+</div>
+
+
+{%endblock%}

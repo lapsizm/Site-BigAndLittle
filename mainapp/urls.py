@@ -22,6 +22,8 @@ urlpatterns = [
     path('add-to-cart/<str:product_slug>/', AddToCartView.as_view(), name='add_to_cart'),
     path('delete-from-cart/<str:product_slug>/<str:size>/<str:color>/<int:qty>/', DeleteFromCart.as_view(), name='delete_from_cart'),
     path('change-qty/<str:product_slug>/<str:size>/<str:color>', ChangeQTY.as_view(), name='change_qty'),
+    path('checkout/', CheckoutView.as_view(), name='checkout'),
+    path('make-order/', MakeOrderView.as_view(), name='make_order'),
 
     # path('cart/', CartView.as_view(), name='cart'),
     # path('add-to-cart/<str:product_slug>/', AddToCartView.as_view(), name='add-to-cart'),

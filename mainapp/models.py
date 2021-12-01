@@ -109,7 +109,7 @@ class CartProduct(models.Model):
 
 
     def __str__(self):
-        return f"Продукт корзины: {self.product.title}"
+        return f"Продукт {self.cart.id} корзины: {self.product.title}"
 
     class Meta:
         verbose_name = 'Продукт корзины'
@@ -160,8 +160,8 @@ class Order(models.Model):
     second_name = models.CharField(max_length=100, verbose_name='Отчество')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
-    cart = models.ForeignKey(Cart, verbose_name='Корзина', on_delete=models.CASCADE)
-    address = models.CharField(max_length=1000, verbose_name='Адрес', null=True, blank=True)
+    cart = models.ForeignKey(Cart, verbose_name='Корзина', null=True, blank=True, on_delete=models.CASCADE)
+    address = models.CharField(max_length=1000, verbose_name='Адрес')
     status = models.CharField(max_length=100, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
     comment = models.TextField(verbose_name='Пожелания к заказу', null=True, blank=True)
     created_at = models.DateField(verbose_name='Дата создания заказа', auto_now=True)
