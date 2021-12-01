@@ -4,6 +4,11 @@
 {% block main-content %}
 
 <style>
+
+    body {
+        background: #fdd5b1;
+    }
+
     .main {
         background: #fdd5b1;
         padding-bottom: 5%;
@@ -20,13 +25,26 @@
         margin-left: 5%;
     }
 
-    .reg-btn {
-        margin-left: 0.5%;
-        border-radius: 2px;
-        border: 1px solid rgb(133, 133, 133);
+    .log-btn {
+        text-align: center;
+        padding: 0.5% 1.5%;
+        background: #f17180;
+        border-radius: 10px;
+        font-family: 'Exo 2', sans-serif;
+        font-weight: 500;
+        font-style: italic;
+        border: 2px solid #f17180;
+        color: #fff;
+        transition: 0.3s;
     }
 
-    .reg-btn p {
+    .log-btn:hover {
+        background: #fff;
+        color: #f17180;
+        border: 2px solid #f17180;
+    }
+
+    .log-btn p {
         margin: 0;
     }
 
@@ -37,6 +55,12 @@
 
         font-weight: 600;
         color: #f17180;
+    }
+    @media screen and (max-width: 370px) {
+
+        .reg {
+            margin-left: 0;
+        }
     }
 
 </style>
@@ -50,10 +74,10 @@
             {{form | crispy}}
             <div class="reg">
 
-                <input type="submit" value="Зарегистрироваться">
+                <input class="log-btn" type="submit" value="Регистрация">
 
                 <p>Уже есть аккаунт?</p>
-                <button class="reg-btn" onclick=" window.location.href = '{%url 'login'%}'">
+                <button class="log-btn" onclick=" window.location.href = '{%url 'login'%}'">
                     <p>Войти</p>
                 </button>
             </div>

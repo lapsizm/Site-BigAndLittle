@@ -31,7 +31,6 @@
 {% block header-content %}
 <header id="header" class="header">
 
-    {{request.user}}
     <div class="container">
         <nav class="nav">
             <div class="logo">
@@ -42,17 +41,6 @@
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'cart' %}">Корзина: {{cart.products.count}}</a>
-                    {% endif %}
-
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div>
-                        <strong>{{message}}</strong>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
 
                     <a href="{%url 'base' %}" class="menu-link">Главная</a>
 
@@ -60,20 +48,37 @@
 
                     <a href="{%url 'base'%}" class="menu-link">О нас</a>
 
-                    <a href="#information" class="menu-link">Информация</a>
+                    <a href="#information" class="menu-link information-link">Информация</a>
 
-                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link">Личный кабинет</a>
+                    {% if not request.user.is_authenticated %}
+                    <a href="{%url 'login'%}" class="menu-link personal-area-link"> Личный кабинет </a>
+                    {% else %}
+                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link"> Личный кабинет </a>
+                    {% endif %}
                 </div>
 
 
             </menu>
 
             <div class="instText-user">
+                <div class="cart-number">
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'cart' %}"> <img class="icon"
+                                                     src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v2.png"/>
+                    </a>
+                    {% else %}
+                    <a href="{% url 'login' %}"><img class="icon"
+                                                     src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v2.png"/></a>
+                    {% endif %}
+                    <div class="number">{{cart.products.count}}</div>
+                </div>
                 {% if not request.user.is_authenticated %}
-                <a href="{%url 'login'%}"> <img src="https://img.icons8.com/windows/96/000000/user-lock--v1.png"/>
+                <a href="{%url 'login'%}"> <img class="user"
+                                                src="https://img.icons8.com/windows/96/000000/user-lock--v1.png"/>
                 </a>
                 {% else %}
-                <a href="{%url 'personal_area'%}"> <img class="icon"
+
+                <a href="{%url 'personal_area'%}"> <img class="user"
                                                         src="https://img.icons8.com/pastel-glyph/64/000000/user-male-circle.png"/>
                 </a>
                 {% endif %}
@@ -98,7 +103,7 @@
         <div class="container">
             <div class="slogan">
                 <box>
-                    <h1>Женская одежда & Костюмы</h1>
+                    <h1>Женская одежда <br>& Костюмы</h1>
                     <p>Подарите себе стиль, не отказываясь от удобства, и грейтесь вместе с Big&Little</p>
                     <a href="{%url 'product_list'%}" class="btn">Перейти в каталог</a>
 
@@ -133,19 +138,19 @@
 
     <section class="about" id="about">
         <div class="container">
-            <h2>О нас</h2>
+            <h2 class="about-header">О нас</h2>
             <div class="content">
                 <div class="double-slider">
                     <style>
                         .slider .slick-arrow.slick-prev {
                             left: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100 % no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100% no-repeat;
                             border: 0;
                         }
 
                         .slider .slick-arrow.slick-next {
                             right: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100 % no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100% no-repeat;
                             border: 0;
                         }
                     </style>
@@ -343,23 +348,32 @@
     <div class="container">
         <nav class="nav">
             <logo class="logo">
-                <a href="#">B&L</a>
+                <a href="{%url 'base'%}">B&L</a>
             </logo>
             <menu class="menu">
 
                 <div class="menu-burger_overlay"></div>
 
                 <div class="menu-nav">
-                    <a href="{%url 'personal_area'%}" class="menu-link">Главная</a>
+                    <a href="{%url 'base'%}" class="menu-link">Главная</a>
 
                     <a href="#about" class="menu-link">О нас</a>
 
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
+                    {% if request.user.is_authenticated %}
+                    <a href="{% url 'cart' %}" class="menu-link cart">Корзина: {{cart.products.count}}</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="menu-link cart">Корзина: {{cart.products.count}}</a>
+                    {% endif %}
+
                     <a href="#information" class="menu-link">Информация</a>
 
-                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link">Личный кабинет</a>
-
+                    {% if not request.user.is_authenticated %}
+                    <a href="{%url 'login'%}" class="menu-link personal-area-link"> Личный кабинет </a>
+                    {% else %}
+                    <a href="{%url 'personal_area'%}" class="menu-link personal-area-link"> Личный кабинет </a>
+                    {% endif %}
                 </div>
 
             </menu>
