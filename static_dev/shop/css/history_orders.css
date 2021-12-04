@@ -1,0 +1,17 @@
+.table{
+    margin: 10% 0;
+}
+
+.catalog-history {
+    color: gray !important;
+    font-size: 130% !important;
+    text-decoration: underline !important;
+}
+
+.table-row:hover {
+    background: #f8c89b !important;
+}
+
+.number-order{
+    font-size: 30px !important;
+}

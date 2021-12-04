@@ -67,6 +67,7 @@
         </div>
         <span class="marked-brown">Итого: {{cart.total_price}} руб.</span>
 
+        {% if cart.products.count > 0 %}
         {% if request.user.is_authenticated %}
         <a href="{% url 'checkout' %}">
             <button class="log-btn">Оформить заказ</button>
@@ -74,6 +75,8 @@
         {% else %}
         <a href="{% url 'login' %}">Войдите или зарегистрируйтесь чтобы оформить заказ</a>
         {% endif %}
+        {% endif %}
+
 
     </div>
 </div>

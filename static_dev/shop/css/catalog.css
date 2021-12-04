@@ -169,6 +169,14 @@ body {
     margin-bottom: 0;
 }
 
+.description{
+    text-indent: 0 !important;
+    padding: 3%;
+    text-align: center !important;
+    margin-top: -20px;
+    margin-bottom: 50px;
+}
+
 .load-more-class {
     display: block;
     margin: 0 auto;

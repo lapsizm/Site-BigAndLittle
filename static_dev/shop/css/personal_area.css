@@ -13,7 +13,7 @@ body {
 }
 
 a{
-    text-decoration: none ;
+    text-decoration: none !important;
 }
 
 .block {
@@ -35,6 +35,7 @@ a{
 
 .data button {
     background: #fdd5b1;
+    color: black !important;
 }
 
 .icon {

@@ -51,6 +51,8 @@
                     <p class="prd-name"><a href="{{product.get_absolute_url}}"
                                            class="product-name">{{product.title}}</a>
                     </p>
+
+                    <p class="description">{{product.description | truncatewords:8 }}</p>
                 </div>
 
                 <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>

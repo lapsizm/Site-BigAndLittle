@@ -18,6 +18,8 @@ urlpatterns = [
     path('registration/', RegistrationView.as_view(), name='registration'),
     path('personal-data/', PersonalData.as_view(), name='personal_data'),
     path('history-orders/', HistoryOrders.as_view(), name='history_orders'),
+    path('history-detail/<str:id>', HistoryDetail.as_view(), name='history_detail'),
+
     path('cart/', CartView.as_view(), name='cart'),
     path('add-to-cart/<str:product_slug>/', AddToCartView.as_view(), name='add_to_cart'),
     path('delete-from-cart/<str:product_slug>/<str:size>/<str:color>/<int:qty>/', DeleteFromCart.as_view(), name='delete_from_cart'),

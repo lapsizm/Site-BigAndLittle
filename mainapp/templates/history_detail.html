@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main-content %}
+
+<div class="container">
+    <div class="content">
+        Номер заказа:{{order.id}}
+        Статус заказа:{{order.status}}
+        Имя:{{order.first_name}}
+        Отчество:{{order.second_name}}
+        Мурыгин{{order.last_name}}
+        Номер:{{order.phone}}
+        Адрес{{order.address}}
+
+        {% for prd in order.cart.products.all %}
+        {% for img in images %}
+        {% if img.object_id == prd.product.id %}
+        <img src="{{img.image.url}}" alt="priv" style="width: 100px">
+        {% endif %}
+        {% endfor %}
+        Название{{prd.product.title}}
+        Размер:{{prd.size.size}}
+        Цвет:{{prd.color.color}}
+        Цена{{prd.product.price}}
+        Количество{{prd.qty}}
+        Конечная цена товара:{{prd.final_price}}
+        {% endfor %}
+
+        Создано: {{order.created_at}}
+
+
+
+    </div>
+</div>
+
+
+{% endblock %}

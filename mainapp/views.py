@@ -161,8 +161,25 @@ class CartView(views.View):
     pass
 
 
-class HistoryOrders(views.View):
-    pass
+class HistoryOrders(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        orders = Order.objects.filter(customer=customer).order_by('-id')
+        cart = self.cart
+        return render(request, 'history_orders.html', locals())
+
+
+class HistoryDetail(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        order = Order.objects.get(id=kwargs.get('id'), customer=customer)
+        images = []
+        for prd in order.cart.products.all():
+            image = get_object_or_404(ImageGallery, object_id=prd.product.id, is_main=True)
+            if not image in images:
+                images.append(image)
+        cart = self.cart
+        return render(request, 'history_detail.html', locals())
 
 
 class AddToCartView(CartMixin, views.View):

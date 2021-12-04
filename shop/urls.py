@@ -22,7 +22,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('cart/', include('cart.urls')),
     path('', include('mainapp.urls')),
 ]
 

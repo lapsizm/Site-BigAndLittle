@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/cart.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/history_orders.css' %}">
+{% endblock %}
+
+{% block main-content %}
+
+<div class="container">
+    <div class="content">
+        {% if orders.count > 0 %}
+        <div class="table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Номер заказа</th>
+                    <th>Дата заказа</th>
+                    <th>Кол-во товаров</th>
+                    <th>Общая стоимость</th>
+                    <th>Статус заказа</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for order in orders %}
+                <tr class="table-row" onclick="window.location.href='{% url 'history_detail' id=order.id %}'">
+                    <td><p class="marked">№{{order.id}}</p></td>
+                    <td><p class="marked">{{order.created_at}}</p></td>
+                    <td><p class="marked">{{order.cart.products.count}}</p></td>
+                    <td><p class="marked">{{order.cart.total_price}}</p></td>
+                    <td><p class="marked">{{order.status}}</p></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+        {% else %}
+        <p class="marked">Вы не заказывали ничего в нашем магазине, посетите наш прекрасный <a
+                href="{%url 'product_list'%}" class="catalog-history">каталог</a></p>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}

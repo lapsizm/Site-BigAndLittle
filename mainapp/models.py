@@ -143,10 +143,10 @@ class Cart(models.Model):
 
 
 class Order(models.Model):
-    STATUS_NEW = 'new'
-    STATUS_IN_PROGRESS = 'in_progress'
-    STATUS_READY = 'is_ready'
-    STATUS_COMPLETED = 'completed'
+    STATUS_NEW = 'Новый заказ'
+    STATUS_IN_PROGRESS = 'Заказ в прогрессе'
+    STATUS_READY = 'Заказ готов'
+    STATUS_COMPLETED = 'Заказ завершены'
 
     STATUS_CHOICES = (
         (STATUS_NEW, 'Новый заказ'),
@@ -168,6 +168,7 @@ class Order(models.Model):
 
     def __str__(self):
         return str(self.id)
+
 
     class Meta:
         verbose_name = 'Заказ'
