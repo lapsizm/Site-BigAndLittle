@@ -153,12 +153,14 @@ class AccountView(CartMixin, views.View):
         return render(request, 'personal_area.html', context)
 
 
-class PersonalData(views.View):
-    pass
+class PersonalData(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        cart = self.cart
+        customer = Customer.objects.get(user=request.user)
+        orders = Order.objects.filter(customer=customer)
+        return render(request, 'personal_information.html', locals())
 
 
-class CartView(views.View):
-    pass
 
 
 class HistoryOrders(CartMixin, views.View):
@@ -275,6 +277,25 @@ class ChangeQTY(CartMixin, views.View):
         return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
+class ChangeInfo(CartMixin, views.View):
+    def post(self, request, *args, **kwargs):
+        first_name = request.POST.get('first-name')
+        last_name = request.POST.get('last-name')
+        address = request.POST.get('address')
+        phone = request.POST.get('phone')
+
+        customer = Customer.objects.get(user=request.user)
+        user = User.objects.get(username=request.user.username)
+        user.first_name = first_name
+        user.last_name = last_name
+        user.save()
+        customer.address = address
+        customer.phone = phone
+        customer.save()
+        messages.add_message(request, messages.INFO, "Успешно изменено")
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
 class CartView(CartMixin, views.View):
     def get(self, request, *args, **kwargs):
         products = CartProduct.objects.filter(user=self.cart.owner)
@@ -294,6 +315,7 @@ class CartView(CartMixin, views.View):
 class CheckoutView(CartMixin, views.View):
     def get(self, request, *args, **kwargs):
         form = OrderForm(request.POST or None)
+
         context = {
             'cart': self.cart,
             'form': form,

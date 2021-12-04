@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/personal_information.css' %}">
+{% endblock %}
+
+{% block main-content %}
+<div class="container">
+    <div class="content">
+        <div class="info">
+            <p class="login">
+                Логин: {{customer}}
+            </p>
+
+            <p>
+                E-mail: {{user.email}}
+            </p>
+
+            <p>
+                Кол-во заказов: {{orders.count}}
+            </p>
+
+            <form action="{% url 'change_info' %}" method="POST">
+                {% csrf_token %}
+                <p>Имя пользователя: <input type="text" name="first-name" value="{{customer.user.first_name}}"></p>
+                <br>
+                <br>
+                <p>Фамилия пользователя: <input type="text" name="last-name" value="{{customer.user.last_name}}"></p>
+                <br>
+                <br>
+                <p>Адрес: <input type="text" name="address" value="{{customer.address}}"></p>
+                <br>
+                <br>
+                <p>Телефон: <input type="text" name="phone" value="{{customer.phone}}"></p>
+                <br>
+                <br>
+
+                <input type="submit" value="Применить">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
