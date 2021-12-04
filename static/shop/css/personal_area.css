@@ -12,6 +12,10 @@ body {
     font-weight: 500;
 }
 
+a{
+    text-decoration: none ;
+}
+
 .block {
     box-sizing: border-box;
     border: solid 1px #cca480;

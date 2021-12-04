@@ -1,0 +1,116 @@
+body {
+    background: #fdd5b1;
+
+}
+
+.content {
+    display: block;
+     font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+}
+
+.slogan h1 {
+    font-family: "Times New Roman";
+    margin: 0;
+    font-style: italic;
+    font-size: 55px;
+    margin-bottom: 3%;
+}
+
+table {
+    width: 100%;
+}
+
+table img {
+    width: 100px;
+    border-radius: 10%;
+}
+
+.icon {
+    width: 40px;
+}
+
+.marked {
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+}
+
+.marked-brown, th {
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
+    color: #390000;
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 3%;
+}
+
+.product-color {
+    display: none;
+}
+
+.log-btn {
+    text-align: center;
+    padding: 0.5% 1.5%;
+    background: #f17180;
+    border-radius: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    border: 2px solid #f17180;
+    color: #fff;
+    transition: 0.3s;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.log-btn:hover {
+    background: #fff;
+    color: #f17180;
+    border: 2px solid #f17180;
+}
+
+
+input {
+    width: 100px;
+}
+
+@media screen and (max-width: 740px) {
+
+    .slogan h1 {
+        padding-top: 2%;
+        margin-bottom: 1%;
+    }
+
+    .unused {
+        display: none;
+    }
+
+    .marked-brown, th {
+        font-size: 15px;
+    }
+
+    table img {
+        width: 70px;
+    }
+
+    .icon {
+        width: 30px;
+    }
+
+    input {
+        width: 25px;
+    }
+
+    .product-color {
+        font-family: "Times New Roman";
+        font-style: normal;
+        display: block;
+        font-size: 13px;
+        color: #212529;
+    }
+
+    .log-btn {
+        margin-bottom: 5%;
+    }
+
+}

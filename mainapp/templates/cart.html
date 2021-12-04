@@ -34,7 +34,8 @@
                 <tbody>
                 {% for item in cart.products.all %}
                 <tr>
-                    <td><span class="marked">{{item.product.title}}<br><span class="product-color">({{item.color.color}})</span></span></td>
+                    <td><span class="marked">{{item.product.title}}<br><span class="product-color">({{item.color.color}})</span></span>
+                    </td>
                     {% for img in images %}
                     {% if img.object_id == item.product.id %}
                     <td><img src="{{img.image.url}}" alt="priv"></td>
@@ -65,6 +66,14 @@
             </table>
         </div>
         <span class="marked-brown">Итого: {{cart.total_price}} руб.</span>
+
+        {% if request.user.is_authenticated %}
+        <a href="{% url 'checkout' %}">
+            <button class="log-btn">Оформить заказ</button>
+        </a>
+        {% else %}
+        <a href="{% url 'login' %}">Войдите или зарегистрируйтесь чтобы оформить заказ</a>
+        {% endif %}
 
     </div>
 </div>

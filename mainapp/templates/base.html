@@ -46,9 +46,9 @@
 
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
-                    <a href="{%url 'base'%}" class="menu-link">О нас</a>
+                    <a href="{%url 'base'%}#about" class="menu-link">О нас</a>
 
-                    <a href="#information" class="menu-link information-link">Информация</a>
+                    <a href="{%url 'base'%}#information" class="menu-link information-link">Информация</a>
 
                     {% if not request.user.is_authenticated %}
                     <a href="{%url 'login'%}" class="menu-link personal-area-link"> Личный кабинет </a>
@@ -62,14 +62,9 @@
 
             <div class="instText-user">
                 <div class="cart-number">
-                    {% if request.user.is_authenticated %}
                     <a href="{% url 'cart' %}"> <img class="icon"
                                                      src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v2.png"/>
                     </a>
-                    {% else %}
-                    <a href="{% url 'login' %}"><img class="icon"
-                                                     src="https://img.icons8.com/pastel-glyph/64/000000/shopping-cart--v2.png"/></a>
-                    {% endif %}
                     <div class="number">{{cart.products.count}}</div>
                 </div>
                 {% if not request.user.is_authenticated %}
@@ -144,19 +139,19 @@
                     <style>
                         .slider .slick-arrow.slick-prev {
                             left: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100% no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_l.svg' %}) 0 0 / 100 % no-repeat;
                             border: 0;
                         }
 
                         .slider .slick-arrow.slick-next {
                             right: 0;
-                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100% no-repeat;
+                            background: url({% static 'shop/img/arrows/sl-arrow_r.svg' %}) 0 0 / 100 % no-repeat;
                             border: 0;
                         }
                     </style>
                     <div class="slider">
                         <div class="slider-item">
-                            <img src="{% static 'shop/img/slides/2.jpg' %}" loading="lazy" alt="">
+                            <img src="{% static 'shop/img/slides/1.jpg' %}" loading="lazy" alt="">
                         </div>
                         <div class="slider-item">
                             <img src="{% static 'shop/img/slides/2.jpg' %}" loading="lazy" alt="">
@@ -166,12 +161,6 @@
                         </div>
                         <div class="slider-item">
                             <img src="{% static 'shop/img/slides/4.jpg' %}" loading="lazy" alt="">
-                        </div>
-                        <div class="slider-item">
-                            <img src="{% static 'shop/img/slides/5.jpg' %}" loading="lazy" alt="">
-                        </div>
-                        <div class="slider-item">
-                            <img src="{% static 'shop/img/slides/6.jpg' %}" loading="lazy" alt="">
                         </div>
                     </div>
 
@@ -187,12 +176,6 @@
                         </div>
                         <div class="slider-nav-item">
                             <img src="{% static 'shop/img/slides/4.jpg' %}" loading="lazy" alt="">
-                        </div>
-                        <div class="slider-nav-item">
-                            <img src="{% static 'shop/img/slides/5.jpg' %}" loading="lazy" alt="">
-                        </div>
-                        <div class="slider-nav-item">
-                            <img src="{% static 'shop/img/slides/6.jpg' %}" loading="lazy" alt="">
                         </div>
                     </div>
                 </div>
@@ -357,17 +340,11 @@
                 <div class="menu-nav">
                     <a href="{%url 'base'%}" class="menu-link">Главная</a>
 
-                    <a href="#about" class="menu-link">О нас</a>
+                    <a href="{%url 'base'%}#about" class="menu-link">О нас</a>
 
                     <a href="{%url 'product_list'%}" class="menu-link">Каталог</a>
 
-                    {% if request.user.is_authenticated %}
-                    <a href="{% url 'cart' %}" class="menu-link cart">Корзина: {{cart.products.count}}</a>
-                    {% else %}
-                    <a href="{% url 'login' %}" class="menu-link cart">Корзина: {{cart.products.count}}</a>
-                    {% endif %}
-
-                    <a href="#information" class="menu-link">Информация</a>
+                    <a href="{%url 'base'%}#information" class="menu-link">Информация</a>
 
                     {% if not request.user.is_authenticated %}
                     <a href="{%url 'login'%}" class="menu-link personal-area-link"> Личный кабинет </a>

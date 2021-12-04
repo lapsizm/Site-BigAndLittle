@@ -1,9 +1,12 @@
 body {
     background: #fdd5b1;
+
 }
 
 .content {
     display: block;
+     font-family: 'Exo 2', sans-serif;
+    font-style: italic;
 }
 
 .slogan h1 {
@@ -41,12 +44,29 @@ table img {
     margin-bottom: 3%;
 }
 
-.product-color{
+.product-color {
     display: none;
 }
 
-.size {
+.log-btn {
     text-align: center;
+    padding: 0.5% 1.5%;
+    background: #f17180;
+    border-radius: 10px;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 500;
+    font-style: italic;
+    border: 2px solid #f17180;
+    color: #fff;
+    transition: 0.3s;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.log-btn:hover {
+    background: #fff;
+    color: #f17180;
+    border: 2px solid #f17180;
 }
 
 
@@ -77,16 +97,20 @@ input {
         width: 30px;
     }
 
-    input{
+    input {
         width: 25px;
     }
 
-    .product-color{
+    .product-color {
         font-family: "Times New Roman";
         font-style: normal;
         display: block;
         font-size: 13px;
         color: #212529;
+    }
+
+    .log-btn {
+        margin-bottom: 5%;
     }
 
 }

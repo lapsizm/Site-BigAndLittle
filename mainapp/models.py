@@ -88,7 +88,7 @@ class ImageGallery(models.Model):
 
 
 class CartProduct(models.Model):
-    user = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
+    user = models.ForeignKey('Customer', null=True, blank=True, verbose_name='Покупатель', on_delete=models.CASCADE)
     cart = models.ForeignKey('Cart', verbose_name='Корзина', on_delete=models.CASCADE)
     product = models.ForeignKey(Product, verbose_name='Добавленный товар', on_delete=models.CASCADE, null=True,
                                 blank=True)
@@ -100,13 +100,16 @@ class CartProduct(models.Model):
     final_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена', null=True, blank=True,
                                       default=0)
 
+    session_key = models.CharField(max_length=1024, null=True, blank=True, verbose_name='Ключ сессии')
+
     def recalc_product(self, *args, **kwargs):
         self.final_price = self.product.price * int(self.qty)
 
         super().save(*args, **kwargs)
 
+
     def __str__(self):
-        return f"Продукт корзины: {self.product.title}"
+        return f"Продукт {self.cart.id} корзины: {self.product.title}"
 
     class Meta:
         verbose_name = 'Продукт корзины'
@@ -114,13 +117,13 @@ class CartProduct(models.Model):
 
 
 class Cart(models.Model):
-    owner = models.ForeignKey('Customer', verbose_name='Покупатель', on_delete=models.CASCADE)
+    owner = models.ForeignKey('Customer', null=True, blank=True, verbose_name='Покупатель', on_delete=models.CASCADE)
     products = models.ManyToManyField(CartProduct, blank=True, related_name='related_cart',
                                       verbose_name='Продукты корзины')
     total_products = models.PositiveIntegerField(default=0, verbose_name='Общее кол-во товаров')
     total_price = models.DecimalField(max_digits=9, decimal_places=2, verbose_name='Общая цена', null=True, blank=True)
     in_order = models.BooleanField(default=False)  # для истории заказов
-    for_anonymous_user = models.BooleanField(default=False)  # загушка для неавторизованных
+    session_key = models.CharField(max_length=1024, null=True, blank=True, verbose_name='Ключ сессии')
 
     def __str__(self):
         return str(self.id)
@@ -157,8 +160,8 @@ class Order(models.Model):
     second_name = models.CharField(max_length=100, verbose_name='Отчество')
     last_name = models.CharField(max_length=100, verbose_name='Фамилия')
     phone = models.CharField(max_length=20, verbose_name='Телефон')
-    cart = models.ForeignKey(Cart, verbose_name='Корзина', on_delete=models.CASCADE)
-    address = models.CharField(max_length=1000, verbose_name='Адрес', null=True, blank=True)
+    cart = models.ForeignKey(Cart, verbose_name='Корзина', null=True, blank=True, on_delete=models.CASCADE)
+    address = models.CharField(max_length=1000, verbose_name='Адрес')
     status = models.CharField(max_length=100, verbose_name='Статус заказа', choices=STATUS_CHOICES, default=STATUS_NEW)
     comment = models.TextField(verbose_name='Пожелания к заказу', null=True, blank=True)
     created_at = models.DateField(verbose_name='Дата создания заказа', auto_now=True)

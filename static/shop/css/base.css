@@ -1,9 +1,17 @@
 
+body {
+    background: #fdd5b1;
+}
+
 .header {
     background: #fdd5b1;
     padding-top: 57px;
-    height: 100%;
     position: relative;
+}
+
+header, footer {
+    font-family: 'Exo 2', sans-serif;
+    font-style: italic;
 }
 
 .container {
@@ -27,6 +35,7 @@
 .logo {
     margin-right: 6%;
     left: 0;
+    font-style: normal;
 }
 
 .logo a {
@@ -69,6 +78,7 @@
     padding-bottom: 3.5%;
 }
 
+
 .personal-area-link {
     display: none;
 }
@@ -92,16 +102,35 @@
 
 .instText-user {
     display: flex;
+    margin-left: auto;
 }
 
-.instText-user img{
-    margin-left: auto;
+.number {
+    font-size: 19px;
+    padding-top: 30px;
+    margin-left: -10px;
+}
+
+.cart-number {
+    display: flex;
+    margin-right: 20px;
+}
+
+.cart {
+    display: none;
+}
+
+.user {
+    margin-right: 10px;
+}
+
+.instText-user img {
     width: 50px;
     height: 50px;
 }
 
 .instText {
-    margin-left: 4%;
+    margin-left: 5%;
 }
 
 .instText a {
@@ -208,6 +237,7 @@
     font-family: 'Exo 2', sans-serif;
     font-style: italic;
     color: #d0bfbe;
+    text-align: center;
     align-items: center;
     font-weight: 500;
     font-size: 17px;
@@ -277,6 +307,7 @@
 .about .container .contacts h2 {
     font-size: 30px;
     align-items: center;
+    text-align: center !important;
 }
 
 .contacts-map {
@@ -332,6 +363,7 @@
 .about .container .location h2 {
     font-size: 30px;
     white-space: nowrap;
+    text-align: center !important;
 }
 
 .location {
@@ -366,7 +398,7 @@
 
 .slider img {
     width: 350px;
-    height: 400px;
+    height: 350px;
     border-radius: 5%;
 }
 
@@ -376,9 +408,10 @@
 }
 
 .slider-nav img {
-    width: 87px;
-    height: 87px;
+    width: 82px;
+    height: 82px;
     border-radius: 5%;
+    margin-right: 6px;
 }
 
 /* Ограничивающая оболочка */
@@ -593,7 +626,7 @@ footer .container {
         margin-right: 0;
     }
 
-    .instText-user img{
+    .instText-user img {
         width: 45px;
         height: 45px;
         margin-top: 3px;
@@ -614,6 +647,7 @@ footer .container {
     .slogan p {
         font-size: 19px;
     }
+
 
     .content p {
         font-size: 19px;
@@ -672,7 +706,7 @@ footer .container {
         margin-right: 13%;
     }
 
-    .instText-user img{
+    .instText-user img {
         width: 40px;
         height: 40px;
         margin-top: 5px;
@@ -716,12 +750,13 @@ footer .container {
 
     .slider img {
         width: 300px;
-        height: 350px;
+        height: 300px;
     }
 
     .slider-nav img {
-        width: 73px;
-        height: 73px;
+        width: 70px;
+        height: 70px;
+        margin-right: 5px;
     }
 
     .slider {
@@ -847,13 +882,16 @@ footer .container {
         font-size: 60px;
     }
 
-    .menu {
-        width: 68%;
-    }
 
     .menu-nav a {
         font-size: 18px;
+        margin-right: 13%;
     }
+
+    .information-link {
+        margin-right: 0 !important;
+    }
+
 
     .instText a {
         font-size: 18px;
@@ -890,12 +928,13 @@ footer .container {
 
     .slider img {
         width: 270px;
-        height: 325px;
+        height: 270px;
     }
 
     .slider-nav img {
-        width: 66px;
-        height: 70px;
+        width: 64px;
+        height: 64px;
+        margin-right: 4px;
     }
 
     .slider {
@@ -970,8 +1009,7 @@ footer .container {
     }
 
     .menu {
-        width: 68%;
-        padding-left: 50px;
+        padding-left: 30px;
     }
 
     .menu-nav a {
@@ -979,7 +1017,21 @@ footer .container {
         margin-right: 10%;
     }
 
-    .instText-user img{
+    .number {
+        font-size: 19px;
+        padding-top: 25px;
+        margin-left: -10px;
+    }
+
+    .cart-number {
+        margin-right: 15px;
+    }
+
+    .user {
+        margin-right: 8px;
+    }
+
+    .instText-user img {
         width: 35px;
         height: 35px;
         margin-top: 3px;
@@ -1020,12 +1072,13 @@ footer .container {
 
     .slider img {
         width: 270px;
-        height: 310px;
+        height: 270px;
     }
 
     .slider-nav img {
-        width: 66px;
-        height: 66px;
+        width: 64px;
+        height: 64px;
+        margin-right: 4px;
     }
 
     .slider {
@@ -1054,7 +1107,7 @@ footer .container {
 
     .contacts {
         position: absolute;
-        margin-top: -180px;
+        margin-top: -200px;
     }
 
     .contacts h2, .location h2 {
@@ -1132,6 +1185,10 @@ footer .container {
     }
 
     .menu-burger {
+        display: block;
+    }
+
+    .cart {
         display: block;
     }
 
@@ -1227,17 +1284,18 @@ footer .container {
     }
 
     .slider img {
-        width: 150px;
-        height: 190px;
+        width: 230px;
+        height: 230px;
     }
 
     .slider-nav img {
-        width: 37px;
-        height: 40px;
+        width: 54px;
+        height: 54px;
+        margin-right: 4px;
     }
 
     .slider {
-        width: 150px;
+        width: 230px;
     }
 
     .slider .slick-arrow {
@@ -1246,7 +1304,7 @@ footer .container {
     }
 
     .slick-list {
-        width: 150px !important;
+        width: 230px !important;
     }
 
     .content p {
@@ -1271,7 +1329,8 @@ footer .container {
 
     .contacts {
         position: absolute;
-        margin-top: -190px;
+        margin-top: -250px;
+        margin-left: 30px;
     }
 
     .contacts h2, .location h2 {
@@ -1329,7 +1388,7 @@ footer .container {
     }
 
     .instText p {
-        font-size: 16px;
+        font-size: 14px;
     }
 
     .slogan h1 {
@@ -1362,12 +1421,13 @@ footer .container {
 
     .slider img {
         width: 185px;
-        height: 230px;
+        height: 185px;
     }
 
     .slider-nav img {
         width: 44px;
-        height: 50px;
+        height: 44px;
+        margin-right: 3px;
     }
 
     .slider {
@@ -1396,7 +1456,8 @@ footer .container {
 
     .contacts {
         position: absolute;
-        margin-top: -320px;
+        margin-top: -360px;
+        margin-left: 0;
     }
 
     .contacts h2, .location h2 {
@@ -1467,11 +1528,6 @@ footer .container {
         width: 420px;
     }
 
-    .logo a {
-        margin-left: 20px;
-        font-size: 40px;
-    }
-
     .menu-nav {
         width: 35%;
     }
@@ -1485,29 +1541,57 @@ footer .container {
         font-size: 13px;
     }
 
+    .header {
+        padding-top: 30px !important;
+    }
+
+    .slogan {
+        display: block;
+        padding-bottom: 5%;
+    }
+
+    .photo {
+        position: absolute;
+        width: 320px;
+        margin-left: 10%;
+        margin-top: -520px;
+    }
+
+    .logo a {
+        margin-left: 0;
+        font-size: 40px;
+    }
+
     .instText a {
         font-size: 16px;
     }
 
     .instText p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .slogan h1 {
-        font-size: 24px;
-        margin-top: 5%;
+        text-align: center;
+        margin-bottom: 380px;
     }
 
     .slogan p {
-        font-size: 11px;
+        text-align: center;
+        font-size: 17px;
+        padding-bottom: 30px;
     }
 
     .btn {
-        font-size: 12px;
+        display: block;
+        margin: 0 auto;
+        font-size: 16px;
+        padding: 2%;
     }
 
-    .achievements p {
-        font-size: 12px;
+    .slogan h1 {
+        font-size: 40px !important;
+        margin-top: 0 !important;
+        padding-top: 5%;
     }
 
     .central {
@@ -1522,30 +1606,36 @@ footer .container {
         line-height: 1em;
     }
 
-    .marked {
-        font-size: 14px;
-    }
 
-    .marked-bold {
+    .achievements p {
         font-size: 15px;
     }
 
+    .marked {
+        font-size: 17px;
+    }
+
+    .marked-bold {
+        font-size: 18px;
+    }
+
     .slider img {
-        width: 170px;
-        height: 230px;
+        width: 396px;
+        height: 396px;
     }
 
     .slider-nav img {
-        width: 42px;
-        height: 50px;
+        width: 91px;
+        height: 91px;
+        margin-right: 8px;
     }
 
     .slider {
-        width: 170px;
+        width: 396px;
     }
 
     .slick-list {
-        width: 170px !important;
+        width: 396px !important;
     }
 
     .content {
@@ -1553,24 +1643,37 @@ footer .container {
     }
 
     .content p {
-        font-size: 14px;
-        text-align: left;
+        font-size: 16px;
     }
 
     .double-slider {
         position: relative;
-        float: left;
         margin-right: 13px;
     }
 
+    .text {
+        margin-top: 60px;
+    }
 
     .content .marked {
-        font-size: 14px;
+        font-size: 16px;
+    }
+
+    .slider .slick-arrow {
+        width: 20px !important;
+        height: 35px !important;
     }
 
     .about .container h2 {
-        font-size: 26px;
+        font-size: 35px;
     }
+
+    .about-header {
+        position: absolute;
+        margin-top: 515px;
+        margin-left: 150px;
+    }
+
 
     .contacts {
         margin-top: 20px;
@@ -1579,12 +1682,21 @@ footer .container {
     }
 
     .contacts h2, .location h2 {
-        font-size: 18px !important;
+        font-size: 21px !important;
         margin-bottom: 0;
     }
 
+    .contacts h2 {
+        margin-bottom: 25px;
+    }
+
+    .location h2 {
+        margin-top: -20px !important;
+        margin-left: 10px !important;
+    }
+
     .contacts a {
-        font-size: 14px;
+        font-size: 16px;
         margin-left: 0;
     }
 
@@ -1604,15 +1716,15 @@ footer .container {
     }
 
     .address {
-        width: 240px;
-        margin-top: -174px;
-        margin-left: 150px;
+        width: 230px;
+        margin-top: -190px;
+        margin-left: 160px;
         padding-top: 10px;
         line-height: 0.8em;
     }
 
     .address p {
-        margin-left: 30px;
+        margin-left: 50px;
     }
 
     .slider .slick-arrow {
@@ -1628,22 +1740,22 @@ footer .container {
     }
 
     .information .container h2 {
-        font-size: 26px;
+        font-size: 35px;
     }
 
     .question {
-        font-size: 14px;
+        font-size: 15px;
 
     }
 
     .answer {
-        font-size: 14px;
+        font-size: 15px;
         margin-top: -20px;
         margin-bottom: 20px;
     }
 
     .answer .marked {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
 
@@ -1652,14 +1764,9 @@ footer .container {
         width: 405px;
     }
 
-    .slogan h1 {
-        font-size: 23px;
-        margin-top: 5%;
-    }
-
 }
 
-@media screen and (max-width: 415px) {
+@media screen and (max-width: 410px) {
     .container {
         width: 365px;
     }
@@ -1669,8 +1776,8 @@ footer .container {
     }
 
     .logo a {
-        margin-left: 20px;
-        font-size: 40px;
+        margin-left: 0;
+        font-size: 35px;
     }
 
     .menu-nav {
@@ -1690,67 +1797,64 @@ footer .container {
     }
 
     .instText p {
-        font-size: 14px;
-    }
-
-    .slogan h1 {
-        font-size: 20px;
-        margin-top: 5%;
-    }
-
-    .slogan p {
-        font-size: 10px;
-    }
-
-    .slogan box {
-        width: 70%;
-        padding-left: 0;
-    }
-
-    .btn {
-        font-size: 11px;
-    }
-
-    .achievements p {
         font-size: 12px;
     }
 
-    .central {
-        width: 60%;
+    .slogan h1 {
+        font-size: 35px !important;
+        margin-bottom: 350px;
+
     }
 
-    .left, .right {
-        width: 20%;
+    .slogan p {
+        font-size: 16px;
     }
+
+    .slogan box {
+        width: 60%;
+        padding-left: 0;
+    }
+
+    .photo {
+        width: 290px;
+        margin-top: -480px;
+    }
+
+
+    .achievements p {
+        font-size: 14px;
+    }
+
 
     .left {
         line-height: 1em;
     }
 
     .marked {
-        font-size: 14px;
-    }
-
-    .marked-bold {
         font-size: 15px;
     }
 
+    .marked-bold {
+        font-size: 16px;
+    }
+
     .slider img {
-        width: 140px;
-        height: 190px;
+        width: 342px;
+        height: 342px;
     }
 
     .slider-nav img {
-        width: 34px;
-        height: 40px;
+        width: 80px;
+        height: 80px;
+        margin-right: 5px;
     }
 
     .slider {
-        width: 140px;
+        width: 342px;
     }
 
     .slick-list {
-        width: 140px !important;
+        width: 342px !important;
     }
 
     .content {
@@ -1758,23 +1862,22 @@ footer .container {
     }
 
     .content p {
-        font-size: 14px;
-        text-align: left;
+        font-size: 15px;
     }
 
     .double-slider {
         position: relative;
-        float: left;
         margin-right: 13px;
     }
 
 
     .content .marked {
-        font-size: 14px;
+        font-size: 15px;
     }
 
-    .about .container h2 {
-        font-size: 23px;
+    .about-header {
+        margin-top: 450px;
+        margin-left: 130px;
     }
 
     .contacts {
@@ -1784,16 +1887,26 @@ footer .container {
     }
 
     .contacts h2, .location h2 {
-        font-size: 18px !important;
+        font-size: 19px !important;
         margin-bottom: 0;
+        margin-top: 10px !important;
     }
 
     .contacts h2 {
-        margin-bottom: 10px;
+        margin-bottom: 20px !important;
+    }
+
+    .location h2 {
+        margin-top: -15px !important;
+    }
+
+    .text {
+        margin-left: 0 !important;
+        margin-bottom: 30px !important;
     }
 
     .contacts a {
-        font-size: 14px;
+        font-size: 15px;
         margin-left: 0;
     }
 
@@ -1802,18 +1915,18 @@ footer .container {
     }
 
     .contacts-map p {
-        font-size: 14px;
+        font-size: 15px;
     }
 
     .location {
         position: static;
         margin-top: -10px;
-        padding-left: 2%;
+        padding-left: 3%;
         align-items: center;
     }
 
     .address {
-        width: 200px;
+        width: 210px;
         margin-top: -190px;
         margin-left: 130px;
         padding-top: 10px;
@@ -1824,10 +1937,6 @@ footer .container {
         margin-left: 30px;
     }
 
-    .slider .slick-arrow {
-        width: 10px;
-        height: 20px;
-    }
 
     .map {
         margin-top: 40px;
@@ -1837,7 +1946,7 @@ footer .container {
 
 @media screen and (max-width: 370px) {
     .container {
-        width: 315px;
+        width: 320px;
     }
 
     .header {
@@ -1849,38 +1958,57 @@ footer .container {
         width: 45%;
     }
 
+    .instText-user {
+        margin-left: -3%;
+    }
+
+
+    .user {
+        margin-right: 0;
+    }
+
+    .cart-number {
+        margin-left: -10px;
+    }
+
     .slogan h1 {
-        margin: 0;
+        padding-top: 10px !important;
+        font-size: 30px !important;
+        margin-bottom: 290px;
     }
 
     .slogan p {
-        font-size: 9px;
+        font-size: 14px;
+        margin-bottom: 0 !important;
     }
 
-    .btn {
-        font-size: 10px;
+    .photo {
+        width: 250px;
+        margin-top: -410px;
     }
+
 
     .slider img {
-        width: 120px;
-        height: 150px;
+        width: 300px;
+        height: 300px;
     }
 
     .slider-nav img {
-        width: 29px;
-        height: 35px;
+        width: 68px;
+        margin-right: 7px;
+        height: 68px;
     }
 
     .slider {
-        width: 120px;
+        width: 300px;
     }
 
     .slick-list {
-        width: 120px !important;
+        width: 300px !important;
     }
 
     .achievements p {
-        font-size: 11px;
+        font-size: 13px;
     }
 
     .central {
@@ -1889,6 +2017,10 @@ footer .container {
 
     .left, .right {
         width: 20%;
+    }
+
+    .right {
+        margin-right: 15px;
     }
 
     .left {
@@ -1904,16 +2036,26 @@ footer .container {
         padding-top: 5px;
     }
 
+    .about-header {
+        margin-top: 390px;
+        margin-left: 100px;
+        font-size: 30px !important;
+    }
+
     .content p {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .content .marked {
-        font-size: 13px;
+        font-size: 14px;
     }
 
     .location {
         padding-left: 0;
+    }
+
+    .contacts {
+        margin-left: -5px !important;
     }
 
     .contacts li {
@@ -1921,21 +2063,21 @@ footer .container {
     }
 
     .contacts-map p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .contacts h2, .location h2 {
-        font-size: 16px !important;
+        font-size: 17px !important;
     }
 
     .contacts-map a {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .address {
-        width: 180px;
-        margin-top: -175px;
-        margin-left: 110px;
+        width: 190px;
+        margin-top: -180px;
+        margin-left: 120px;
     }
 
     .address p {
@@ -1947,14 +2089,17 @@ footer .container {
         margin-left: -5px;
     }
 
+    .information .container h2 {
+        font-size: 30px !important;
+    }
 
     .question {
-        font-size: 13px;
+        font-size: 14px;
 
     }
 
     .answer {
-        font-size: 13px;
+        font-size: 14px;
         margin-top: -20px;
         margin-bottom: 20px;
     }
