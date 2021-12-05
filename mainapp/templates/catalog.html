@@ -8,8 +8,6 @@
 {% endblock %}
 
 
-<body>
-
 {% block main-content %}
 <main class="container">
     <h1 class="name-wrapper">
@@ -39,30 +37,39 @@
         <ul class="product-list">
             {% for product in products %}
             <li class="products">
-                {% for img in images %}
-                {% if img.object_id == product.id %}
-                <div class="product-photo"><a href="{{product.get_absolute_url}}"><img class="prd-img"
-                                                                                       src="{{img.image.url}}"
-                                                                                       alt="priv"></a>
-                </div>
-                {% endif %}
-                {% endfor %}
-                <div class="text-product">
-                    <p class="prd-name"><a href="{{product.get_absolute_url}}"
-                                           class="product-name">{{product.title}}</a>
-                    </p>
+                {% if forloop.last %}
+                <div class="product-load last-product" data-productid="{{product.id}}">
+                    {% else %}
+                    <div class="product-load">
+                        {% endif %}
+                        {% for img in images %}
+                        {% if img.object_id == product.id %}
+                        <div class="product-photo"><a href="{{product.get_absolute_url}}"><img class="prd-img"
+                                                                                               src="{{img.image.url}}"
+                                                                                               alt="priv"></a>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        <div class="text-product">
+                            <p class="prd-name"><a href="{{product.get_absolute_url}}"
+                                                   class="product-name">{{product.title}}</a>
+                            </p>
 
-                    <p class="description">{{product.description | truncatewords:8 }}</p>
-                </div>
+                            <p class="description">{{product.description | truncatewords:8 }}</p>
+                        </div>
 
-                <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
+                        <p class="product-price"><big>{{product.price}}</big> <small>руб.</small></p>
+
+                    </div>
 
             </li>
             {% endfor%}
         </ul>
     </div>
-    <button class="load-more-class" id="load-more"><a href="">Загрузить еще</a></button>
 
+    {% if products.count >= 6 %}
+    <button class="load-more-class" id="load-more">Загрузить еще</button>
+    {% endif %}
     </div>
 </main>
 
@@ -70,9 +77,68 @@
 
 {% block js-scripts %}
 <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+        crossorigin="anonymous"></script>
 <script src="{% static 'shop/js/base.js' %}" loading="lazy"></script>
 <script src="{% static 'shop/js/catalog.js' %}" loading="lazy"></script>
-{% endblock %}
 
-</body>
+
+<script>
+    $('#load-more').on('click', function () {
+        let lastProductId = $('.last-product').attr('data-productid')
+        let data = {
+            lastProductId: lastProductId
+        }
+        $('.product-load').removeClass('last-product')
+        $('.product-load').removeAttr('data-productid')
+        $.ajax({
+            method: "GET",
+            dataType: "json",
+            data: data,
+            url: '{% url "load-more-products" %}',
+            success: function (data) {
+                let result = data['data']
+                if (!result) {
+                    $('.load-more-class').css('display', 'none')
+                } else {
+                    $.each(result, function (key, obj) {
+                        if (obj['last_product']) {
+                            $('.product-list').append(
+                                '<li class="products">' +
+                                '<div class="product-load last-product" data-productid="' + obj['id'] + '">' +
+                                '<div class="product-photo"><a href="' + obj['product_url'] + '"><img class="prd-img"' +
+                                'src="' + obj['img_url'] + '"alt="priv"></a>' +
+                                '</div>' +
+                                '<div class="text-product">' +
+                                '<p class="prd-name"><a href="' + obj['product_url'] + '" class="product-name">' +
+                                obj['title'] + '</a></p>' +
+                                '<p class="description">' + obj['description'] + '</p>' +
+                                '</div>' + '<p class= "product-price"><big>' + obj['price'] + '</big><small>руб.</small ></p>' +
+                                '</div>' +
+                                '</li>'
+                            )
+                        } else {
+                            $('.product-list').append(
+                                '<li class="products">' +
+                                '<div class="product-load">' +
+                                '<div class="product-photo"><a href="' + obj['product_url'] + '"><img class="prd-img"' +
+                                'src="' + obj['img_url'] + '"alt="priv"></a>' +
+                                '</div>' +
+                                '<div class="text-product">' +
+                                '<p class="prd-name"><a href="' + obj['product_url'] + '" class="product-name">' +
+                                obj['title'] + '</a></p>' +
+                                '<p class="description">' + obj['description'] + '</p>' +
+                                '</div>' + '<p class= "product-price"><big>' + obj['price'] + '</big><small>руб.</small ></p>' +
+                                '</div>' +
+                                '</li>'
+                            )
+                        }
+                    })
+                }
+            }
+        })
+    })
+</script>
+
+
+{% endblock %}

@@ -7,7 +7,10 @@ from django.db import transaction
 from .models import *
 from django.http import JsonResponse, HttpResponseRedirect
 from .forms import *
+
 from django.contrib.auth import authenticate, login
+from django.contrib.auth import views as auth_views
+
 from django.contrib import messages
 
 from .mixins import CartMixin, CreateNotAuthCart
@@ -24,7 +27,7 @@ class BaseView(CartMixin, views.View):
 class ProductList(CartMixin, views.View):
     def get(self, request, *args, **kwargs):
         categories = Category.objects.all()
-        products = Product.objects.all()[:9]
+        products = Product.objects.all().order_by('-id')[:6]
         images = ImageGallery.objects.filter(is_main=True)
         cart = self.cart
         return render(request, 'catalog.html', locals())
@@ -53,28 +56,31 @@ class ProductDetail(CartMixin, views.View):
         return render(request, 'product_detail.html', locals())
 
 
-class DynamicProductLoad(View):
+class DynamicProductLoad(views.View):
     def get(self, request, *args, **kwargs):
         last_product_id = request.GET.get('lastProductId')
-        more_products = Product.objects.filter(pk__gt=int(last_product_id)).values('id', 'title', 'price',
-                                                                                   'description')[:9]
-        images = ImageGallery.objects.filter(object_id=last_product_id, is_main=True)
+        more_products = Product.objects.filter(pk__lt=int(last_product_id)).order_by('-id').values('id', 'title', 'price',
+                                                                                   'description')[:6]
 
         if not more_products:
             return JsonResponse({'data': False})
         data = []
-        main_img = []
-        for img in images:
-            main_img.append('{{img.image.url}}')
-            break
 
         for product in more_products:
+            product_id = product['id']
+            images = ImageGallery.objects.filter(object_id=product_id, is_main=True).first()
+            main_img_url = images.image.url
+            same_prd = Product.objects.filter(id=product_id).first()
+            product_url = same_prd.get_absolute_url()
+            description = (product['description'] + ' ...') if len(product['description'].split()) > 8 else product['description']
+
             obj = {
                 'id': product['id'],
                 'title': product['title'],
                 'price': product['price'],
-                'description': product['description'],
-                'img': main_img
+                'description': description,
+                'product_url': product_url,
+                'img_url': main_img_url
             }
             data.append(obj)
         data[-1]['last_product'] = True
@@ -141,6 +147,7 @@ class RegistrationView(views.View):
             'form': form
         }
         return render(request, 'registration.html', context)
+
 
 
 class AccountView(CartMixin, views.View):
