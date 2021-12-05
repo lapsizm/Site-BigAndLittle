@@ -72,7 +72,7 @@ class DynamicProductLoad(views.View):
             main_img_url = images.image.url
             same_prd = Product.objects.filter(id=product_id).first()
             product_url = same_prd.get_absolute_url()
-            description = (product['description'] + ' ...') if len(product['description'].split()) > 8 else product['description']
+            description = (product['description'][:40] + ' ...') if len(product['description'].split()) > 8 else product['description']
 
             obj = {
                 'id': product['id'],
