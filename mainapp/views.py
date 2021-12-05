@@ -329,6 +329,14 @@ class CheckoutView(CartMixin, views.View):
         }
         return render(request, 'checkout.html', context)
 
+class Payment(CartMixin, views.View):
+    def get(self, request, *args, **kwargs):
+        customer = Customer.objects.get(user=request.user)
+        order = Order.objects.filter(customer=customer, id=kwargs.get('id')).first()
+        cart = self.cart
+
+        return render(request, 'payment.html', locals())
+
 
 class MakeOrderView(CartMixin, views.View):
     # for save transactions
@@ -353,6 +361,6 @@ class MakeOrderView(CartMixin, views.View):
             new_order.save()
             customer.customer_orders.add(new_order)
 
-            messages.add_message(request, messages.INFO, 'Спасибо за заказ. Менеджр с вами свяжется!')
-            return HttpResponseRedirect('/')
+            url = reverse('payment', kwargs={'id': new_order.id})
+            return HttpResponseRedirect(url)
         return HttpResponseRedirect('/checkout/')

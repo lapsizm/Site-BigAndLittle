@@ -143,14 +143,14 @@ class Cart(models.Model):
 
 
 class Order(models.Model):
-    STATUS_NEW = 'Новый заказ'
-    STATUS_IN_PROGRESS = 'Заказ в прогрессе'
+    STATUS_NEW = 'Оплата подтверждается'
+    STATUS_IN_PROGRESS = 'Оплата подтверждена, товар готовится'
     STATUS_READY = 'Заказ готов'
-    STATUS_COMPLETED = 'Заказ завершены'
+    STATUS_COMPLETED = 'Заказ завершен'
 
     STATUS_CHOICES = (
-        (STATUS_NEW, 'Новый заказ'),
-        (STATUS_IN_PROGRESS, 'Заказ в обработке'),
+        (STATUS_NEW, 'Оплата в процессе подтвержения'),
+        (STATUS_IN_PROGRESS, 'Оплата подтверждена'),
         (STATUS_READY, 'Заказ готов'),
         (STATUS_COMPLETED, 'Заказ получен пользователем')
     )

@@ -1,0 +1,39 @@
+{% extends 'checkout.html' %}
+{% load crispy_forms_tags %}
+
+
+
+{% block main-content %}
+<div class="container">
+    <div class="content">
+
+        {% if order.status == "Оплата подтверждается" %}
+        <p>Нажмите на кнопку для оплаты</p>
+        <!--Подключение библиотеки-->
+        <form method="POST" action="https://yoomoney.ru/quickpay/confirm.xml">
+            {% csrf_token %}
+            <input type="hidden" name="receiver" value="4100117396244628">
+            <input type="hidden" name="formcomment"
+                   value="">
+            <input type="hidden" name="short-dest"
+                   value="">
+            <input type="hidden" name="label" value="$order_id">
+            <input type="hidden" name="quickpay-form" value="donate">
+            <input type="hidden" name="targets" value="Транзакция">
+            <input type="hidden" name="sum" value="{{order.cart.total_price}}" data-type="number">
+            <input type="hidden" name="comment" value="">
+            <input type="hidden" name="need-fio" value="true">
+            <input type="hidden" name="need-email" value="true">
+            <input type="hidden" name="need-phone" value="false">
+            <input type="hidden" name="need-address" value="false">
+            <label><input type="radio" name="paymentType" value="PC">ЮMoney</label>
+            <label><input type="radio" name="paymentType" value="AC">Банковской картой</label>
+            <input class="log-btn" type="submit" value="Оплатить {{order.cart.total_price}} руб.">
+        </form>
+        {% else %}
+        <p>Вы уже успешно оплатили товар, ваш статус: {{order.status}}</p>
+        {% endif %}
+
+    </div>
+</div>
+{% endblock %}

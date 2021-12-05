@@ -1,67 +1,28 @@
-{% extends 'cart.html' %}
+{% extends 'base.html' %}
+{% load static %}
+
 {% load crispy_forms_tags %}
+
+{% block link-css %}
+<link rel="stylesheet" href="{% static 'shop/css/base.css' %}">
+<link rel="stylesheet" href="{% static 'shop/css/checkout.css' %}">
+
+{% endblock %}
 
 {% block main-content %}
 
-<style>
 
-    body {
-        font-family: 'Exo 2', sans-serif;
-        font-style: italic;
-    }
-
-    input {
-        width: 100%;
-    }
-
-    .log-btn {
-        text-align: center;
-        padding: 0.5% 1.5%;
-        background: #f17180;
-        border-radius: 10px;
-        font-family: 'Exo 2', sans-serif;
-        font-weight: 500;
-        font-style: italic;
-        border: 2px solid #f17180;
-        color: #fff;
-        transition: 0.3s;
-    }
-
-    .log-btn:hover {
-        background: #fff;
-        color: #f17180;
-        border: 2px solid #f17180;
-    }
-
-
-</style>
 <div class="container">
 
-    <!--Подключение библиотеки-->
-    <form method="POST" action="https://yoomoney.ru/quickpay/confirm.xml">
-        <form action="{% url 'make_order' %}" method="POST">
-            {% csrf_token %}
-            {{form | crispy}}
-            <input type="hidden" name="receiver" value="4100117396244628">
-            <input type="hidden" name="formcomment"
-                   value="">
-            <input type="hidden" name="short-dest"
-                   value="">
-            <input type="hidden" name="label" value="$order_id">
-            <input type="hidden" name="quickpay-form" value="donate">
-            <input type="hidden" name="targets" value="Транзакция">
-            <input type="hidden" name="sum" value="{{cart.total_price}}" data-type="number">
-            <input type="hidden" name="comment" value="">
-            <input type="hidden" name="need-fio" value="true">
-            <input type="hidden" name="need-email" value="true">
-            <input type="hidden" name="need-phone" value="false">
-            <input type="hidden" name="need-address" value="false">
-            <label><input type="radio" name="paymentType" value="PC">ЮMoney</label>
-            <label><input type="radio" name="paymentType" value="AC">Банковской картой</label>
-            <input class="log-btn" type="submit" value="Оплатить {{cart.total_price}} руб.">
-        </form>
+    <form action="{% url 'make_order' %}" method="POST">
+        {% csrf_token %}
+        {{form | crispy}}
+
+        <input class="log-btn" type="submit" value="Оплатить {{cart.total_price}} руб.">
+    </form>
     </form>
 </div>
 
 
 {%endblock%}
+
